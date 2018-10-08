@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_062319) do
+ActiveRecord::Schema.define(version: 2018_10_08_051354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_062319) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
+    t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "plays", default: 0, null: false
@@ -78,7 +79,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_062319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followee_id"], name: "index_followees_followers_on_followee_id"
-    t.index ["follower_id", "followee_id"], name: "index_followees_followers_on_follower_id_and_followee_id", unique: true
+    t.index ["follower_id", "followee_id"], name: "index_followees_followers_on_follower_id_and_followee_id"
   end
 
   create_table "playlists", force: :cascade do |t|
