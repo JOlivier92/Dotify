@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 # Album.destroy_all
 # AlbumsSave.destroy_all
@@ -79,3 +72,13 @@ end
 # end
 # create song
 # listens = listens.rand(0,100000)
+
+# Seeds of mp3 files and metadata associated with those MP3
+# were generated from the following academic paper.
+# @inproceedings{fma_dataset,
+#   title = {FMA: A Dataset for Music Analysis},
+#   author = {Defferrard, Micha\"el and Benzi, Kirell and Vandergheynst, Pierre and Bresson, Xavier},
+#   booktitle = {18th International Society for Music Information Retrieval Conference},
+#   year = {2017},
+#   url = {https://arxiv.org/abs/1612.01840},
+# }
