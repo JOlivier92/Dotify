@@ -1,15 +1,19 @@
-
-# Album.destroy_all
+require 'csv'
 # AlbumsSave.destroy_all
-# Artist.destroy_all
 # ArtistsFollower.destroy_all
-FolloweesFollower.destroy_all
 # Playlist.destroy_all
 # PlaylistsFollower.destroy_all
 # PlaylistsSong.destroy_all
-# Song.destroy_all
 # SongSave.destroy_all
+Artist.destroy_all
+Album.destroy_all
+FolloweesFollower.destroy_all
+Song.destroy_all
 User.destroy_all
+
+unless File.exist?("./db/songSeeds.csv")
+  load './db/createSongSeeds.rb'
+end
 
 Faker::UniqueGenerator.clear
 
@@ -58,20 +62,36 @@ for i in (first_user_id..last_user_id) do
       )
   end
 end
+############################################################
+# Artists, Albums, and Songs, generated from  #
+############################################################
+unique_albums = []
+unique_artists = []
+CSV.foreach('./db/songSeeds.csv') do |song|
+  unless unique_artists.include?(song[1])
+    Artist.create(name: song[1])
+    unique_artists.push(song[1])
+  end
+  artist_id = Artist.find_by(name: song[1]).id
 
+  unless unique_albums.include?(song[2])
+    Album.create(title: song[2], artist_id: artist_id)
+    unique_albums.push(song[2])
+  end
+  album_id = Album.find_by(title: song[2]).id
 
-#   User.last do |user|
-#     for i in (0..999) do
-#       if i % 5 == 0 do
-#         user.like something
-#       end
-#       user.listen_to random song
-#     end
-#   end
-#
-# end
-# create song
-# listens = listens.rand(0,100000)
+  Song.create(
+    title: song[0],
+    length: song[3],
+    plays: (rand (1..1000000)),
+    release_yr: 2000,
+    artist_id: artist_id,
+    album_id: album_id
+  )
+  last_artist = Song.last.artist
+  new_plays = last_artist.plays + Song.last.plays
+  Artist.update(last_artist.id, plays: new_plays)
+end
 
 # Seeds of mp3 files and metadata associated with those MP3
 # were generated from the following academic paper.
