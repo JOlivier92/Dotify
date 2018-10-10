@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import merge from 'lodash/merge';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
@@ -21,8 +21,8 @@ class SessionForm extends React.Component {
   //on submit, create new user or sign user in
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createNewUser(this.state)
-      .then(() => this.props.history.push('/'));
+    const user = merge({}, this.state)
+    this.props.processForm(this.state);
 
   }
 
