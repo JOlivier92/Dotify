@@ -43,12 +43,11 @@ gem "aws-sdk-s3", require: false
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-group :production do
+group :production, :development, :test do
   gem 'faker'
 end
 
 group :development, :test do
-  gem 'faker'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
