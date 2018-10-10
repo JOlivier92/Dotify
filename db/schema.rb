@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_051354) do
+ActiveRecord::Schema.define(version: 2018_10_09_205039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(version: 2018_10_08_051354) do
     t.string "title", null: false
     t.integer "length", null: false
     t.integer "plays", default: 0, null: false
-    t.integer "release_yr", null: false
     t.integer "artist_id", null: false
     t.integer "album_id", null: false
     t.datetime "created_at", null: false

@@ -62,9 +62,9 @@ for i in (first_user_id..last_user_id) do
       )
   end
 end
-############################################################
-# Artists, Albums, and Songs, generated from  #
-############################################################
+################################################################
+# Artists, Albums, and Songs, generated from paper cited below #
+################################################################
 unique_albums = []
 unique_artists = []
 CSV.foreach('./db/songSeeds.csv') do |song|
@@ -79,12 +79,11 @@ CSV.foreach('./db/songSeeds.csv') do |song|
     unique_albums.push(song[2])
   end
   album_id = Album.find_by(title: song[2]).id
-
+  song_length = (song[3][0].to_i*60 + song[3][2..3].to_i)
   Song.create(
     title: song[0],
-    length: song[3],
+    length: song_length,
     plays: (rand (1..1000000)),
-    release_yr: 2000,
     artist_id: artist_id,
     album_id: album_id
   )

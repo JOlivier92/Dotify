@@ -1,9 +1,21 @@
 import React from 'react';
-import SignUpConntainer from './session/signup_container';
+import { Provider } from 'react-redux';
+import { Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
 
-export default () => (
+// Containers
+import SignUpFormContainer from './session/signup_form_container';
+import LogInFormContainer from './session/login_form_container';
+
+const App = () => (
   <div>
-    <Route path="/chirps" component={ChirpIndexContainer} />
-    <Route path="/signup" component={SignUpConntainer} />
+    <header>
+      <Link to="/" className="header-link">
+        <h1>Dotify</h1>
+      </Link>
+    </header>
+    <Route path="/login" component={LogInFormContainer} />
+    <Route path="/signup" component={SignUpFormContainer} />
   </div>
 );
+
+export default App;
