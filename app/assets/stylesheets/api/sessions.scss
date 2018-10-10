@@ -1,27 +1,87 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-html {
+body {
   background-image: url(/assets/splash/background-bubbles.svg),
-                    linear-gradient(to bottom, #F15C8B, #FAE62D);
+  linear-gradient(to bottom, #F17783, #F9C455);
+  // background-position-x: center;
+  background-position: center;
+  // background-position-x: center;
+  // background-position-y: top -410px;
+  // background-position-y: top 200px, center;
   background-size: cover;
+  // transform: translate(-50%, 0%);
   height: 100%;
   background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
 }
+.navbar-header {
+  // position: fixed;
+  width: 100%;
+  border-image-repeat: stretch;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  // max-width: 1400px;
+  height: 900px;
 
-.login-signup {
-  a {
-    padding: 28px 17px;
-    font-family: Circular, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    color: white;
-    text-decoration: none;
-  }
+  .container {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 80px;
+    .navbar-main-elements {
+      display: block !important;
+      height: inherit;
+      min-width: 940px;
+      max-width: 1140px;
+      width: 100%;
+      .header-logo-link {
+        float: left;
+        background-image: url(/assets/logos/Spotify_Logo_RGB_White.png);
+        overflow: show;
+        width: 132px;
+        height: 40px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-repeat: no-repeat;
+        background-size: 132px 40px;
+      }
+    }
+    a {
+      align-self: center;
+      float: right;
+      padding: 28px 17px;
+      font-family: Circular, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      color: white;
+      text-decoration: none;
+    }
 
-  a:hover {
-    outline: 0;
-    color: #1ED760;
+    // contains dotify logo
+    // contains login and signup sub-components
+    .login-signup-links {
+      // a {
+      //   padding: 28px 17px;
+      //   font-family: Circular, Helvetica, Arial, sans-serif;
+      //   font-size: 16px;
+      //   font-weight: 700;
+      //   line-height: 24px;
+      //   color: white;
+      //   text-decoration: none;
+      // }
+      a:hover {
+        outline: 0;
+        color: #1ED760;
+      }
+    }
   }
 }

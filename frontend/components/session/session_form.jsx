@@ -5,17 +5,17 @@ import { withRouter } from 'react-router-dom';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: '',
-      email: '',
-      password: '',
-      confirmEmail: ''
-    };
+    this.state = {username: '', email: '', password: '', confirmEmail: ''};
     // if (this.props.formType === 'signup') {
     //   this.state[confirmEmail] = '';
     // }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.loginAsGuest = this.loginAsGuest.bind(this);
+    this.fillForm = this.fillForm.bind(this);
   }
+  // componentDidMount() {
+  //   this.props.clearErrors();
+  // }
 
   handleInput(type) {
     return e =>
@@ -23,13 +23,40 @@ class SessionForm extends React.Component {
         [type]: e.currentTarget.value
       });
   }
-
   //on submit, create new user or sign user in
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state)
-    this.props.processForm(user);
+    const user = Object.assign({}, this.state);
 
+    this.props.processForm(user);
+  }
+
+  //
+  loginAsGuest(e) {
+    e.preventDefault();
+    const email = 'DotifyGuest@dotify.io'.split("");
+    const password = "examplePassword4".split("");
+    const button = document.getElementById('login-button')
+    this.setState({username: '', email: '', password: '', confirmEmail: ''},
+                  () => this.fillForm(email,password,button))
+  }
+
+  fillForm(email,password,button) {
+    if (email.length > 0) {
+      this.setState(
+        {email: this.state.email + email.shift()}, () => {
+          window.setTimeout( () =>
+            this.fillForm(email,password,button), Math.floor(Math.random()*50)+70);
+        }
+      );
+    } else if (password.length > 0) {
+      this.setState(
+        {password: this.state.password + password.shift()}, () => {
+          window.setTimeout( () =>
+            this.fillForm(email,password,button), Math.floor(Math.random()*50)+70);
+        }
+      );
+    } else { button.click(); }
   }
 
   renderErrors() {
@@ -46,6 +73,12 @@ class SessionForm extends React.Component {
 
 
   render () {
+
+    let guestLoginButton;
+    if (this.props.formType === 'login') {
+      guestLoginButton = <button onClick={this.loginAsGuest}> Guest login</button>;
+    }
+
     return (
       <div className="login-form-container">
         <h2>Welcome to Dotify!</h2> <br/>
@@ -89,8 +122,9 @@ class SessionForm extends React.Component {
             />
           </label>
         </div>
-          <input className="session-submit" type="submit" value={this.props.formType}/>
+          <input className="session-submit" id="login-button" type="submit" value={this.props.formType}/>
         </form>
+        {guestLoginButton}
       </div>
     )
   }

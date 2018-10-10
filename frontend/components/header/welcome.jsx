@@ -7,15 +7,17 @@ const Welcome = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <header className="navbar-header">
       <div className="container">
-        <div className="navbar-logo">
-          <Link to="/" className="header-link">
-            <h1>Dotify</h1>
-          </Link>
+        <div className="navbar-main-elements">
+          <div className="navbar-logo">
+            <Link to="/" className="header-logo-link">
+              <span></span>
+            </Link>
+          </div>
+          <nav className="login-signup-links">
+            <Link to="/signup">Sign up</Link>
+            <Link to="/login">Log In</Link>
+          </nav>
         </div>
-        <nav className="login-signup">
-          <Link to="/signup">Sign up</Link>
-          <Link to="/login">Log In</Link>
-        </nav>
       </div>
     </header>
   );

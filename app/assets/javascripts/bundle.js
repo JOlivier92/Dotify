@@ -498,20 +498,7 @@ var App = function App() {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(
-      'header',
-      null,
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/', className: 'header-link' },
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Dotify'
-        )
-      ),
-      _react2.default.createElement(_welcome_container2.default, null)
-    ),
+    _react2.default.createElement(_welcome_container2.default, null),
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
@@ -561,29 +548,29 @@ var Welcome = function Welcome(_ref) {
         { className: 'container' },
         _react2.default.createElement(
           'div',
-          { className: 'navbar-logo' },
+          { className: 'navbar-main-elements' },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/', className: 'header-link' },
+            'div',
+            { className: 'navbar-logo' },
             _react2.default.createElement(
-              'h1',
-              null,
-              'Dotify'
+              _reactRouterDom.Link,
+              { to: '/', className: 'header-logo-link' },
+              _react2.default.createElement('span', null)
             )
-          )
-        ),
-        _react2.default.createElement(
-          'nav',
-          { className: 'login-signup' },
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/signup' },
-            'Sign up'
           ),
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/login' },
-            'Log In'
+            'nav',
+            { className: 'login-signup-links' },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/signup' },
+              'Sign up'
+            ),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/login' },
+              'Log In'
+            )
           )
         )
       )
@@ -807,18 +794,18 @@ var SessionForm = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (SessionForm.__proto__ || Object.getPrototypeOf(SessionForm)).call(this, props));
 
-    _this.state = {
-      username: '',
-      email: '',
-      password: '',
-      confirmEmail: ''
-    };
+    _this.state = { username: '', email: '', password: '', confirmEmail: '' };
     // if (this.props.formType === 'signup') {
     //   this.state[confirmEmail] = '';
     // }
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.loginAsGuest = _this.loginAsGuest.bind(_this);
+    _this.fillForm = _this.fillForm.bind(_this);
     return _this;
   }
+  // componentDidMount() {
+  //   this.props.clearErrors();
+  // }
 
   _createClass(SessionForm, [{
     key: 'handleInput',
@@ -829,7 +816,6 @@ var SessionForm = function (_React$Component) {
         return _this2.setState(_defineProperty({}, type, e.currentTarget.value));
       };
     }
-
     //on submit, create new user or sign user in
 
   }, {
@@ -837,7 +823,45 @@ var SessionForm = function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
+
       this.props.processForm(user);
+    }
+
+    //
+
+  }, {
+    key: 'loginAsGuest',
+    value: function loginAsGuest(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var email = 'DotifyGuest@dotify.io'.split("");
+      var password = "examplePassword4".split("");
+      var button = document.getElementById('login-button');
+      this.setState({ username: '', email: '', password: '', confirmEmail: '' }, function () {
+        return _this3.fillForm(email, password, button);
+      });
+    }
+  }, {
+    key: 'fillForm',
+    value: function fillForm(email, password, button) {
+      var _this4 = this;
+
+      if (email.length > 0) {
+        this.setState({ email: this.state.email + email.shift() }, function () {
+          window.setTimeout(function () {
+            return _this4.fillForm(email, password, button);
+          }, Math.floor(Math.random() * 50) + 70);
+        });
+      } else if (password.length > 0) {
+        this.setState({ password: this.state.password + password.shift() }, function () {
+          window.setTimeout(function () {
+            return _this4.fillForm(email, password, button);
+          }, Math.floor(Math.random() * 50) + 70);
+        });
+      } else {
+        button.click();
+      }
     }
   }, {
     key: 'renderErrors',
@@ -857,6 +881,16 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+
+      var guestLoginButton = void 0;
+      if (this.props.formType === 'login') {
+        guestLoginButton = _react2.default.createElement(
+          'button',
+          { onClick: this.loginAsGuest },
+          ' Guest login'
+        );
+      }
+
       return _react2.default.createElement(
         'div',
         { className: 'login-form-container' },
@@ -919,8 +953,9 @@ var SessionForm = function (_React$Component) {
               })
             )
           ),
-          _react2.default.createElement('input', { className: 'session-submit', type: 'submit', value: this.props.formType })
-        )
+          _react2.default.createElement('input', { className: 'session-submit', id: 'login-button', type: 'submit', value: this.props.formType })
+        ),
+        guestLoginButton
       );
     }
   }]);

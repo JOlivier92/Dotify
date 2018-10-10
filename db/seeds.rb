@@ -21,6 +21,8 @@ Faker::UniqueGenerator.clear
 # Generates a fake set of users based off of some of the developer's #
 # favorite shows and movies!                                         #
 ######################################################################
+User.create(username: 'DotifyGuest', email: 'DotifyGuest@dotify.io', password: 'examplePassword4')
+######################################################################
 for i in (0..99) do
   if i % 3 == 0
     username = Faker::GameOfThrones.unique.character
