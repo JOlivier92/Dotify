@@ -28,4 +28,4 @@ export const login = formUser => dispatch => APIUtil.login(formUser)
                   err => (dispatch(receiveErrors(err.responseJSON))));
 
 export const logout = () => dispatch => APIUtil.logout()
-            .then(() => dispatch(logoutCurrentUser()));
+            .then(user => dispatch(logoutCurrentUser()));

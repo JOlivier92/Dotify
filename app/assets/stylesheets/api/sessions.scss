@@ -1,3 +1,27 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  background-image: url(/assets/splash/background-bubbles.svg),
+                    linear-gradient(to bottom, #F15C8B, #FAE62D);
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.login-signup {
+  a {
+    padding: 28px 17px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    outline: 0;
+    color: #1ED760;
+  }
+}

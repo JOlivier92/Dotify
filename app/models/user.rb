@@ -13,8 +13,13 @@
 #
 
 class User < ApplicationRecord
-  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :email, :password_digest, :session_token, presence: true
+  validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
+
+  attr_reader :password
+  after_initialize :ensure_session_token
+
 
   # This user following another user (followerID is currentUser)
   has_many :active_relationships,
@@ -31,13 +36,11 @@ class User < ApplicationRecord
   foreign_key: :followee_id,
   class_name: :FolloweesFollower,
   dependent: :destroy
-  
+
   has_many :followers,
   through: :passive_relationships,
   source: :follower
 
-  attr_reader :password
-  after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
@@ -54,14 +57,18 @@ class User < ApplicationRecord
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
-  def reset_token!
-    self.session_token = SecureRandom.urlsafe_base64(16)
+  def reset_session_token!
+    self.session_token = generate_session_token
     self.save!
     self.session_token
   end
 
+  def generate_session_token
+    SecureRandom.urlsafe_base64(16)
+  end
+
   private
   def ensure_session_token
-    self.session_token ||= SecureRandom.urlsafe_base64(16)
+    self.session_token ||= generate_session_token
   end
 end

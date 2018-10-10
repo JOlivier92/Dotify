@@ -4,10 +4,19 @@ import { Link } from 'react-router-dom';
 import SessionForm from './session_form';
 import { login } from '../../actions/session_actions';
 
+
+const mapStateToProps = ({ errors }) => {
+  return {
+    errors: errors.session,
+    formType: 'login',
+    navLink: <Link to="/signup">sign up instead</Link>,
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
-  createNewUser: formUser => dispatch(createNewUser(formUser))
+  processForm: user => dispatch(login(user))
 });
 
 // The reason we connect with null is because we don't need any information
 // from the current state to create a new user
-export default connect(null, mapDispatchToProps)(SessionForm)
+export default connect(mapStateToProps, mapDispatchToProps)(SessionForm)

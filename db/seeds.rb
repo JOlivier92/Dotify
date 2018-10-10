@@ -79,6 +79,7 @@ CSV.foreach('./db/songSeeds.csv') do |song|
     unique_albums.push(song[2])
   end
   album_id = Album.find_by(title: song[2]).id
+  # coverts 2:43 into 2*60 + 43
   song_length = (song[3][0].to_i*60 + song[3][2..3].to_i)
   Song.create(
     title: song[0],

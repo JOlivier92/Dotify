@@ -11,9 +11,7 @@ const mapStateToProps = ({ errors }) => {
   };
 };
 const mapDispatchToProps = dispatch => ({
-  processForm: user => dispatch(signup(user))
+  processForm: (user) => dispatch(signup(user))
 });
 
-// The reason we connect with null is because we don't need any information
-// from the current state to create a new user
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm)

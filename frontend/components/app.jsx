@@ -7,6 +7,9 @@ import SignUpFormContainer from './session/signup_form_container';
 import LogInFormContainer from './session/login_form_container';
 import WelcomeContainer from './header/welcome_container';
 
+// Routes
+import { AuthRoute, ProtectedRoute } from '../utils/route_util';
+
 const App = () => (
   <div>
     <header>
@@ -15,8 +18,10 @@ const App = () => (
       </Link>
       <WelcomeContainer />
     </header>
-    <Route path="/login" component={LogInFormContainer} />
-    <Route path="/signup" component={SignUpFormContainer} />
+    <Switch>
+      <AuthRoute path="/login" component={LogInFormContainer} />
+      <AuthRoute path="/signup" component={SignUpFormContainer} />
+    </Switch>
   </div>
 );
 
