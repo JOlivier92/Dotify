@@ -2,29 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-  background-image: url(/assets/splash/background-bubbles.svg),
-  linear-gradient(to bottom, #F17783, #F9C455);
-  // background-position-x: center;
+  background-image: linear-gradient(to bottom, #F17783, #F9C455);
   background-position: center;
-  // background-position-x: center;
-  // background-position-y: top -410px;
-  // background-position-y: top 200px, center;
-  background-size: cover;
-  // transform: translate(-50%, 0%);
   height: 100%;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
 }
-.navbar-header {
-  // position: fixed;
+.welcome-box {
+  background-image: url(/assets/splash/background-bubbles.svg);
+  // background-position: center;
+  background-position: -50px -400px;
   width: 100%;
   border-image-repeat: stretch;
-  background-size: cover;
+  background-size: 112%;
   background-repeat: no-repeat;
   overflow-x: hidden;
   overflow-y: hidden;
-  // max-width: 1400px;
   height: 900px;
 
   .container {
@@ -36,12 +30,14 @@ body {
     background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 80px;
+
     .navbar-main-elements {
       display: block !important;
       height: inherit;
       min-width: 940px;
       max-width: 1140px;
       width: 100%;
+
       .header-logo-link {
         float: left;
         background-image: url(/assets/logos/Spotify_Logo_RGB_White.png);
@@ -64,6 +60,7 @@ body {
       line-height: 24px;
       color: white;
       text-decoration: none;
+      padding-right: 0;
     }
 
     // contains dotify logo

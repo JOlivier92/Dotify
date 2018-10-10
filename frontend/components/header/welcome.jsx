@@ -2,10 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-
 const Welcome = ({ currentUser, logout }) => {
   const sessionLinks = () => (
-    <header className="navbar-header">
+    <header className="welcome-box">
       <div className="container">
         <div className="navbar-main-elements">
           <div className="navbar-logo">
@@ -13,10 +12,12 @@ const Welcome = ({ currentUser, logout }) => {
               <span></span>
             </Link>
           </div>
-          <nav className="login-signup-links">
-            <Link to="/signup">Sign up</Link>
-            <Link to="/login">Log In</Link>
-          </nav>
+            <nav className="login-signup-links">
+              <Link to="/login">Log In</Link>
+              <Link to="/signup">Sign up</Link>
+              <a target="_blank" href="https://github.com/JOlivier92/Dotify">Github</a>
+              <a target="_blank" href="https://www.linkedin.com/in/joseph-olivier/">Linked In</a>
+            </nav>
         </div>
       </div>
     </header>

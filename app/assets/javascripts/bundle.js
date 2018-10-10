@@ -542,7 +542,7 @@ var Welcome = function Welcome(_ref) {
   var sessionLinks = function sessionLinks() {
     return _react2.default.createElement(
       'header',
-      { className: 'navbar-header' },
+      { className: 'welcome-box' },
       _react2.default.createElement(
         'div',
         { className: 'container' },
@@ -563,13 +563,23 @@ var Welcome = function Welcome(_ref) {
             { className: 'login-signup-links' },
             _react2.default.createElement(
               _reactRouterDom.Link,
+              { to: '/login' },
+              'Log In'
+            ),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
               { to: '/signup' },
               'Sign up'
             ),
             _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/login' },
-              'Log In'
+              'a',
+              { target: '_blank', href: 'https://github.com/JOlivier92/Dotify' },
+              'Github'
+            ),
+            _react2.default.createElement(
+              'a',
+              { target: '_blank', href: 'https://www.linkedin.com/in/joseph-olivier/' },
+              'Linked In'
             )
           )
         )
@@ -1064,7 +1074,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
     store = (0, _store2.default)(preloadedState);
-    // delete window.currentUser;
+    delete window.currentUser;
   } else {
     store = (0, _store2.default)();
   }
