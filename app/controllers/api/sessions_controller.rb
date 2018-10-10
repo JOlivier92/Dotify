@@ -21,4 +21,5 @@ class Api::SessionsController < ApplicationController
     else
       render json: ["Login is required"], status: 404
     end
+  end
 end
