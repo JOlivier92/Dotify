@@ -41,7 +41,7 @@ class Welcome extends React.Component {
             <div className="splash-body">
               <h1>Music for everyone.</h1>
               <h4>Thousands of songs. No credit card needed.</h4>
-              <span>Sign in as a Guest</span>
+              <Link to="/login" >SIGN IN AS GUEST</Link>
             </div>
           </header>
         <footer className="splash-footer">
@@ -51,6 +51,9 @@ class Welcome extends React.Component {
     );
   }
 
+  loginOrSignUp () {
+
+  }
   personalGreeting() {
     const { currentUser, logout } = this.props;
 

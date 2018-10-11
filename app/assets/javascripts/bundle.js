@@ -498,12 +498,12 @@ var App = function App() {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_welcome_container2.default, null),
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
       _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _login_form_container2.default }),
-      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _signup_form_container2.default })
+      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _signup_form_container2.default }),
+      _react2.default.createElement(_welcome_container2.default, { path: '/' })
     )
   );
 };
@@ -644,9 +644,9 @@ var Welcome = function (_React$Component) {
               'Thousands of songs. No credit card needed.'
             ),
             _react2.default.createElement(
-              'span',
-              null,
-              'Sign in as a Guest'
+              _reactRouterDom.Link,
+              { to: '/login' },
+              'SIGN IN AS GUEST'
             )
           )
         ),
@@ -661,6 +661,9 @@ var Welcome = function (_React$Component) {
         )
       );
     }
+  }, {
+    key: 'loginOrSignUp',
+    value: function loginOrSignUp() {}
   }, {
     key: 'personalGreeting',
     value: function personalGreeting() {
