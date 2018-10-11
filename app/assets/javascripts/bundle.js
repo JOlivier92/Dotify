@@ -527,100 +527,174 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _session_form = __webpack_require__(/*! ../session/session_form */ "./frontend/components/session/session_form.jsx");
+
+var _session_form2 = _interopRequireDefault(_session_form);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Welcome = function Welcome(_ref) {
-  var currentUser = _ref.currentUser,
-      logout = _ref.logout;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  var sessionLinks = function sessionLinks() {
-    return _react2.default.createElement(
-      'div',
-      { className: 'splash-page' },
-      _react2.default.createElement(
-        'header',
-        { className: 'welcome-box' },
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Welcome = function (_React$Component) {
+  _inherits(Welcome, _React$Component);
+
+  function Welcome(props) {
+    _classCallCheck(this, Welcome);
+
+    var _this = _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).call(this, props));
+
+    _this.state = { isLinksActive: false };
+    return _this;
+  }
+
+  _createClass(Welcome, [{
+    key: 'toggleLinks',
+    value: function toggleLinks() {
+      this.setState({ isLinksActive: !this.state.isLinksActive });
+    }
+  }, {
+    key: 'sessionLinks',
+    value: function sessionLinks() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'splash-page' },
         _react2.default.createElement(
-          'div',
-          { className: 'container' },
+          'header',
+          { className: 'welcome-box' },
           _react2.default.createElement(
             'div',
-            { className: 'navbar-main-elements' },
+            { className: 'container' },
             _react2.default.createElement(
               'div',
-              { className: 'navbar-logo' },
+              { className: 'navbar-main-elements' },
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/', className: 'header-logo-link' },
-                _react2.default.createElement('span', null)
-              )
-            ),
-            _react2.default.createElement(
-              'nav',
-              { className: 'login-signup-links' },
-              _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/login', className: 'grayed-link' },
-                'Log In'
+                'div',
+                { className: 'navbar-logo' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'header-logo-link-container' },
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: '/', className: 'header-logo-link' },
+                    _react2.default.createElement('span', null)
+                  )
+                )
               ),
+              _react2.default.createElement('div', { className: 'hamburger', onClick: function onClick() {
+                  return _this2.toggleLinks();
+                } }),
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/signup', className: 'grayed-link' },
-                'Sign up'
-              ),
-              _react2.default.createElement('a', { target: '_blank', className: 'divider' }),
-              _react2.default.createElement(
-                'a',
-                { target: '_blank', href: 'https://github.com/JOlivier92/Dotify' },
-                'Github'
-              ),
-              _react2.default.createElement(
-                'a',
-                { target: '_blank', href: 'https://www.linkedin.com/in/joseph-olivier/' },
-                'Linked In'
+                'nav',
+                {
+                  className: 'login-signup-links ' + (this.state.isLinksActive ? "active" : "")
+                },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/login', className: 'login-signup-link grayed-link' },
+                  'Log In'
+                ),
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/signup', className: 'login-signup-link grayed-link' },
+                  'Sign up'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { target: '_blank', className: 'login-signup-link no-hover' },
+                  '|'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { target: '_blank', className: 'login-signup-link', href: 'https://github.com/JOlivier92/Dotify' },
+                  'Github'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { target: '_blank', className: 'login-signup-link', href: 'https://www.linkedin.com/in/joseph-olivier/' },
+                  'Linked In'
+                )
               )
             )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'splash-body' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'Music for everyone.'
+            ),
+            _react2.default.createElement(
+              'h4',
+              null,
+              'Thousands of songs. No credit card needed.'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'footer',
+          { className: 'splash-footer' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Blahh'
           )
         )
-      ),
-      _react2.default.createElement(
-        'footer',
-        { className: 'splash-footer' },
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Blahh'
-        )
-      )
-    );
-  };
-  var personalGreeting = function personalGreeting() {
-    return _react2.default.createElement(
-      'hgroup',
-      { className: 'header-group' },
-      _react2.default.createElement(
-        'h2',
-        { className: 'header-name' },
-        'Hi, ',
-        currentUser.username,
-        '!'
-      ),
-      _react2.default.createElement(
-        'button',
-        { className: 'header-button', onClick: logout },
-        'Log Out'
-      )
-    );
-  };
+      );
+    }
+  }, {
+    key: 'personalGreeting',
+    value: function personalGreeting() {
+      var _props = this.props,
+          currentUser = _props.currentUser,
+          logout = _props.logout;
 
-  return currentUser ? personalGreeting() : sessionLinks();
-};
+
+      return _react2.default.createElement(
+        'hgroup',
+        { className: 'header-group' },
+        _react2.default.createElement(
+          'h2',
+          { className: 'header-name' },
+          'Hi, ',
+          currentUser.username,
+          '!'
+        ),
+        _react2.default.createElement(
+          'button',
+          { className: 'header-button', onClick: logout },
+          'Log Out'
+        )
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var currentUser = this.props.currentUser;
+
+
+      return currentUser ? this.personalGreeting() : this.sessionLinks();
+    }
+  }]);
+
+  return Welcome;
+}(_react2.default.Component);
+
+;
 
 exports.default = Welcome;
 
@@ -889,17 +963,21 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'renderErrors',
     value: function renderErrors() {
-      return _react2.default.createElement(
-        'ul',
-        null,
-        this.props.errors.map(function (error, idx) {
-          return _react2.default.createElement(
-            'li',
-            { key: 'error-' + idx },
-            error
-          );
-        })
-      );
+      if (this.props.errors.length > 0) {
+        return _react2.default.createElement(
+          'ul',
+          null,
+          this.props.errors.map(function (error, idx) {
+            return _react2.default.createElement(
+              'li',
+              { key: 'error-' + idx },
+              error
+            );
+          })
+        );
+      } else {
+        return null;
+      }
     }
   }, {
     key: 'render',
