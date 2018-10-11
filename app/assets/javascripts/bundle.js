@@ -541,47 +541,61 @@ var Welcome = function Welcome(_ref) {
 
   var sessionLinks = function sessionLinks() {
     return _react2.default.createElement(
-      'header',
-      { className: 'welcome-box' },
+      'div',
+      { className: 'splash-page' },
       _react2.default.createElement(
-        'div',
-        { className: 'container' },
+        'header',
+        { className: 'welcome-box' },
         _react2.default.createElement(
           'div',
-          { className: 'navbar-main-elements' },
+          { className: 'container' },
           _react2.default.createElement(
             'div',
-            { className: 'navbar-logo' },
+            { className: 'navbar-main-elements' },
             _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/', className: 'header-logo-link' },
-              _react2.default.createElement('span', null)
-            )
-          ),
-          _react2.default.createElement(
-            'nav',
-            { className: 'login-signup-links' },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/login' },
-              'Log In'
+              'div',
+              { className: 'navbar-logo' },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/', className: 'header-logo-link' },
+                _react2.default.createElement('span', null)
+              )
             ),
             _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/signup' },
-              'Sign up'
-            ),
-            _react2.default.createElement(
-              'a',
-              { target: '_blank', href: 'https://github.com/JOlivier92/Dotify' },
-              'Github'
-            ),
-            _react2.default.createElement(
-              'a',
-              { target: '_blank', href: 'https://www.linkedin.com/in/joseph-olivier/' },
-              'Linked In'
+              'nav',
+              { className: 'login-signup-links' },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/login', className: 'grayed-link' },
+                'Log In'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/signup', className: 'grayed-link' },
+                'Sign up'
+              ),
+              _react2.default.createElement('a', { target: '_blank', className: 'divider' }),
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', href: 'https://github.com/JOlivier92/Dotify' },
+                'Github'
+              ),
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', href: 'https://www.linkedin.com/in/joseph-olivier/' },
+                'Linked In'
+              )
             )
           )
+        )
+      ),
+      _react2.default.createElement(
+        'footer',
+        { className: 'splash-footer' },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Blahh'
         )
       )
     );
@@ -833,7 +847,6 @@ var SessionForm = function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
-
       this.props.processForm(user);
     }
 

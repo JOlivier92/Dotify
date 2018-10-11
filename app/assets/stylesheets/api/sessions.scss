@@ -2,24 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-  background-image: linear-gradient(to bottom, #F17783, #F9C455);
+  background-image: linear-gradient(to bottom, #F037A5 -90%, #FAE62D 140%);
   background-position: center;
   height: 100%;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
+  min-height: 900px;
+}
+@media (min-width: 992px) {
+  .welcome-box {
+  width: 1610px;
+  height: 1523px;
+  background-size: 100%;
+}
 }
 .welcome-box {
   background-image: url(/assets/splash/background-bubbles.svg);
   // background-position: center;
   background-position: -50px -400px;
-  width: 100%;
+  width: 100vw;
   border-image-repeat: stretch;
+  background-position: center;
   background-size: 112%;
   background-repeat: no-repeat;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  height: 900px;
+  min-height: 900px;
+  height: 100vh;
 
   .container {
     position: fixed;
@@ -41,7 +49,6 @@ body {
       .header-logo-link {
         float: left;
         background-image: url(/assets/logos/Spotify_Logo_RGB_White.png);
-        overflow: show;
         width: 132px;
         height: 40px;
         margin-top: 20px;
@@ -53,32 +60,35 @@ body {
     a {
       align-self: center;
       float: right;
-      padding: 28px 17px;
+      padding: 29px 34px;
       font-family: Circular, Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 900;
       line-height: 24px;
       color: white;
       text-decoration: none;
       padding-right: 0;
     }
-
-    // contains dotify logo
-    // contains login and signup sub-components
-    .login-signup-links {
-      // a {
-      //   padding: 28px 17px;
-      //   font-family: Circular, Helvetica, Arial, sans-serif;
-      //   font-size: 16px;
-      //   font-weight: 700;
-      //   line-height: 24px;
-      //   color: white;
-      //   text-decoration: none;
-      // }
+    .grayed-link {
+      color: #D9DADC;
+    }
       a:hover {
         outline: 0;
         color: #1ED760;
       }
+    .divider {
+      padding: 20px;
+      width: 10px;
+      height: 16px;
+      color: black;
+      z-index: 10;
+    }
     }
   }
+.splash-footer {
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: 540px;
 }
