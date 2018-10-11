@@ -10,9 +10,9 @@ class SessionForm extends React.Component {
     this.loginAsGuest = this.loginAsGuest.bind(this);
     this.fillForm = this.fillForm.bind(this);
   }
-  // componentDidMount() {
-  //   this.props.clearErrors();
-  // }
+  componentDidMount() {
+    this.props.clearErrors();
+  }
 
   handleInput(type) {
     return e =>

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import SessionForm from './session_form';
-import { login } from '../../actions/session_actions';
+import { login, clearErrors } from '../../actions/session_actions';
 
 
 const mapStateToProps = ({ errors }) => {
@@ -14,7 +14,8 @@ const mapStateToProps = ({ errors }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  processForm: user => dispatch(login(user))
+  processForm: user => dispatch(login(user)),
+  clearErrors: () => dispatch(clearErrors())
 });
 
 // The reason we connect with null is because we don't need any information
