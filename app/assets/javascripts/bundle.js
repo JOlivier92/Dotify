@@ -1032,7 +1032,7 @@ var SessionForm = function (_React$Component) {
             _react2.default.createElement(
               'div',
               null,
-              _react2.default.createElement('input', { type: 'text',
+              _react2.default.createElement('input', { type: 'email',
                 value: this.state.email,
                 onChange: this.handleInput('email'),
                 placeholder: 'Email',

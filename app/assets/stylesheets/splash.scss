@@ -216,5 +216,11 @@ body {
 
 }
 
+.login-form-container {
+  width: 100vw;
+  height: 100vh;
+  max-height: 600px;
+  border: 5px solid red;
+}
 
 @-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
