@@ -23,7 +23,7 @@ body {
 }
 
 .welcome-box {
-  background-image: url(/assets/splash/background-bubbles.svg);
+  background-image: image-url('background-bubbles.svg');
   // background-position: center;
   background-position: -50px -400px;
   width: 100vw;
@@ -74,7 +74,7 @@ body {
 
         .header-logo-link {
           float: left;
-          background-image: url(/assets/logos/Spotify_Logo_RGB_White.png);
+          background-image: image_url('Spotify_Logo_RGB_White.png');
           width: 132px;
           height: 40px;
           padding: 0;

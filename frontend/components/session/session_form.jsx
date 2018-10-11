@@ -6,9 +6,6 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {username: '', email: '', password: '', confirmEmail: ''};
-    // if (this.props.formType === 'signup') {
-    //   this.state[confirmEmail] = '';
-    // }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.loginAsGuest = this.loginAsGuest.bind(this);
     this.fillForm = this.fillForm.bind(this);
@@ -78,25 +75,25 @@ class SessionForm extends React.Component {
   render () {
 
     let guestLoginButton;
+    let switchAsk = "Already";
     if (this.props.formType === 'login') {
       guestLoginButton = <button onClick={this.loginAsGuest}> Guest login</button>;
+      switchAsk = "Don't"
     }
-
     return (
       <div className="login-form-container">
-        <h2>Welcome to Dotify!</h2> <br/>
+        <h2>Welcome to Dotify!</h2>
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Please {this.props.formType} or {this.props.navLink}
           {this.renderErrors()}
           <div className="login-form">
-          <label>
+          <div>
             <input type="text"
                    value={this.state.email}
                    onChange={this.handleInput('email')}
                    placeholder="Email"
                    className="login-input"
             />
-          </label>
+        </div>
 
             <label>
               <input type="text"
@@ -128,6 +125,7 @@ class SessionForm extends React.Component {
           <input className="session-submit" id="login-button" type="submit" value={this.props.formType}/>
         </form>
         {guestLoginButton}
+        {switchAsk} have an account? {this.props.navLink}
       </div>
     )
   }

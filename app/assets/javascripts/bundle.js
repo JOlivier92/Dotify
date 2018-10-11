@@ -901,9 +901,6 @@ var SessionForm = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (SessionForm.__proto__ || Object.getPrototypeOf(SessionForm)).call(this, props));
 
     _this.state = { username: '', email: '', password: '', confirmEmail: '' };
-    // if (this.props.formType === 'signup') {
-    //   this.state[confirmEmail] = '';
-    // }
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.loginAsGuest = _this.loginAsGuest.bind(_this);
     _this.fillForm = _this.fillForm.bind(_this);
@@ -992,14 +989,15 @@ var SessionForm = function (_React$Component) {
     value: function render() {
 
       var guestLoginButton = void 0;
+      var switchAsk = "Already";
       if (this.props.formType === 'login') {
         guestLoginButton = _react2.default.createElement(
           'button',
           { onClick: this.loginAsGuest },
           ' Guest login'
         );
+        switchAsk = "Don't";
       }
-
       return _react2.default.createElement(
         'div',
         { className: 'login-form-container' },
@@ -1008,21 +1006,15 @@ var SessionForm = function (_React$Component) {
           null,
           'Welcome to Dotify!'
         ),
-        ' ',
-        _react2.default.createElement('br', null),
         _react2.default.createElement(
           'form',
           { onSubmit: this.handleSubmit, className: 'login-form-box' },
-          'Please ',
-          this.props.formType,
-          ' or ',
-          this.props.navLink,
           this.renderErrors(),
           _react2.default.createElement(
             'div',
             { className: 'login-form' },
             _react2.default.createElement(
-              'label',
+              'div',
               null,
               _react2.default.createElement('input', { type: 'text',
                 value: this.state.email,
@@ -1064,7 +1056,10 @@ var SessionForm = function (_React$Component) {
           ),
           _react2.default.createElement('input', { className: 'session-submit', id: 'login-button', type: 'submit', value: this.props.formType })
         ),
-        guestLoginButton
+        guestLoginButton,
+        switchAsk,
+        ' have an account? ',
+        this.props.navLink
       );
     }
   }]);
@@ -1117,7 +1112,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
     navLink: _react2.default.createElement(
       _reactRouterDom.Link,
       { to: '/login' },
-      'log in instead'
+      'Log in'
     )
   };
 };
