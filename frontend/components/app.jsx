@@ -6,7 +6,7 @@ import ConnectedSwitch from '../store/connected_switch';
 import SignUpFormContainer from './session/signup_form_container';
 import LogInFormContainer from './session/login_form_container';
 import WelcomeContainer from './header/welcome_container';
-
+import Recaptcha from 'react-recaptcha';
 // Routes
 import { AuthRoute, ProtectedRoute } from '../utils/route_util';
 

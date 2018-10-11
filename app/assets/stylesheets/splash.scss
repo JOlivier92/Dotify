@@ -1,6 +1,3 @@
-// Place all the styles related to the api/sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 body {
   margin: 0;
   padding: 0;
@@ -24,7 +21,6 @@ body {
 
 .welcome-box {
   background-image: image_url('background-bubbles.svg');
-  // background-position: center;
   background-position: -50px -400px;
   width: 100vw;
   border-image-repeat: stretch;
@@ -214,13 +210,6 @@ body {
   background-color: black;
   height: 540px;
 
-}
-
-.login-form-container {
-  width: 100vw;
-  height: 100vh;
-  max-height: 600px;
-  border: 5px solid red;
 }
 
 @-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}

@@ -1,6 +1,8 @@
 import React from 'react';
 import merge from 'lodash/merge';
 import { withRouter } from 'react-router-dom';
+import { Button, Link } from 'react-router-dom';
+import Recaptcha from 'react-recaptcha';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -9,11 +11,15 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.loginAsGuest = this.loginAsGuest.bind(this);
     this.fillForm = this.fillForm.bind(this);
+    this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
   }
   componentDidMount() {
     this.props.clearErrors();
   }
 
+  recaptchaLoaded () {
+    console.log("captcha successfull loaded");
+  }
   handleInput(type) {
     return e =>
       this.setState({
@@ -73,7 +79,6 @@ class SessionForm extends React.Component {
 
 
   render () {
-
     let guestLoginButton;
     let switchAsk = "Already";
     if (this.props.formType === 'login') {
@@ -81,49 +86,63 @@ class SessionForm extends React.Component {
       switchAsk = "Don't"
     }
     return (
-      <div className="login-form-container">
-        <h2>Welcome to Dotify!</h2>
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          {this.renderErrors()}
-          <div className="login-form">
-          <div>
-            <input type="email"
-                   value={this.state.email}
-                   onChange={this.handleInput('email')}
-                   placeholder="Email"
-                   className="login-input"
-            />
+      <div className="credentials-form-container">
+        <header className="credentials-header">
+          <div className="logo-link-container">
+            <Link to="/" className="logo-link">
+              <span></span>
+            </Link>
+          </div>
+        </header>
+        <div className="credentials-body">
+          <form onSubmit={this.handleSubmit} className="login-form-box">
+            {this.renderErrors()}
+            <div className="login-form">
+              <div className= "input-item">
+                <input type="email"
+                       value={this.state.email}
+                       onChange={this.handleInput('email')}
+                       placeholder="Email"
+                       className="login-input"
+                />
+              </div>
+
+                <div className= "input-item">
+                  <input type="text"
+                         value={this.state.confirmEmail}
+                         onChange={this.handleInput('confirmEmail')}
+                         placeholder="Confirm email"
+                         className="login-input"
+                  />
+              </div>
+
+              <div className= "input-item">
+                <input type="password"
+                       value={this.state.password}
+                       onChange={this.handleInput('password')}
+                       placeholder="Password"
+                       className="login-input"
+                />
+              </div>
+
+              <div className= "input-item">
+                <input type="text"
+                       value={this.state.username}
+                       onChange={this.handleInput('username')}
+                       placeholder="What should we call you?"
+                       className="login-input"
+                />
+              </div>
+            </div>
+            <input className="session-submit" id="login-button" type="submit" value={this.props.formType}/>
+            <Recaptcha
+                 render="explicit"
+                 sitekey="6LeHn3QUAAAAAMRwsX8XGbiin3Eg7KLH8Vo3Yg77"
+                 onloadCallback={this.recaptchaLoaded}
+                 />
+          </form>
+
         </div>
-
-            <label>
-              <input type="text"
-                     value={this.state.confirmEmail}
-                     onChange={this.handleInput('confirmEmail')}
-                     placeholder="Confirm email"
-                     className="login-input"
-              />
-            </label>
-
-          <label>
-            <input type="password"
-                   value={this.state.password}
-                   onChange={this.handleInput('password')}
-                   placeholder="Password"
-                   className="login-input"
-            />
-          </label>
-
-          <label>
-            <input type="text"
-                   value={this.state.username}
-                   onChange={this.handleInput('username')}
-                   placeholder="What should we call you?"
-                   className="login-input"
-            />
-          </label>
-        </div>
-          <input className="session-submit" id="login-button" type="submit" value={this.props.formType}/>
-        </form>
         {guestLoginButton}
         {switchAsk} have an account? {this.props.navLink}
       </div>
