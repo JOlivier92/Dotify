@@ -642,6 +642,11 @@ var Welcome = function (_React$Component) {
               'h4',
               null,
               'Thousands of songs. No credit card needed.'
+            ),
+            _react2.default.createElement(
+              'span',
+              null,
+              'Sign in as a Guest'
             )
           )
         ),

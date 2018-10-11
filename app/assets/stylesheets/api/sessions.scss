@@ -1,3 +1,4 @@
+@import "compass/css3";
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -17,13 +18,14 @@ body {
     background-size: 100%;
   }
 }
+
 .welcome-box {
   background-image: url(/assets/splash/background-bubbles.svg);
   // background-position: center;
   background-position: -50px -400px;
   width: 100vw;
   border-image-repeat: stretch;
-  background-position: center;
+  background-position: top -230px center;
   background-size: 112%;
   background-repeat: no-repeat;
   min-height: 900px;
@@ -137,7 +139,7 @@ body {
     margin-right: auto;
     margin-bottom: 0px;
     text-align: center;
-    padding-top: 11%;
+    padding-top: 12%;
     color: white;
     font-family: sans-serif;
 
@@ -146,6 +148,7 @@ body {
       font-weight: 900;
       letter-spacing: -0.04em;
       line-height: 1.15;
+      position: static;
       margin-top: 0;
       margin: 0.5em 0 0.25em;
 
@@ -156,7 +159,26 @@ body {
     h4 {
       font-size: 18px;
       font-weight: 400;
-      margin-left: 161px
+      margin: inherit;
+    }
+    span {
+      background: #1DB954;
+      color: inherit;
+      display: inline-block;
+      margin-bottom: 0;
+      font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
+      touch-action: manipulation;
+      cursor: pointer;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      padding: 6px 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      border-radius: 4px;
+      padding: 7px 12px 5px;
+      user-select: none;
     }
   }
 }
@@ -175,3 +197,17 @@ body {
   height: 540px;
 
 }
+
+// @-webkit-keyframes pulse {
+//   0% {
+//     @include transform(scale(.9));
+//   }
+//   70% {
+//     @include transform(scale(1));
+//     box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+//   }
+//     100% {
+//     @include transform(scale(.9));
+//     box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+//   }
+// }
