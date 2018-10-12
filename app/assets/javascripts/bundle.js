@@ -852,7 +852,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
     navLink: _react2.default.createElement(
       _reactRouterDom.Link,
       { to: '/signup' },
-      'sign up instead'
+      'Sign Up'
     )
   };
 };
@@ -1028,16 +1028,13 @@ var SessionForm = function (_React$Component) {
       var usernameField = void 0;
       var confirmEmailField = void 0;
       var emailFieldText = "Email";
-      guestLoginButton = _react2.default.createElement(
-        'button',
-        { onClick: this.loginAsGuest, className: 'auto-login-btn' },
-        'Log In With Guest Account'
-      );
+      var properClassName = "login-specific";
 
       if (this.props.formType === 'login') {
         switchAsk = "Don't";
         emailFieldText = "Email address or username";
       } else {
+        properClassName = "signup-specific";
         recaptcha = _react2.default.createElement(_reactRecaptcha2.default, {
           render: 'explicit',
           sitekey: '6LeHn3QUAAAAAMRwsX8XGbiin3Eg7KLH8Vo3Yg77',
@@ -1068,6 +1065,11 @@ var SessionForm = function (_React$Component) {
             className: 'login-input' })
         );
       }
+      guestLoginButton = _react2.default.createElement(
+        'button',
+        { onClick: this.loginAsGuest, className: properClassName },
+        'Log In With Guest Account'
+      );
       return _react2.default.createElement(
         'div',
         { className: 'credentials-form-container' },
@@ -1132,13 +1134,17 @@ var SessionForm = function (_React$Component) {
             recaptcha,
             _react2.default.createElement(
               'button',
-              { className: 'session-submit', id: 'login-button', type: 'submit', value: this.props.formType },
+              { className: "session-submit " + properClassName, id: 'login-button', type: 'submit', value: this.props.formType },
               'Log in '
             )
           ),
-          switchAsk,
-          ' have an account? ',
-          this.props.navLink
+          _react2.default.createElement(
+            'div',
+            { className: 'other-form' },
+            switchAsk,
+            ' have an account? ',
+            this.props.navLink
+          )
         )
       );
     }

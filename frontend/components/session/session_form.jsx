@@ -89,19 +89,20 @@ class SessionForm extends React.Component {
     let switchAsk = "Already";
     let usernameField;
     let confirmEmailField;
-    let emailFieldText = "Email"
-    guestLoginButton = <button onClick={this.loginAsGuest} className="auto-login-btn">Log In With Guest Account</button>;
+    let emailFieldText = "Email";
+    let properClassName = "login-specific";
 
     if (this.props.formType === 'login') {
       switchAsk = "Don't"
       emailFieldText = "Email address or username"
     } else {
+           properClassName = "signup-specific"
            recaptcha = <Recaptcha
            render="explicit"
            sitekey="6LeHn3QUAAAAAMRwsX8XGbiin3Eg7KLH8Vo3Yg77"
            onloadCallback={this.recaptchaLoaded}
            />
-         signUpwithEmail = <h4 className="email-statement">Sign up with your email address</h4>
+          signUpwithEmail = <h4 className="email-statement">Sign up with your email address</h4>
           confirmEmailField = <div className= "input-item">
                                <input type="text"
                                       value={this.state.confirmEmail}
@@ -118,6 +119,7 @@ class SessionForm extends React.Component {
              className="login-input"/>
          </div>
     }
+    guestLoginButton = <button onClick={this.loginAsGuest} className={properClassName}>Log In With Guest Account</button>;
     return (
       <div className="credentials-form-container">
         <header className="credentials-header">
@@ -161,11 +163,12 @@ class SessionForm extends React.Component {
 
             </div>
             {recaptcha}
-             <button className="session-submit" id="login-button" type="submit" value={this.props.formType}>
+             <button className={"session-submit "+properClassName} id="login-button" type="submit" value={this.props.formType}>
                Log in </button>
           </form>
-
-          {switchAsk} have an account? {this.props.navLink}
+          <div className="other-form">
+            {switchAsk} have an account? {this.props.navLink}
+          </div>
         </div>
 
       </div>
