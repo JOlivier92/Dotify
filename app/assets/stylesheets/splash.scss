@@ -7,8 +7,7 @@ body {
   background-position: center;
   height: 100%;
   background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
+  width: 100vw;
   min-height: 900px;
 }
 @media (min-width: 992px) {
@@ -22,12 +21,19 @@ body {
 .welcome-box {
   background-image: image_url('background-bubbles.svg');
   background-position: -50px -400px;
+  max-width: 1300px;
+  overflow: visible;
   width: 100vw;
-  border-image-repeat: stretch;
+  border-image-repeat: cover;
   background-position: top -230px center;
-  background-size: 112%;
   background-repeat: no-repeat;
   height: 100vh;
+
+  @media (min-width: 1400px) {
+    max-width: 100vw;
+    background-size: 80%;
+    background-position: 50% 50% !important;
+  }
 
   .container {
     position: fixed;

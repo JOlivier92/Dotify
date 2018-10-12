@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import SessionForm from './session_form';
-import { signup, clearErrors } from '../../actions/session_actions';
+import { signup, login, clearErrors } from '../../actions/session_actions';
 const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
@@ -12,7 +12,8 @@ const mapStateToProps = ({ errors }) => {
 };
 const mapDispatchToProps = dispatch => ({
   processForm: (user) => dispatch(signup(user)),
-  clearErrors: () => dispatch(clearErrors())
+  clearErrors: () => dispatch(clearErrors()),
+  processAutoLogin: (user) => dispatch(login(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm)

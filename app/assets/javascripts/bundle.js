@@ -585,7 +585,7 @@ var _login_form_container = __webpack_require__(/*! ./session/login_form_contain
 
 var _login_form_container2 = _interopRequireDefault(_login_form_container);
 
-var _welcome_container = __webpack_require__(/*! ./header/welcome_container */ "./frontend/components/header/welcome_container.js");
+var _welcome_container = __webpack_require__(/*! ./splashpage/welcome_container */ "./frontend/components/splashpage/welcome_container.js");
 
 var _welcome_container2 = _interopRequireDefault(_welcome_container);
 
@@ -620,246 +620,6 @@ var App = function App() {
 };
 
 exports.default = App;
-
-/***/ }),
-
-/***/ "./frontend/components/header/welcome.jsx":
-/*!************************************************!*\
-  !*** ./frontend/components/header/welcome.jsx ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-var _session_form = __webpack_require__(/*! ../session/session_form */ "./frontend/components/session/session_form.jsx");
-
-var _session_form2 = _interopRequireDefault(_session_form);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Welcome = function (_React$Component) {
-  _inherits(Welcome, _React$Component);
-
-  function Welcome(props) {
-    _classCallCheck(this, Welcome);
-
-    var _this = _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).call(this, props));
-
-    _this.state = { isLinksActive: false };
-    return _this;
-  }
-
-  _createClass(Welcome, [{
-    key: 'toggleLinks',
-    value: function toggleLinks() {
-      this.setState({ isLinksActive: !this.state.isLinksActive });
-    }
-  }, {
-    key: 'sessionLinks',
-    value: function sessionLinks() {
-      var _this2 = this;
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'splash-page' },
-        _react2.default.createElement(
-          'header',
-          { className: 'welcome-box' },
-          _react2.default.createElement(
-            'div',
-            { className: 'container' },
-            _react2.default.createElement(
-              'div',
-              { className: 'navbar-main-elements' },
-              _react2.default.createElement(
-                'div',
-                { className: 'navbar-logo' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'header-logo-link-container' },
-                  _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: '/', className: 'header-logo-link' },
-                    _react2.default.createElement('span', null)
-                  )
-                )
-              ),
-              _react2.default.createElement('div', { className: 'hamburger', onClick: function onClick() {
-                  return _this2.toggleLinks();
-                } }),
-              _react2.default.createElement(
-                'nav',
-                {
-                  className: 'login-signup-links ' + (this.state.isLinksActive ? "active" : "")
-                },
-                _react2.default.createElement(
-                  _reactRouterDom.Link,
-                  { to: '/login', className: 'login-signup-link grayed-link' },
-                  'Log In'
-                ),
-                _react2.default.createElement(
-                  _reactRouterDom.Link,
-                  { to: '/signup', className: 'login-signup-link grayed-link' },
-                  'Sign up'
-                ),
-                _react2.default.createElement(
-                  'a',
-                  { target: '_blank', className: 'login-signup-link no-hover' },
-                  '|'
-                ),
-                _react2.default.createElement(
-                  'a',
-                  { target: '_blank', className: 'login-signup-link', href: 'https://github.com/JOlivier92/Dotify' },
-                  'Github'
-                ),
-                _react2.default.createElement(
-                  'a',
-                  { target: '_blank', className: 'login-signup-link', href: 'https://www.linkedin.com/in/joseph-olivier/' },
-                  'Linked In'
-                )
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'splash-body' },
-            _react2.default.createElement(
-              'h1',
-              null,
-              'Music for everyone.'
-            ),
-            _react2.default.createElement(
-              'h4',
-              null,
-              'Thousands of songs. No credit card needed.'
-            ),
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/login' },
-              'SIGN IN AS GUEST'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'footer',
-          { className: 'splash-footer' },
-          _react2.default.createElement(
-            'h1',
-            null,
-            'Blahh'
-          )
-        )
-      );
-    }
-  }, {
-    key: 'loginOrSignUp',
-    value: function loginOrSignUp() {}
-  }, {
-    key: 'personalGreeting',
-    value: function personalGreeting() {
-      var _props = this.props,
-          currentUser = _props.currentUser,
-          logout = _props.logout;
-
-
-      return _react2.default.createElement(
-        'hgroup',
-        { className: 'header-group' },
-        _react2.default.createElement(
-          'h2',
-          { className: 'header-name' },
-          'Hi, ',
-          currentUser.username,
-          '!'
-        ),
-        _react2.default.createElement(
-          'button',
-          { className: 'header-button', onClick: logout },
-          'Log Out'
-        )
-      );
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var currentUser = this.props.currentUser;
-
-
-      return currentUser ? this.personalGreeting() : this.sessionLinks();
-    }
-  }]);
-
-  return Welcome;
-}(_react2.default.Component);
-
-;
-
-exports.default = Welcome;
-
-/***/ }),
-
-/***/ "./frontend/components/header/welcome_container.js":
-/*!*********************************************************!*\
-  !*** ./frontend/components/header/welcome_container.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-
-var _session_actions = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-
-var _welcome = __webpack_require__(/*! ./welcome */ "./frontend/components/header/welcome.jsx");
-
-var _welcome2 = _interopRequireDefault(_welcome);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var mapStateToProps = function mapStateToProps(_ref) {
-  var session = _ref.session,
-      users = _ref.entities.users;
-
-  return {
-    currentUser: users[session.id]
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    logout: function logout() {
-      return dispatch((0, _session_actions.logout)());
-    }
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_welcome2.default);
 
 /***/ }),
 
@@ -999,6 +759,8 @@ var _reactRecaptcha = __webpack_require__(/*! react-recaptcha */ "./node_modules
 
 var _reactRecaptcha2 = _interopRequireDefault(_reactRecaptcha);
 
+var _session_actions = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1017,7 +779,7 @@ var SessionForm = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (SessionForm.__proto__ || Object.getPrototypeOf(SessionForm)).call(this, props));
 
-    _this.state = { username: '', email: '', password: '', confirmEmail: '' };
+    _this.state = { username: '', email: '', password: '', confirmEmail: '', autoLogBool: false };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.loginAsGuest = _this.loginAsGuest.bind(_this);
     _this.fillForm = _this.fillForm.bind(_this);
@@ -1050,9 +812,17 @@ var SessionForm = function (_React$Component) {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
       e.preventDefault();
+      console.log(this.props.formType);
+      console.log("here");
       var user = Object.assign({}, this.state);
       delete user["confirmEmail"];
-      this.props.processForm(user);
+      if (this.state.autoLogBool) {
+        delete user["autoLogBool"];
+        this.props.processAutoLogin(user);
+      } else {
+        delete user["autoLogBool"];
+        this.props.processForm(user);
+      }
     }
 
     //
@@ -1063,9 +833,10 @@ var SessionForm = function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
-      this.setState({
-        formType: 'login'
-      });
+
+      if (this.props.formType === 'signup') {
+        this.setState({ autoLogBool: true });
+      }
       var email = 'DotifyGuest@dotify.io'.split("");
       var password = "examplePassword4".split("");
       var button = document.getElementById('login-button');
@@ -1316,11 +1087,254 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     clearErrors: function clearErrors() {
       return dispatch((0, _session_actions.clearErrors)());
+    },
+    processAutoLogin: function processAutoLogin(user) {
+      return dispatch((0, _session_actions.login)(user));
     }
   };
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_session_form2.default);
+
+/***/ }),
+
+/***/ "./frontend/components/splashpage/welcome.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/splashpage/welcome.jsx ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _session_form = __webpack_require__(/*! ../session/session_form */ "./frontend/components/session/session_form.jsx");
+
+var _session_form2 = _interopRequireDefault(_session_form);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Welcome = function (_React$Component) {
+  _inherits(Welcome, _React$Component);
+
+  function Welcome(props) {
+    _classCallCheck(this, Welcome);
+
+    var _this = _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).call(this, props));
+
+    _this.state = { isLinksActive: false };
+    return _this;
+  }
+
+  _createClass(Welcome, [{
+    key: 'toggleLinks',
+    value: function toggleLinks() {
+      this.setState({ isLinksActive: !this.state.isLinksActive });
+    }
+  }, {
+    key: 'sessionLinks',
+    value: function sessionLinks() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'splash-page' },
+        _react2.default.createElement(
+          'header',
+          { className: 'welcome-box' },
+          _react2.default.createElement(
+            'div',
+            { className: 'container' },
+            _react2.default.createElement(
+              'div',
+              { className: 'navbar-main-elements' },
+              _react2.default.createElement(
+                'div',
+                { className: 'navbar-logo' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'header-logo-link-container' },
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: '/', className: 'header-logo-link' },
+                    _react2.default.createElement('span', null)
+                  )
+                )
+              ),
+              _react2.default.createElement('div', { className: 'hamburger', onClick: function onClick() {
+                  return _this2.toggleLinks();
+                } }),
+              _react2.default.createElement(
+                'nav',
+                {
+                  className: 'login-signup-links ' + (this.state.isLinksActive ? "active" : "")
+                },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/login', className: 'login-signup-link grayed-link' },
+                  'Log In'
+                ),
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/signup', className: 'login-signup-link grayed-link' },
+                  'Sign up'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { target: '_blank', className: 'login-signup-link no-hover' },
+                  '|'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { target: '_blank', className: 'login-signup-link', href: 'https://github.com/JOlivier92/Dotify' },
+                  'Github'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { target: '_blank', className: 'login-signup-link', href: 'https://www.linkedin.com/in/joseph-olivier/' },
+                  'Linked In'
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'splash-body' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'Music for everyone.'
+            ),
+            _react2.default.createElement(
+              'h4',
+              null,
+              'Thousands of songs. No credit card needed.'
+            ),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/login' },
+              'SIGN IN AS GUEST'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'footer',
+          { className: 'splash-footer' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Blahh'
+          )
+        )
+      );
+    }
+  }, {
+    key: 'loginOrSignUp',
+    value: function loginOrSignUp() {}
+  }, {
+    key: 'personalGreeting',
+    value: function personalGreeting() {
+      var _props = this.props,
+          currentUser = _props.currentUser,
+          logout = _props.logout;
+
+
+      return _react2.default.createElement(
+        'hgroup',
+        { className: 'header-group' },
+        _react2.default.createElement(
+          'h2',
+          { className: 'header-name' },
+          'Hi, ',
+          currentUser.username,
+          '!'
+        ),
+        _react2.default.createElement(
+          'button',
+          { className: 'header-button', onClick: logout },
+          'Log Out'
+        )
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var currentUser = this.props.currentUser;
+
+
+      return currentUser ? this.personalGreeting() : this.sessionLinks();
+    }
+  }]);
+
+  return Welcome;
+}(_react2.default.Component);
+
+;
+
+exports.default = Welcome;
+
+/***/ }),
+
+/***/ "./frontend/components/splashpage/welcome_container.js":
+/*!*************************************************************!*\
+  !*** ./frontend/components/splashpage/welcome_container.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _session_actions = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+var _welcome = __webpack_require__(/*! ./welcome */ "./frontend/components/splashpage/welcome.jsx");
+
+var _welcome2 = _interopRequireDefault(_welcome);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var session = _ref.session,
+      users = _ref.entities.users;
+
+  return {
+    currentUser: users[session.id]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    logout: function logout() {
+      return dispatch((0, _session_actions.logout)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_welcome2.default);
 
 /***/ }),
 

@@ -3,11 +3,12 @@ import merge from 'lodash/merge';
 import { withRouter } from 'react-router-dom';
 import { Button, Link } from 'react-router-dom';
 import Recaptcha from 'react-recaptcha';
+import {signin} from '../../actions/session_actions';
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: '', email: '', password: '', confirmEmail: ''};
+    this.state = {username: '', email: '', password: '', confirmEmail: '',autoLogBool: false};
     this.handleSubmit = this.handleSubmit.bind(this)
     this.loginAsGuest = this.loginAsGuest.bind(this);
     this.fillForm = this.fillForm.bind(this);
@@ -29,17 +30,26 @@ class SessionForm extends React.Component {
   //on submit, create new user or sign user in
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.props.formType);
+    console.log("here")
     const user = Object.assign({}, this.state);
     delete user["confirmEmail"]
-    this.props.processForm(user);
+    if (this.state.autoLogBool) {
+      delete user["autoLogBool"]
+      this.props.processAutoLogin((user))
+    } else {
+      delete user["autoLogBool"]
+      this.props.processForm(user);
+    }
   }
 
   //
   loginAsGuest(e) {
     e.preventDefault();
-    this.setState({
-      formType: 'login'
-    });
+
+    if (this.props.formType === 'signup') {
+      this.setState({autoLogBool: true});
+    }
     const email = 'DotifyGuest@dotify.io'.split("");
     const password = "examplePassword4".split("");
     const button = document.getElementById('login-button')
