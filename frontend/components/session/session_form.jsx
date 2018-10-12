@@ -85,25 +85,31 @@ class SessionForm extends React.Component {
   render () {
     let guestLoginButton;
     let recaptcha;
-    let signUpwithEmail;
+    let or = "OR";
     let switchAsk = "Already";
     let usernameField;
     let confirmEmailField;
     let emailFieldText = "Email";
     let properClassName = "login-specific";
-
+    let greenButton;
+    let signUpwithEmail;
+    let orStatement;
+    let signInOrLogUp = "Log in";
     if (this.props.formType === 'login') {
       switchAsk = "Don't"
       emailFieldText = "Email address or username"
     } else {
+           signInOrLogUp = "SIGN UP"
+           greenButton = 'signup-grn-btn';
+           signUpwithEmail = <h2> Sign up with your email address</h2>
+           or = "or";
            properClassName = "signup-specific"
            recaptcha = <Recaptcha
            render="explicit"
            sitekey="6LeHn3QUAAAAAMRwsX8XGbiin3Eg7KLH8Vo3Yg77"
            onloadCallback={this.recaptchaLoaded}
            />
-          signUpwithEmail = <h4 className="email-statement">Sign up with your email address</h4>
-          confirmEmailField = <div className= "input-item">
+           confirmEmailField = <div className= "input-item">
                                <input type="text"
                                       value={this.state.confirmEmail}
                                       onChange={this.handleInput('confirmEmail')}
@@ -134,11 +140,13 @@ class SessionForm extends React.Component {
             {this.renderErrors()}
             <div className="login-form">
               {guestLoginButton}
-              <div className="or-statement">
-                <div className="line" />
-                <strong className="line-thru">or</strong>
-                <div className="line" />
-
+              <div className="or-login-container">
+                <div className="or-statement">
+                  <div className="line" />
+                  <strong className={"line-thru " + or }>{or}</strong>
+                  <div className="line" />
+                </div>
+                {signUpwithEmail}
               </div>
               <div className= "input-item">
                 <input type="email"
@@ -163,8 +171,8 @@ class SessionForm extends React.Component {
 
             </div>
             {recaptcha}
-             <button className={"session-submit "+properClassName} id="login-button" type="submit" value={this.props.formType}>
-               Log in </button>
+             <button className={"session-submit "+ properClassName + greenButton} id="login-button" type="submit" value={this.props.formType}>
+               {signInOrLogUp} </button>
           </form>
           <div className="other-form">
             {switchAsk} have an account? {this.props.navLink}

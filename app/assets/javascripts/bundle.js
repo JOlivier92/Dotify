@@ -1023,28 +1023,34 @@ var SessionForm = function (_React$Component) {
     value: function render() {
       var guestLoginButton = void 0;
       var recaptcha = void 0;
-      var signUpwithEmail = void 0;
+      var or = "OR";
       var switchAsk = "Already";
       var usernameField = void 0;
       var confirmEmailField = void 0;
       var emailFieldText = "Email";
       var properClassName = "login-specific";
-
+      var greenButton = void 0;
+      var signUpwithEmail = void 0;
+      var orStatement = void 0;
+      var signInOrLogUp = "Log in";
       if (this.props.formType === 'login') {
         switchAsk = "Don't";
         emailFieldText = "Email address or username";
       } else {
+        signInOrLogUp = "SIGN UP";
+        greenButton = 'signup-grn-btn';
+        signUpwithEmail = _react2.default.createElement(
+          'h2',
+          null,
+          ' Sign up with your email address'
+        );
+        or = "or";
         properClassName = "signup-specific";
         recaptcha = _react2.default.createElement(_reactRecaptcha2.default, {
           render: 'explicit',
           sitekey: '6LeHn3QUAAAAAMRwsX8XGbiin3Eg7KLH8Vo3Yg77',
           onloadCallback: this.recaptchaLoaded
         });
-        signUpwithEmail = _react2.default.createElement(
-          'h4',
-          { className: 'email-statement' },
-          'Sign up with your email address'
-        );
         confirmEmailField = _react2.default.createElement(
           'div',
           { className: 'input-item' },
@@ -1099,14 +1105,19 @@ var SessionForm = function (_React$Component) {
               guestLoginButton,
               _react2.default.createElement(
                 'div',
-                { className: 'or-statement' },
-                _react2.default.createElement('div', { className: 'line' }),
+                { className: 'or-login-container' },
                 _react2.default.createElement(
-                  'strong',
-                  { className: 'line-thru' },
-                  'or'
+                  'div',
+                  { className: 'or-statement' },
+                  _react2.default.createElement('div', { className: 'line' }),
+                  _react2.default.createElement(
+                    'strong',
+                    { className: "line-thru " + or },
+                    or
+                  ),
+                  _react2.default.createElement('div', { className: 'line' })
                 ),
-                _react2.default.createElement('div', { className: 'line' })
+                signUpwithEmail
               ),
               _react2.default.createElement(
                 'div',
@@ -1134,8 +1145,9 @@ var SessionForm = function (_React$Component) {
             recaptcha,
             _react2.default.createElement(
               'button',
-              { className: "session-submit " + properClassName, id: 'login-button', type: 'submit', value: this.props.formType },
-              'Log in '
+              { className: "session-submit " + properClassName + greenButton, id: 'login-button', type: 'submit', value: this.props.formType },
+              signInOrLogUp,
+              ' '
             )
           ),
           _react2.default.createElement(
