@@ -30,12 +30,16 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
+    delete user["confirmEmail"]
     this.props.processForm(user);
   }
 
   //
   loginAsGuest(e) {
     e.preventDefault();
+    this.setState({
+      formType: 'login'
+    });
     const email = 'DotifyGuest@dotify.io'.split("");
     const password = "examplePassword4".split("");
     const button = document.getElementById('login-button')
@@ -80,10 +84,39 @@ class SessionForm extends React.Component {
 
   render () {
     let guestLoginButton;
+    let recaptcha;
+    let signUpwithEmail;
     let switchAsk = "Already";
+    let usernameField;
+    let confirmEmailField;
+    let emailFieldText = "Email"
+    guestLoginButton = <button onClick={this.loginAsGuest} className="auto-login-btn">Log In With Guest Account</button>;
+
     if (this.props.formType === 'login') {
-      guestLoginButton = <button onClick={this.loginAsGuest}> Guest login</button>;
       switchAsk = "Don't"
+      emailFieldText = "Email address or username"
+    } else {
+           recaptcha = <Recaptcha
+           render="explicit"
+           sitekey="6LeHn3QUAAAAAMRwsX8XGbiin3Eg7KLH8Vo3Yg77"
+           onloadCallback={this.recaptchaLoaded}
+           />
+         signUpwithEmail = <h4 className="email-statement">Sign up with your email address</h4>
+          confirmEmailField = <div className= "input-item">
+                               <input type="text"
+                                      value={this.state.confirmEmail}
+                                      onChange={this.handleInput('confirmEmail')}
+                                      placeholder="Confirm email"
+                                      className="login-input"
+                               />
+                             </div>
+         usernameField = <div className= "input-item">
+           <input type="text"
+             value={this.state.username}
+             onChange={this.handleInput('username')}
+             placeholder="What should we call you?"
+             className="login-input"/>
+         </div>
     }
     return (
       <div className="credentials-form-container">
@@ -98,23 +131,23 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="login-form-box">
             {this.renderErrors()}
             <div className="login-form">
+              {guestLoginButton}
+              <div className="or-statement">
+                <div className="line" />
+                <strong className="line-thru">or</strong>
+                <div className="line" />
+
+              </div>
               <div className= "input-item">
                 <input type="email"
                        value={this.state.email}
                        onChange={this.handleInput('email')}
-                       placeholder="Email"
+                       placeholder={emailFieldText}
                        className="login-input"
                 />
               </div>
 
-                <div className= "input-item">
-                  <input type="text"
-                         value={this.state.confirmEmail}
-                         onChange={this.handleInput('confirmEmail')}
-                         placeholder="Confirm email"
-                         className="login-input"
-                  />
-              </div>
+              {confirmEmailField}
 
               <div className= "input-item">
                 <input type="password"
@@ -124,27 +157,17 @@ class SessionForm extends React.Component {
                        className="login-input"
                 />
               </div>
+              {usernameField}
 
-              <div className= "input-item">
-                <input type="text"
-                       value={this.state.username}
-                       onChange={this.handleInput('username')}
-                       placeholder="What should we call you?"
-                       className="login-input"
-                />
-              </div>
             </div>
-            <input className="session-submit" id="login-button" type="submit" value={this.props.formType}/>
-            <Recaptcha
-                 render="explicit"
-                 sitekey="6LeHn3QUAAAAAMRwsX8XGbiin3Eg7KLH8Vo3Yg77"
-                 onloadCallback={this.recaptchaLoaded}
-                 />
+            {recaptcha}
+             <button className="session-submit" id="login-button" type="submit" value={this.props.formType}>
+               Log in </button>
           </form>
 
+          {switchAsk} have an account? {this.props.navLink}
         </div>
-        {guestLoginButton}
-        {switchAsk} have an account? {this.props.navLink}
+
       </div>
     )
   }

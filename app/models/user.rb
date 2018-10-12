@@ -42,8 +42,13 @@ class User < ApplicationRecord
   source: :follower
 
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
+  def self.find_by_credentials(username_or_email, password)
+    user = User.find_by(username: username_or_email)
+
+    if user.nil?
+      user = User.find_by(email: username_or_email)
+    end
+
     return nil unless user && user.valid_password?(password)
     user
   end

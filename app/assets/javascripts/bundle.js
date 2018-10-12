@@ -437,7 +437,7 @@ var signup = exports.signup = function signup(formUser) {
     return APIUtil.signup(formUser).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
+      return console.log(err), dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -956,6 +956,7 @@ var SessionForm = function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
+      delete user["confirmEmail"];
       this.props.processForm(user);
     }
 
@@ -967,6 +968,9 @@ var SessionForm = function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
+      this.setState({
+        formType: 'login'
+      });
       var email = 'DotifyGuest@dotify.io'.split("");
       var password = "examplePassword4".split("");
       var button = document.getElementById('login-button');
@@ -1018,14 +1022,51 @@ var SessionForm = function (_React$Component) {
     key: 'render',
     value: function render() {
       var guestLoginButton = void 0;
+      var recaptcha = void 0;
+      var signUpwithEmail = void 0;
       var switchAsk = "Already";
+      var usernameField = void 0;
+      var confirmEmailField = void 0;
+      var emailFieldText = "Email";
+      guestLoginButton = _react2.default.createElement(
+        'button',
+        { onClick: this.loginAsGuest, className: 'auto-login-btn' },
+        'Log In With Guest Account'
+      );
+
       if (this.props.formType === 'login') {
-        guestLoginButton = _react2.default.createElement(
-          'button',
-          { onClick: this.loginAsGuest },
-          ' Guest login'
-        );
         switchAsk = "Don't";
+        emailFieldText = "Email address or username";
+      } else {
+        recaptcha = _react2.default.createElement(_reactRecaptcha2.default, {
+          render: 'explicit',
+          sitekey: '6LeHn3QUAAAAAMRwsX8XGbiin3Eg7KLH8Vo3Yg77',
+          onloadCallback: this.recaptchaLoaded
+        });
+        signUpwithEmail = _react2.default.createElement(
+          'h4',
+          { className: 'email-statement' },
+          'Sign up with your email address'
+        );
+        confirmEmailField = _react2.default.createElement(
+          'div',
+          { className: 'input-item' },
+          _react2.default.createElement('input', { type: 'text',
+            value: this.state.confirmEmail,
+            onChange: this.handleInput('confirmEmail'),
+            placeholder: 'Confirm email',
+            className: 'login-input'
+          })
+        );
+        usernameField = _react2.default.createElement(
+          'div',
+          { className: 'input-item' },
+          _react2.default.createElement('input', { type: 'text',
+            value: this.state.username,
+            onChange: this.handleInput('username'),
+            placeholder: 'What should we call you?',
+            className: 'login-input' })
+        );
       }
       return _react2.default.createElement(
         'div',
@@ -1053,26 +1094,29 @@ var SessionForm = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'login-form' },
+              guestLoginButton,
+              _react2.default.createElement(
+                'div',
+                { className: 'or-statement' },
+                _react2.default.createElement('div', { className: 'line' }),
+                _react2.default.createElement(
+                  'strong',
+                  { className: 'line-thru' },
+                  'or'
+                ),
+                _react2.default.createElement('div', { className: 'line' })
+              ),
               _react2.default.createElement(
                 'div',
                 { className: 'input-item' },
                 _react2.default.createElement('input', { type: 'email',
                   value: this.state.email,
                   onChange: this.handleInput('email'),
-                  placeholder: 'Email',
+                  placeholder: emailFieldText,
                   className: 'login-input'
                 })
               ),
-              _react2.default.createElement(
-                'div',
-                { className: 'input-item' },
-                _react2.default.createElement('input', { type: 'text',
-                  value: this.state.confirmEmail,
-                  onChange: this.handleInput('confirmEmail'),
-                  placeholder: 'Confirm email',
-                  className: 'login-input'
-                })
-              ),
+              confirmEmailField,
               _react2.default.createElement(
                 'div',
                 { className: 'input-item' },
@@ -1083,29 +1127,19 @@ var SessionForm = function (_React$Component) {
                   className: 'login-input'
                 })
               ),
-              _react2.default.createElement(
-                'div',
-                { className: 'input-item' },
-                _react2.default.createElement('input', { type: 'text',
-                  value: this.state.username,
-                  onChange: this.handleInput('username'),
-                  placeholder: 'What should we call you?',
-                  className: 'login-input'
-                })
-              )
+              usernameField
             ),
-            _react2.default.createElement('input', { className: 'session-submit', id: 'login-button', type: 'submit', value: this.props.formType }),
-            _react2.default.createElement(_reactRecaptcha2.default, {
-              render: 'explicit',
-              sitekey: '6LeHn3QUAAAAAMRwsX8XGbiin3Eg7KLH8Vo3Yg77',
-              onloadCallback: this.recaptchaLoaded
-            })
-          )
-        ),
-        guestLoginButton,
-        switchAsk,
-        ' have an account? ',
-        this.props.navLink
+            recaptcha,
+            _react2.default.createElement(
+              'button',
+              { className: 'session-submit', id: 'login-button', type: 'submit', value: this.props.formType },
+              'Log in '
+            )
+          ),
+          switchAsk,
+          ' have an account? ',
+          this.props.navLink
+        )
       );
     }
   }]);
