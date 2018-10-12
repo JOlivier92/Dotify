@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Link } from 'react-router-dom';
+import { Redirect } from 'react-router'
 import SessionForm from '../session/session_form';
 
 class Welcome extends React.Component {
@@ -51,24 +52,9 @@ class Welcome extends React.Component {
     );
   }
 
-  loginOrSignUp () {
-
-  }
-  personalGreeting() {
-    const { currentUser, logout } = this.props;
-
-    return (
-      <hgroup className="header-group">
-        <h2 className="header-name">Hi, {currentUser.username}!</h2>
-        <button className="header-button" onClick={logout}>Log Out</button>
-      </hgroup>
-    );
-  };
-
   render() {
     const { currentUser } = this.props;
-
-    return currentUser ? this.personalGreeting() : this.sessionLinks();
+    return currentUser ? <Redirect to="/webplayer/"/> : this.sessionLinks();
   }
 };
 
