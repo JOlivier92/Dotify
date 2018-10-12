@@ -1,0 +1,121 @@
+
+.four04-page {
+  background: #FFCDD2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  min-width: 460px;
+
+  .content-container {
+    width: inherit;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .vector-container {
+      text-align: center;
+      vertical-align: middle;
+      margin-top: 100px;
+
+      .disc-vector {
+        background: image_url('record.svg');
+        width: 350px;
+        height: 350px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        animation: spin 3s linear infinite;
+        position: relative;
+        margin: 0 auto;
+        @media (max-width: 770px) {
+          width: 270px;
+          height: 270px;
+        }
+      }
+      .arm-vector {
+        background: image_url('record-arm.svg');
+        position: relative;
+        height: 348px;
+        right: 165px;
+        top: -35px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 200px;
+        @media (max-width:  770px) {
+          height: 249px;
+          right: 124px;
+          top: -35px;
+          width: 140px;
+        }
+      }
+    }
+
+    .message-container {
+      width: 450px;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      height: 200px;
+      display: block;
+
+
+
+      @media (max-width: 770px) {
+        width: 100%;
+      }
+      h1 {
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      p {
+        font-size: 17px;
+        font-weight: 500;
+      }
+
+    }
+
+  }
+
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform:rotate(360deg);
+  }
+}
+
+.absolute-header {
+  display: block;
+  position: absolute;
+  height: 53px;
+  width: 100%;
+  background: black;
+
+  .back-home {
+    float: left;
+    background: image_url('Spotify_Logo_RGB_White');
+    background-size: 100%;
+    width: 132px;
+    height: 40px;
+    background-repeat: no-repeat;
+    margin-top: 7px;
+
+    @media (max-width: 980px) {
+      margin-top: 15px;
+      width: 89px;
+      height: 27px;
+    }
+
+  }
+}

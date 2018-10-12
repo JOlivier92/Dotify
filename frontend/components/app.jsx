@@ -9,13 +9,15 @@ import WelcomeContainer from './header/welcome_container';
 import Recaptcha from 'react-recaptcha';
 // Routes
 import { AuthRoute, ProtectedRoute } from '../utils/route_util';
+import NotFound from './404/not_found';
 
 const App = () => (
   <div>
     <Switch>
-      <AuthRoute path="/login" component={LogInFormContainer} />
-      <AuthRoute path="/signup" component={SignUpFormContainer} />
-      <Route path="/" component={WelcomeContainer}/>
+      <AuthRoute exact path="/login" component={LogInFormContainer} />
+      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <Route exact path="/" component={WelcomeContainer}/>
+      <Route component={NotFound} />
     </Switch>
   </div>
 );

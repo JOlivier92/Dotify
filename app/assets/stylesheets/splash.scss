@@ -85,6 +85,7 @@ body {
           width: 40px;
           position: absolute;
           right: 12px;
+          z-index: 10;
 
         }
       }
@@ -105,7 +106,7 @@ body {
           overflow-y: scroll;
 
           .login-signup-link {
-            display: none;
+            display: inline;
           }
 
           &.focus .login-signup-link {
