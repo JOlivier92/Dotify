@@ -11,6 +11,14 @@ import WebplayerContainer from './webplayer/webplayer_container';
 import { AuthRoute, ProtectedRoute } from '../utils/route_util';
 import NotFound from './404/not_found';
 
+// FONT AWESOME
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGhost, FaSearch } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faGhost)
+//
+
 const App = () => (
   <div>
     <Switch>

@@ -30,8 +30,6 @@ class SessionForm extends React.Component {
   //on submit, create new user or sign user in
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.props.formType);
-    console.log("here")
     const user = Object.assign({}, this.state);
     delete user["confirmEmail"]
     if (this.state.autoLogBool) {
