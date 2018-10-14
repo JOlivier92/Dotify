@@ -3,7 +3,6 @@ import merge from 'lodash/merge';
 import { withRouter } from 'react-router-dom';
 import { Button, Link } from 'react-router-dom';
 import Recaptcha from 'react-recaptcha';
-import { signin } from '../../actions/session_actions';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -40,7 +39,7 @@ class SessionForm extends React.Component {
       this.props.processForm(user);
     }
   }
-  
+
   loginAsGuest(e) {
     e.preventDefault();
 

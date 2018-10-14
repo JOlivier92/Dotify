@@ -5,6 +5,14 @@ export const fetchSongs = () => (
   })
 );
 
+export const fetchSongsByName = (query) => {
+ return (
+  $.ajax({
+    url: 'api/songs',
+    method: 'POST',
+    data: { query }
+  })
+)};
 export const fetchSong = id => (
     $.ajax({
     url: `api/songs/${id}`,

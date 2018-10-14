@@ -1,1 +1,1 @@
-json.extract! @song, :id, :name
+json.extract! @song, :id, :title

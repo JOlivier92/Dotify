@@ -14,6 +14,13 @@ export const fetchSongs = () => dispatch => (
     .then(songs => dispatch(receiveSongs(songs)))
 );
 
+// get song by name action
+export const fetchSongsByName = query => dispatch => (
+  APIUtil.fetchSongsByName(query)
+    .then(songs => dispatch(receiveSongs(songs)))
+)
+//////////////////////////////////////////////////////
+
 // songs show action
 export const receiveSong = song => ({
   type: RECEIVE_SONG,
@@ -24,4 +31,4 @@ export const fetchSong = () => dispatch => (
   APIUtil.fetchSong()
     .then(songs => dispatch(receiveSongs(songs)))
 );
-//
+//////////////////////////////////////////////////////
