@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Link, NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaBeer, FaSearch, FaHome } from 'react-icons/fa';
 
 class Sidebar extends React.Component {
@@ -17,7 +16,7 @@ class Sidebar extends React.Component {
         <ul>
           <li className="navbar-group">
               <FaSearch className="icon" />
-              <NavLink to="/browse/search" className="navbar-text" activeClassName="active" >Search</NavLink>
+              <NavLink to="/search/recent" className="navbar-text" activeClassName="active" >Search</NavLink>
           </li>
           <li className="navbar-group">
             <FaHome className="icon" />
@@ -27,7 +26,7 @@ class Sidebar extends React.Component {
             <hr width="1" size=""/>
             <hr width="1" size=""/>
             <hr width="1" size="" className="rotated-line"/>
-            <Link to="/browse/playlists" className="navbar-text" >Your Library</Link>
+            <Link to="/collection/playlists" className="navbar-text" >Your Library</Link>
           </li>
         </ul>
         <div className="recently-played"></div>

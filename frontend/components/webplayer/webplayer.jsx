@@ -26,16 +26,15 @@ class Webplayer extends React.Component {
       <div className="webplayer-page">
         <div className="navbar">
           <SidebarContainer />
-        </div>
         <div className="content-container">
           <Switch>
             <ProtectedRoute path="/search" component={SearchContainer} />
-            <ProtectedRoute path="/browse" component={BrowseContainer} />
             <ProtectedRoute path="/collection" component={CollectionContainer} />
+            <ProtectedRoute path="/browse" component={BrowseContainer} />
             <Redirect to="/404/"/>
           </Switch>
         </div>
-
+      </div>
         <div className="footer-container">
           <div className="music-controller-container">
 

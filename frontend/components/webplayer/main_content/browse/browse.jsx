@@ -6,6 +6,6 @@ class Browse extends React.Component {
     <h1>I'm in the browse!!!!</h1>
     );
   };
-}
+};
 
 export default Browse;

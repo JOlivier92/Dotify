@@ -55,7 +55,7 @@ class Welcome extends React.Component {
 
   render() {
     const { currentUser } = this.props;
-    return currentUser ? <Redirect to="/browse/"/> : this.sessionLinks();
+    return currentUser ? <Redirect to="/browse/featured"/> : this.sessionLinks();
   }
 };
 

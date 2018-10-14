@@ -40,8 +40,7 @@ class SessionForm extends React.Component {
       this.props.processForm(user);
     }
   }
-
-  //
+  
   loginAsGuest(e) {
     e.preventDefault();
 
@@ -157,7 +156,7 @@ class SessionForm extends React.Component {
                 {signUpwithEmail}
               </div>
               <div className= "input-item">
-                <input type="email"
+                <input type="text"
                        value={this.state.email}
                        onChange={this.handleInput('email')}
                        placeholder={emailFieldText}
