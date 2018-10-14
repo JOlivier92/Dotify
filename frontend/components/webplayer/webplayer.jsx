@@ -1,49 +1,41 @@
 import React from 'react';
-import { Button, Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FaBeer, FaSearch, FaHome } from 'react-icons/fa';
+import { Button, Link, withRouter,
+         Route, Redirect, Switch } from 'react-router-dom';
+         import { AuthRoute, ProtectedRoute } from '../../utils/route_util';
+
+// sub-components
+// sidebar
+import SidebarContainer from './sidebar_container';
+// main content
+import BrowseContainer from './main_content/browse/browse_container';
+import SearchContainer from './main_content/search_container';
+import CollectionContainer from './main_content/collection/collection_container';
+// footer
+import FooterContainer from './footer_container';
+// // //
+
 class Webplayer extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = { isLinksActive: false };
   }
 
   render() {
    const {logout} = this.props;
-
     return (
       <div className="webplayer-page">
-
         <div className="navbar">
-
-          <div className="navbar-options">
-            <div className="navbar-header">
-              <Link to="/webplayer">
-                <span></span>
-              </Link>
-            </div>
-            <ul>
-              <li className="navbar-group">
-                <FaSearch className="icon" />
-                <p className="navbar-text" >Search</p>
-                </li>
-              <li className="navbar-group">
-                <FaHome className="icon" />
-                <p className="navbar-text" >Home</p>
-              </li>
-              <li className="navbar-group vertlines">
-                <hr width="1" size=""/>
-                <hr width="1" size=""/>
-                <hr width="1" size="" className="rotated-line"/>
-                <p className="navbar-text" >Your Library</p>
-              </li>
-            </ul>
-            <div className="recently-played"></div>
-          </div>
-          <div className="navbar-user" />
+          <SidebarContainer />
         </div>
-        <div className="content-container"> </div>
+        <div className="content-container">
+          <Switch>
+            <ProtectedRoute path="/search" component={SearchContainer} />
+            <ProtectedRoute path="/browse" component={BrowseContainer} />
+            <ProtectedRoute path="/collection" component={CollectionContainer} />
+            <Redirect to="/404/"/>
+          </Switch>
+        </div>
+
         <div className="footer-container">
           <div className="music-controller-container">
 

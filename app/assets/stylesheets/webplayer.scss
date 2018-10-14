@@ -18,38 +18,76 @@
       background-color: rgba(0,0,0,.8);
       z-index: 10;
 
+      @media (max-width: 720px) {
+        width: 80px;
+      }
+
       .navbar-header {
-        background-image: image_url('Dotify_Logo_RGB_White.png');
-        width: 132px;
-        height: 40px;
-        margin: 25px;
-        background-repeat: no-repeat;
-        background-size: 132px 40px;
-        a {
+        width: 100%;
+        display: flex;
+
+        @media (max-width: 720px) {
+          height: 70px
+        }
+        .home-link {
+          background-image: image_url('Dotify_Logo_RGB_White.png');
+          background-size: 131px 40px;
+          background-repeat: no-repeat;
+          width: 131px;
+          height: 40px;
+          margin: 24px;
+
+          @media (max-width: 720px) {
+            background-image: image_url('Spotify_Icon_RGB_White.png');
+            background-size: 32px 32px;
+            width: 32px;
+            height: 32px;
+            margin-left: 22px;
+            margin-top: 24px;
+          }
         }
       }
       ul {
         padding-left: 24px;
 
-        li {
+        .navbar-group {
           display: flex;
           flex-direction: row;
           color: white;
           font-family: 'M PLUS Rounded 1c', sans-serif;
-          font-weight: 500;
+          font-weight: 800;
           font-size: 14px;
           color: rgba(255, 255, 255, 0.6);
+          @media (max-width: 720px) {
+            padding-left: 0;
+          }
+
+          :focus {
+            border: 5px solid green;
+          }
 
           .icon {
             height: 28px;
             color: rgba(255, 255, 255, 0.6);
             width: 31px;
             padding-bottom: 20px;
+
+
           }
           .navbar-text {
+            text-decoration: none;
             padding-left: 15px;
             padding-top: 6px;
+            color: gray;
             margin: 0;
+
+            :hover {
+              font-size: 50px;
+              color: white;
+            }
+            @media (max-width: 720px) {
+              display: none;
+            }
           }
           hr {
             height: 23px;
@@ -68,6 +106,17 @@
       }
       .recently-played {
 
+      }
+      .navbar-logout {
+        button {
+          margin-top: 169px;
+          background-color: #1db954;
+          height: 20px;
+          font-family: inherit;
+          font-weight: 800;
+          border-radius: 15px;
+          font-size: 15px;
+        }
       }
     }
     .content-container {
@@ -104,4 +153,23 @@
       border-bottom-left-radius: 6px;
     }
   }
+}
+
+
+.navbar-group:hover {
+  a {
+    color: green;
+    padding: 1px;
+  }
+}
+.navbar-group:click {
+  color: green;
+}
+.navbar-group:active {
+  color: green;
+  border: 3px solid red;
+}
+
+.navbar-text:hover {
+  color: white;
 }

@@ -27,10 +27,12 @@ class Welcome extends React.Component {
                     </Link>
                   </div>
                 </div>
-                <div className="hamburger" onClick={() => this.toggleLinks()} />
-                <nav
-                  className={`login-signup-links ${this.state.isLinksActive ? "active" : ""}`}
-                >
+                <div className="hamburger" onClick={() => this.toggleLinks()}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <nav className={`login-signup-links ${this.state.isLinksActive ? "active" : ""}`}>
                   <Link to="/login" className="login-signup-link grayed-link">Log In</Link>
                   <Link to="/signup" className="login-signup-link grayed-link">Sign up</Link>
                   <a target="_blank" className="login-signup-link no-hover">|</a>
@@ -46,7 +48,6 @@ class Welcome extends React.Component {
             </div>
           </header>
         <footer className="splash-footer">
-          <h1>Blahh</h1>
         </footer>
       </div>
     );
@@ -54,7 +55,7 @@ class Welcome extends React.Component {
 
   render() {
     const { currentUser } = this.props;
-    return currentUser ? <Redirect to="/webplayer/"/> : this.sessionLinks();
+    return currentUser ? <Redirect to="/browse/"/> : this.sessionLinks();
   }
 };
 

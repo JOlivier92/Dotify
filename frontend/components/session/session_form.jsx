@@ -3,7 +3,7 @@ import merge from 'lodash/merge';
 import { withRouter } from 'react-router-dom';
 import { Button, Link } from 'react-router-dom';
 import Recaptcha from 'react-recaptcha';
-import {signin} from '../../actions/session_actions';
+import { signin } from '../../actions/session_actions';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class SessionForm extends React.Component {
   }
 
   recaptchaLoaded () {
-    console.log("captcha successfull loaded");
+    console.log("captcha successfully loaded");
   }
   handleInput(type) {
     return e =>
@@ -60,14 +60,14 @@ class SessionForm extends React.Component {
       this.setState(
         {email: this.state.email + email.shift()}, () => {
           window.setTimeout( () =>
-            this.fillForm(email,password,button), Math.floor(Math.random()*50)+70);
+            this.fillForm(email,password,button), Math.floor(Math.random()*50)+45);
         }
       );
     } else if (password.length > 0) {
       this.setState(
         {password: this.state.password + password.shift()}, () => {
           window.setTimeout( () =>
-            this.fillForm(email,password,button), Math.floor(Math.random()*50)+70);
+            this.fillForm(email,password,button), Math.floor(Math.random()*50)+45);
         }
       );
     } else { button.click(); }
