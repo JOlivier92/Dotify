@@ -6,7 +6,7 @@
   position: absolute;
   background-image: linear-gradient(rgb(18, 18, 18), rgb(8, 8, 8) 85%);
 
-  .navbar {
+  .all-content {
     background-image: linear-gradient(rgb(64, 51, 102), rgb(6, 5, 10) 85%);
     height: 98%;
     display: flex;
@@ -172,4 +172,40 @@
 
 .navbar-text:hover {
   color: white;
+}
+
+
+.browse_featured {
+  background-image: linear-gradient(rgb(91, 62, 81), rgb(9, 6, 8) 85%) !important;
+}
+
+.collection_playlists {
+  background-blend-mode: darken !important;
+  background-image: linear-gradient(rgb(92, 71, 61), rgb(9, 7, 6) 85%) !important;
+}
+.browse_podcast {
+  background-image: linear-gradient(rgb(104, 49, 56), rgb(10, 5, 6) 85%) !important;
+}
+
+.browse_charts {
+  background-image: linear-gradient(rgb(31, 80, 108), rgb(3, 9, 12) 85%) !important;
+}
+.browse_discover {
+  background-image: linear-gradient(rgb(31, 80, 108), rgb(3, 9, 12) 85%) !important;
+}
+
+.collections_tracks {
+  background-image: linear-gradient(rgb(30, 50, 100), rgb(4, 6, 12) 85%) !important;
+}
+
+.collection_albums {
+  background-image: linear-gradient(rgb(70, 77, 83), rgb(7, 8, 8) 85%) !important;
+}
+
+.collection_artists {
+  background-image: linear-gradient(rgb(91, 62, 81), rgb(9, 6, 8) 85%) !important;
+}
+
+.collection_made_for_you {
+  background-image: linear-gradient(rgb(90, 63, 71), rgb(9, 6, 7) 85%) !important;
 }

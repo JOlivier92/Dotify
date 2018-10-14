@@ -21,10 +21,11 @@ class Webplayer extends React.Component {
   }
 
   render() {
+   let curr_location = this.props.location.pathname.slice(1).replace(new RegExp("/", "g"),"_");
    const {logout} = this.props;
     return (
       <div className="webplayer-page">
-        <div className="navbar">
+        <div className={"all-content " + curr_location}>
           <SidebarContainer />
         <div className="content-container">
           <Switch>
