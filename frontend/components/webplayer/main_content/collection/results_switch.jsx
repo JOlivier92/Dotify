@@ -29,7 +29,6 @@ export class Songs extends React.Component {
         truncated.push(songs[Math.floor(Math.random() * songs.length)]);
       };
     };
-    debugger;
     return (
       <ul className="random-song-list">
         {truncated.map( (song,i) => (
