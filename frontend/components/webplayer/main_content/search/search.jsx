@@ -8,6 +8,10 @@ class Search extends React.Component {
     this.formatResults = this.formatResults.bind(this);
   };
 
+  componentDidMount () {
+
+  }
+
   handleInput(type) {
     return e =>
       this.setState({
@@ -65,10 +69,10 @@ class Search extends React.Component {
 
 
   formatResults() {
-    let listOfQueryResults = this.props.songs.slice(0,9);
+    let listOfQuerySongResults = this.props.songs.slice(0,9);
     return (
       <ul className="random-song-list">
-        {listOfQueryResults.map( (song,i) => (
+        {listOfQuerySongResults.map( (song,i) => (
             <li className="song-item">
               <div className="cute-icon">
                 ♪

@@ -9,6 +9,7 @@ class Collection extends React.Component {
   render () {
     return (
       <div className="browse-component" >
+        <div className="navigation-header">
         <ul className="contents-header-list">
           <li className="c-header-item">
             <NavLink to="/collection/playlists"
@@ -36,6 +37,10 @@ class Collection extends React.Component {
             </NavLink>
           </li>
         </ul>
+        <div className="new-playlist-button-container">
+          <button className="playlist-button">NEW PLAYLIST</button>
+        </div>
+      </div>
         <div className="results-container">
           <Switch>
             <ProtectedRoute path="/collection/playlists" component={Playlists} />

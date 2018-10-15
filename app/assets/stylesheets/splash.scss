@@ -13,6 +13,11 @@
     background-size: 100%;
   }
 }
+@media (max-width: 991px) {
+  .welcome-box {
+    background-position: center !important;
+  }
+}
 
 .welcome-box {
   background-image: image_url('background-bubbles.svg');
@@ -96,7 +101,7 @@
         display: inline-block;
         float: right;
 
-        @media (max-width: 994px) {
+        /* @media (max-width: 994px) {
           background: black;
           display: flex;
           flex-direction: column;
@@ -114,7 +119,7 @@
           &.focus .login-signup-link {
             display: block;
           }
-        }
+        } */
         @media (max-width: 500px) {
           width: 320px !important;
         }
