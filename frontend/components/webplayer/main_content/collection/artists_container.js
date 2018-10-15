@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Artists } from './results_switch';
-import { fetchAritsts } from '../../../../actions/artist_actions';
+import { fetchArtists } from '../../../../actions/artist_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 const mapDispatchToProps = dispatch => ({
-  fetchAritsts: () => dispatch(fetchAritsts())
+  fetchArtists: () => dispatch(fetchArtists())
 });
 
 

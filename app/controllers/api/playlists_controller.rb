@@ -1,7 +1,7 @@
 class Api::PlaylistsController < ApplicationController
 
   def index
-    @playlists = Playlist.all.includes(:songs)
+    @playlists = Playlist.all.includes(:songs).includes(:creator)
   end
 
   def show
