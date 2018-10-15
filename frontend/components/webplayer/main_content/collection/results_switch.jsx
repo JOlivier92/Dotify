@@ -1,5 +1,4 @@
 import React from 'react';
-
 export class Playlists extends React.Component {
   constructor (props) {
     super(props);
@@ -7,7 +6,7 @@ export class Playlists extends React.Component {
 
   render () {
     return (
-      <h1> I'm a PLaylist</h1>
+      <h1> I'm a Playlist </h1>
     );
   };
 };
@@ -34,6 +33,7 @@ export class Songs extends React.Component {
         {truncated.map( (song,i) => (
             <li className="song-item">
               <div className="cute-icon">
+                ♪
               </div>
               <div className="track-details-container">
                 <span className="track-title">{song.title} </span>

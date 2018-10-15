@@ -12,14 +12,22 @@
     flex-direction: row;
     text-overflow: ellipsis;
 
-
     :hover {
       background-color: rgba(0, 0, 0, 0);
       transition: none;
     }
 
     .cute-icon {
-      height: 20px
+      padding-right: 14px;
+      color: gray;
+
+      :hover {
+        color: white;
+      }
+
+      :active {
+        color: green;
+      }
     }
     .track-details-container {
       display: flex;

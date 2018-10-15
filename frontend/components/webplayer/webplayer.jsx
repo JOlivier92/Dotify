@@ -9,7 +9,7 @@ import { AuthRoute, ProtectedRoute } from '../../utils/route_util';
 import SidebarContainer from './sidebar_container';
 // main content
 import BrowseContainer from './main_content/browse/browse_container';
-import SearchContainer from './main_content/search_container';
+import SearchContainer from './main_content/search/search_container';
 import CollectionContainer from './main_content/collection/collection_container';
 // footer
 import FooterContainer from './footer_container';

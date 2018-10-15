@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Link, NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { FaBeer, FaSearch, FaHome } from 'react-icons/fa';
-
 class Sidebar extends React.Component {
   render () {
     const {logout} = this.props;
