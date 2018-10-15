@@ -6,41 +6,48 @@ import Songs from './songs_container';
 
 //this code was copied over from search, make sure to go back and change css.
 class Collection extends React.Component {
+
+
+  createPlaylist () {
+    
+  }
+
   render () {
     return (
       <div className="browse-component" >
         <div className="navigation-header">
-        <ul className="contents-header-list">
-          <li className="c-header-item">
-            <NavLink to="/collection/playlists"
-              className="c-header-item-link"
-              activeClassName="active" >Playlists
-            </NavLink>
+          <ul className="contents-header-list">
+            <li className="c-header-item">
+              <NavLink to="/collection/playlists"
+                className="c-header-item-link"
+                activeClassName="active" >Playlists
+              </NavLink>
 
-          </li>
-          <li className="c-header-item">
-            <NavLink to="/collection/tracks"
-              className="c-header-item-link"
-              activeClassName="active" >Songs
-            </NavLink>
-          </li>
-          <li className="c-header-item">
-            <NavLink to="/collection/albums"
-              className="c-header-item-link"
-              activeClassName="active" >Albums
-            </NavLink>
-          </li>
-          <li className="c-header-item">
-            <NavLink to="/collection/artists"
-              className="c-header-item-link"
-              activeClassName="active" >Artists
-            </NavLink>
-          </li>
-        </ul>
-        <div className="new-playlist-button-container">
-          <button className="playlist-button">NEW PLAYLIST</button>
+            </li>
+            <li className="c-header-item">
+              <NavLink to="/collection/tracks"
+                className="c-header-item-link"
+                activeClassName="active" >Songs
+              </NavLink>
+            </li>
+            <li className="c-header-item">
+              <NavLink to="/collection/albums"
+                className="c-header-item-link"
+                activeClassName="active" >Albums
+              </NavLink>
+            </li>
+            <li className="c-header-item">
+              <NavLink to="/collection/artists"
+                className="c-header-item-link"
+                activeClassName="active" >Artists
+              </NavLink>
+            </li>
+          </ul>
+          <div className="new-playlist-button-container">
+            <button className="playlist-button"
+                    onClick={this.createPlaylist}>NEW PLAYLIST</button>
+          </div>
         </div>
-      </div>
         <div className="results-container">
           <Switch>
             <ProtectedRoute path="/collection/playlists" component={Playlists} />

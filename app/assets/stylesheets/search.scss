@@ -1,4 +1,5 @@
 .search-component {
+  height: 100%;
   .input-field {
     height: 44px;
     padding: 16px;
@@ -18,6 +19,9 @@
     }
   }
   .results {
+    max-height: 80%;
+    overflow-y: scroll;
+        
     .contents-header-list {
       display: flex;
       flex-direction: row;

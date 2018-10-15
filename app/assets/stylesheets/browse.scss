@@ -20,6 +20,23 @@
         }
       }
     }
+
+    .new-playlist-button-container {
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      line-height: 1;
+      border-radius: 500px;
+      margin-top: 30px;
+      padding: 10px 48px 18px;
+      letter-spacing: 1px;
+      min-width: 160px;
+      text-transform: uppercase;
+      white-space: normal;
+      background: #3B5998;
+      color: white;
+      margin-bottom: 15px;
+    }
     .welcome-message {
       font-size: 36px;
       line-height: 44px;
