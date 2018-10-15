@@ -3,6 +3,8 @@ import { NavLink, Switch, Redirect } from 'react-router-dom';
 import { ProtectedRoute } from '../../../../utils/route_util';
 import { Playlists, Albums, Artistsjancjkn } from './results_switch';
 import Songs from './songs_container';
+
+//this code was copied over from search, make sure to go back and change css.
 class Collection extends React.Component {
   render () {
     return (
@@ -34,9 +36,6 @@ class Collection extends React.Component {
             </NavLink>
           </li>
         </ul>
-        <div className="home-header">
-          <h1 className="welcome-message">Made for</h1>
-        </div>
         <div className="results-container">
           <Switch>
             <ProtectedRoute path="/collection/playlists" component={Playlists} />

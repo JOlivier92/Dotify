@@ -1,26 +1,43 @@
 .random-song-list {
   display: flex;
   flex-direction: column;
-
+  :hover {
+    background-color:rgba(0, 0, 0, 0.3);
+    transition: 0.4s;
+  }
   .song-item {
     color: white;
     height: 4.56em;
     display: flex;
     flex-direction: row;
+    text-overflow: ellipsis;
+
+
+    :hover {
+      background-color: rgba(0, 0, 0, 0);
+      transition: none;
+    }
+
     .cute-icon {
       height: 20px
     }
     .track-details-container {
       display: flex;
       flex-direction: column;
+      max-width: 70%;
       .track-title {
+        max-height: 20px;
         color: #fff;
       }
       .other-track-details {
+        color: gray;
+        .detail-contents {
+          max-height: 20px;
+          text-overflow: ellipsis;
+        }
         .line-separator {
           padding: 0px 8px 0px 8px;
         }
-
       }
     }
     .track-length {
@@ -28,5 +45,6 @@
       margin-right: 0;
       padding-right: 14px;
     }
+
   }
 }

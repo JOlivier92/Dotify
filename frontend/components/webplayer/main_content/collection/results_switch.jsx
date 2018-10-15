@@ -38,9 +38,9 @@ export class Songs extends React.Component {
               <div className="track-details-container">
                 <span className="track-title">{song.title} </span>
                 <div className="other-track-details">
-                  <span>{song.artist_name}</span>
+                  <span className="detail-contents">{song.artist_name}</span>
                   <span class="line-separator">•</span>
-                  <span>{song.album_title}</span>
+                  <span className="detail-contents">{song.album_title}</span>
                 </div>
               </div>
               <div className="more-dropdown">
