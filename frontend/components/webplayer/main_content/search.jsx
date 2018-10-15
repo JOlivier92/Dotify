@@ -1,8 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
+
 class Search extends React.Component {
   constructor (props) {
     super(props);
+    debugger;
     this.state = {
       songs: props.songs,
       artists: props.artists,
@@ -20,8 +22,12 @@ class Search extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    <Redirect to="search/${this.state.queryString}/results"/>
     const query = Object.assign({}, this.state);
-    this.props.searchSongs(query);
+    console.log(this.props.searchSongs(query));
+    this.props.searchSongs(query)
+      .then(e => this.setState(e.value));
+    debugger;
   }
 
   render () {
@@ -52,7 +58,7 @@ class Search extends React.Component {
           <li className="c-header-item">
             <NavLink to="/search/recent"
               className="c-header-item-link"
-              activeClassName="active" >Songs
+              activeClassName="active" >Albums
             </NavLink>
           </li>
         </ul>

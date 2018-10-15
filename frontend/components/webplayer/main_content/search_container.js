@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Search from './search';
 import { fetchSongsByName } from '../../../actions/song_actions';
 
-
 const mapStateToProps = (state,ownProps) => {
   return {
     songs: state.entities.songs,

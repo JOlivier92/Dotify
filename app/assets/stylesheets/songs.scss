@@ -1,0 +1,32 @@
+.random-song-list {
+  display: flex;
+  flex-direction: column;
+
+  .song-item {
+    color: white;
+    height: 4.56em;
+    display: flex;
+    flex-direction: row;
+    .cute-icon {
+      height: 20px
+    }
+    .track-details-container {
+      display: flex;
+      flex-direction: column;
+      .track-title {
+        color: #fff;
+      }
+      .other-track-details {
+        .line-separator {
+          padding: 0px 8px 0px 8px;
+        }
+
+      }
+    }
+    .track-length {
+      margin: 0 auto;
+      margin-right: 0;
+      padding-right: 14px;
+    }
+  }
+}

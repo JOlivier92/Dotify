@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Link, withRouter,
          Route, Redirect, Switch } from 'react-router-dom';
-         import { AuthRoute, ProtectedRoute } from '../../utils/route_util';
+import { AuthRoute, ProtectedRoute } from '../../utils/route_util';
 
 // sub-components
 // sidebar
