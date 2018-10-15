@@ -1,10 +1,12 @@
 require 'csv'
 # AlbumsSave.destroy_all
 # ArtistsFollower.destroy_all
-# Playlist.destroy_all
 # PlaylistsFollower.destroy_all
-# PlaylistsSong.destroy_all
 # SongSave.destroy_all
+
+
+Playlist.destroy_all
+PlaylistsSong.destroy_all
 Artist.destroy_all
 Album.destroy_all
 FolloweesFollower.destroy_all
@@ -45,25 +47,6 @@ for i in (0..99) do
   )
 end
 
-############################################################
-# followees_followers seeds --- biases a few popular users #
-############################################################
-first_user_id = User.first.id
-last_user_id = User.last.id
-for i in (first_user_id..last_user_id) do
-  listToFollow = []
-  numberOfFollows = rand 14
-  while listToFollow.length < numberOfFollows
-    random_user = rand(first_user_id..last_user_id)
-    listToFollow.push(random_user) unless (listToFollow.include?(random_user) || random_user == 7)
-  end
-  for j in (0...numberOfFollows) do
-    FolloweesFollower.create(
-      followee_id: listToFollow[j],
-      follower_id: i
-      )
-  end
-end
 ################################################################
 # Artists, Albums, and Songs, generated from paper cited below #
 ################################################################
@@ -104,3 +87,56 @@ end
 #   year = {2017},
 #   url = {https://arxiv.org/abs/1612.01840},
 # }
+
+
+############################################################
+# followees_followers seeds --- biases a few popular users #
+############################################################
+# grab indices of information for user follows / saves
+first_user_id = User.first.id
+last_user_id = User.last.id
+first_song_id = Song.first.id
+last_song_id = Song.last.id
+
+# This to be used when creating follows
+# first_artist_id = Artist.first.id
+# last_artist_id = Artist.last.id
+# first_album_id = Album.first.id
+# last_album_id = Album.last.id
+
+# iterate through each user to create necessary associations
+for i in (first_user_id..last_user_id) do
+  listToFollow = []
+  numberOfFollows = rand 14
+  numberOfPlaylists = rand 3
+
+  while listToFollow.length < numberOfFollows
+    random_user = rand(first_user_id..last_user_id)
+    listToFollow.push(random_user) unless (listToFollow.include?(random_user) || random_user == 7)
+  end
+
+  for j in (0...numberOfFollows) do
+    FolloweesFollower.create(
+      followee_id: listToFollow[j],
+      follower_id: i
+      )
+  end
+
+  for j in (0..numberOfPlaylists) do
+    number_of_songs = (rand 20 + 7)
+
+    Playlist.create(
+      name: Faker::Lorem.sentence(1, false, 2),
+      creator_id: i
+    )
+
+    playlist_id = Playlist.last.id
+    for k in (0..number_of_songs) do
+      song_to_add = rand(first_song_id..last_song_id)
+      PlaylistsSong.create(
+        playlist_id: playlist_id,
+        song_id: song_to_add
+      )
+    end
+  end
+end

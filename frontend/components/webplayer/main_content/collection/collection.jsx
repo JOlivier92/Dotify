@@ -1,15 +1,17 @@
 import React from 'react';
 import { NavLink, Switch, Redirect } from 'react-router-dom';
 import { ProtectedRoute } from '../../../../utils/route_util';
-import { Playlists, Albums, Artistsjancjkn } from './results_switch';
+// import { Playlists, Albums, Artistsjancjkn } from './results_switch';
 import Songs from './songs_container';
-
+import Albums from './albums_container';
+import Artists from './artists_container';
+import Playlists from './playlists_container';
 //this code was copied over from search, make sure to go back and change css.
 class Collection extends React.Component {
 
 
   createPlaylist () {
-    
+
   }
 
   render () {
@@ -52,8 +54,8 @@ class Collection extends React.Component {
           <Switch>
             <ProtectedRoute path="/collection/playlists" component={Playlists} />
             <ProtectedRoute path="/collection/tracks" component={Songs} />
-            <ProtectedRoute path="/collection/albums" component={Playlists} />
-            <ProtectedRoute path="/collection/artists" component={Playlists} />
+            <ProtectedRoute path="/collection/albums" component={Albums} />
+            <ProtectedRoute path="/collection/artists" component={Songs} />
             <Redirect to="/404/"/>
           </Switch>
         </div>

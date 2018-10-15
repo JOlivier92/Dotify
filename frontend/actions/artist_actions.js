@@ -16,13 +16,13 @@ export const fetchArtists = () => dispatch => (
 );
 
 // artists show action
-export const receiveArtist = song => ({
+export const receiveArtist = artist => ({
   type: RECEIVE_ARTIST,
-  song
+  artist
 });
 
 export const fetchArtist = () => dispatch => (
   APIUtil.fetchArtist()
-    .then(artists => dispatch(receiveArtists(artists)))
+    .then(artist => dispatch(receiveArtists(artist)))
 );
 //
