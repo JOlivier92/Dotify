@@ -39,7 +39,7 @@ for i in (0..100) do
   while User.find_by(username: username)
     username += "#{rand 9}"
   end
-  if i == 0 do
+  if i == 0
     User.create(username: 'DotifyGuest', email: 'DotifyGuest@dotify.io', password: 'examplePassword4')
   else
     User.create(
@@ -77,6 +77,15 @@ CSV.foreach('./db/songSeeds.csv') do |song|
     artist_id: artist_id,
     album_id: album_id
   )
+
+  syntax error here on purpose
+  
+  track2 = Track.new(title: 'Talk To me', artist_id: artist1.id)
+  file_to_download = "https://s3.amazonaws.com/dotify-dev/#{}"
+  file = EzDownload.open('https://s3.amazonaws.com/dotify-dev/')
+  track2.audio.attach(io: file, filename: '02_Talk_to_Me.mp3')
+  track2.save!
+  Song.last.mp3.attach
   last_artist = Song.last.artist
   new_plays = last_artist.plays + Song.last.plays
   Artist.update(last_artist.id, plays: new_plays)

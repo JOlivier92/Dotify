@@ -36,12 +36,22 @@
       .track-title {
         max-height: 20px;
         color: #fff;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
+        overflow: hidden;
       }
       .other-track-details {
+        display: flex;
+        flex-direction: row;
         color: gray;
+        
         .detail-contents {
           max-height: 20px;
+          white-space: nowrap;
           text-overflow: ellipsis;
+          display: block;
+          overflow: hidden;
         }
         .line-separator {
           padding: 0px 8px 0px 8px;

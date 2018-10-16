@@ -53,12 +53,14 @@ class CreatePlaylist extends React.Component {
                     onChange={this.update('password')}
                     className="login-input"
                     placeholder="Start typing..."
+                    autofocus="autofocus"
+                    onfocus="this.select()"
                   />
                 </div>
               </div>
             </div>
             <div className="button-group">
-              <button className="btn btn-cancel">CANCEL</button>
+              <button className="btn btn-cancel" onClick={this.props.closeModal}>CANCEL</button>
               <button className="btn btn-create">CREATE</button>
             </div>
           </div>
