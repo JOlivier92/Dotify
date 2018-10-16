@@ -37,31 +37,30 @@ class CreatePlaylist extends React.Component {
   render() {
     return (
       <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to BenchBnB!
+        <form onSubmit={this.handleSubmit} className="create-playlist-box">
           <br/>
-          Please {this.props.formType} or {this.props.otherForm}
           <div onClick={this.props.closeModal} className="close-x">X</div>
-          {this.renderErrors()}
           <div className="login-form">
-            <br/>
-            <label>Username:
-              <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="login-input"
-              />
-            </label>
-            <br/>
-            <label>Password:
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-              />
-            </label>
-            <br/>
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <div className="create-new-playlists-prompt">
+              Create new playlist
+            </div>
+            <div className="input-container">
+              <div className="input-box">
+                <div className="content-spacing">
+                  <h4 className="text-above-input">Playlist Name</h4>
+                  <input type="text"
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    className="login-input"
+                    placeholder="Start typing..."
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="button-group">
+              <button className="btn btn-cancel">CANCEL</button>
+              <button className="btn btn-create">CREATE</button>
+            </div>
           </div>
         </form>
       </div>

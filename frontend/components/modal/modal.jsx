@@ -25,7 +25,6 @@ function Modal({modal, closeModal}) {
 }
 
 const mapStateToProps = state => {
-  debugger;
   return {
     modal: state.ui.modal
   };
