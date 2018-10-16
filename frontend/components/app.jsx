@@ -22,6 +22,11 @@ const App = () => (
       <ProtectedRoute path="/browse" component={WebplayerContainer} />
       <ProtectedRoute path='/search' component={WebplayerContainer} />
       <ProtectedRoute path='/collection' component={WebplayerContainer} />
+
+      <ProtectedRoute path="/playlist/:id" component={WebplayerContainer} />
+      <ProtectedRoute path="/album/:id" component={WebplayerContainer} />
+      <ProtectedRoute path="/artist/:id" component={WebplayerContainer} />
+
       <Route exact path="/" component={WelcomeContainer}/>
       <Route component={NotFound} />
     </Switch>

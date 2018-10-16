@@ -129,7 +129,6 @@ export class Songs extends React.Component {
 
   componentDidMount() {
     this.props.fetchSongs();
-
   }
 
   render () {
@@ -171,3 +170,69 @@ export class Songs extends React.Component {
     );
   };
 };
+
+export class PlaylistShow extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {playlist: {}, songs:{}};
+    this.setDivs = this.setDivs.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.fetchCurrentPlaylist(Number(this.props.match.params.playlistId))
+
+  }
+
+  componentDidUpdate(prevProps,prevState) {
+    if (this.props !== prevProps) {
+      this.setState({playlist: this.props.playlist})
+    }
+  }
+
+  setDivs() {
+    return (
+      <h1>{this.props.match.params.playlistId}</h1>
+    )
+  }
+
+  render () {
+    let header ;
+    let album ;
+    if (Object.keys(this.state.playlist).length === 1) {
+      header = this.setDivs();
+    }
+    debugger;
+    return (
+      <div className="playlist-album-show">
+        <div className="art-side-container">
+          <div className="album-art">
+            {header}
+          </div>
+          <div className='content-under-album-art'>
+
+          </div>
+        </div>
+        <div className="list-of-songs-container">
+          <ul>
+
+          </ul>
+        </div>
+        <h4>niceeee playlist or album</h4>
+      </div>
+    )
+  }
+}
+
+export class ArtistShow extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render () {
+    return (
+      <div>
+        <h4>niceeee artist</h4>
+      </div>
+    )
+  }
+}

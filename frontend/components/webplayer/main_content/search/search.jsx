@@ -9,12 +9,10 @@ class Search extends React.Component {
   };
 
   componentDidMount () {
-    debugger;
     this.props.fetchSongsByName({queryString: ""})
   }
 
   componentDidUpdate(prevProps,prevState) {
-    debugger;
     if (this.state !== prevState) {
       this.props.fetchSongsByName(this.state)
     }

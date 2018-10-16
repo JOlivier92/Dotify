@@ -1,20 +1,21 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { login } from '../../actions/session_actions';
+import { createPlaylist } from '../../actions/playlist_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import CreatePlaylist from './create_playlist';
 
-const mapStateToProps = ({ errors }) => {
+const mapStateToProps = ({entities: { playlists },  errors }) => {
   return {
+    playlists: Object.keys(playlists).map(id => playlists[id]),
     errors: errors.session,
-    formType: 'login',
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    processForm: (user) => dispatch(login(user)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    createPlaylist: (playlist) => dispatch(createPlaylist(playlist))
   };
 };
 

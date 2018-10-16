@@ -8,6 +8,7 @@ class CreatePlaylist extends React.Component {
       name: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.goToPlaylistShow = this.goToPlaylistShow.bind(this);
   }
 
   update(field) {
@@ -16,10 +17,25 @@ class CreatePlaylist extends React.Component {
     });
   }
 
+  componentWillMount() {
+    this.setState({
+      players: this.props.initialPlayers
+    })
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.closeModal);
+    const playlist = Object.assign({}, this.state);
+    if (playlist.name === "") {
+      return ;
+    }
+    this.props.createPlaylist(playlist).then(this.props.closeModal).then(this.goToPlaylistShow());
+  }
+
+  goToPlaylistShow() {
+    debugger;
+    let id = this.props.playlists.slice(-1)[0].id;
+    this.props.history.push(`/playlist/${id}`);
   }
 
   renderErrors() {
@@ -49,8 +65,8 @@ class CreatePlaylist extends React.Component {
                 <div className="content-spacing">
                   <h4 className="text-above-input">Playlist Name</h4>
                   <input type="text"
-                    value={this.state.password}
-                    onChange={this.update('password')}
+                    value={this.state.name}
+                    onChange={this.update('name')}
                     className="login-input"
                     placeholder="Start typing..."
                     autofocus="autofocus"
@@ -61,7 +77,7 @@ class CreatePlaylist extends React.Component {
             </div>
             <div className="button-group">
               <button className="btn btn-cancel" onClick={this.props.closeModal}>CANCEL</button>
-              <button className="btn btn-create">CREATE</button>
+              <button className="btn btn-create" onClick={this.handleSubmit}>CREATE</button>
             </div>
           </div>
         </form>
