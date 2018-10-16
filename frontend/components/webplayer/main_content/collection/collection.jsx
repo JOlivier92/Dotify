@@ -9,11 +9,6 @@ import Playlists from './playlists_container';
 //this code was copied over from search, make sure to go back and change css.
 class Collection extends React.Component {
 
-
-  createPlaylist () {
-
-  }
-
   render () {
     return (
       <div className="browse-component" >
@@ -47,7 +42,7 @@ class Collection extends React.Component {
           </ul>
           <div className="new-playlist-button-container">
             <button className="playlist-button"
-                    onClick={this.createPlaylist}>NEW PLAYLIST</button>
+                    onClick={() => this.props.openModal('create_playlist')}>NEW PLAYLIST</button>
           </div>
         </div>
         <div className="results-container">

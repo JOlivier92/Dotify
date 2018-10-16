@@ -29,6 +29,8 @@ gem 'jquery-rails'
 
 gem 'rspotify'
 
+gem 'ez_download'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -36,7 +38,7 @@ gem 'rspotify'
 # gem 'capistrano-rails', group: :development
 
 # use aws s3 for active_storage
-gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

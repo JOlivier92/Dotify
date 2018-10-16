@@ -25,7 +25,7 @@ Faker::UniqueGenerator.clear
 ######################################################################
 User.create(username: 'DotifyGuest', email: 'DotifyGuest@dotify.io', password: 'examplePassword4')
 ######################################################################
-for i in (0..99) do
+for i in (0..100) do
   if i % 3 == 0
     username = Faker::GameOfThrones.unique.character
   elsif i % 3 == 1
@@ -39,12 +39,16 @@ for i in (0..99) do
   while User.find_by(username: username)
     username += "#{rand 9}"
   end
+  if i == 0 do
+    User.create(username: 'DotifyGuest', email: 'DotifyGuest@dotify.io', password: 'examplePassword4')
+  else
+    User.create(
+      username: username,
+      email: Faker::Internet.unique.safe_email(username),
+      password: Faker::Internet.password(8)
+    )
+  end
 
-  User.create(
-    username: username,
-    email: Faker::Internet.unique.safe_email(username),
-    password: Faker::Internet.password(8)
-  )
 end
 
 ################################################################

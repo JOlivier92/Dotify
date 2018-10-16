@@ -9,7 +9,7 @@ class Search extends React.Component {
   };
 
   componentDidMount () {
-
+    this.props.fetchSongsByName({queryString: ""})
   }
 
   handleInput(type) {

@@ -21,7 +21,6 @@ export class Playlists extends React.Component {
         i++;
       };
     };
-    debugger
     return (
       <ul className="playlists-list">
         {truncated.map( (playlist) => (

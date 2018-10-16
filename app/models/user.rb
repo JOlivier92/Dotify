@@ -42,6 +42,9 @@ class User < ApplicationRecord
   through: :passive_relationships,
   source: :follower
 
+  has_many :playlists,
+  foreign_key: :creator_id
+
 
   def self.find_by_credentials(username_or_email, password)
     user = User.find_by(username: username_or_email)
