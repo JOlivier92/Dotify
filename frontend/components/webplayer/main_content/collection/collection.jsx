@@ -53,7 +53,7 @@ class Collection extends React.Component {
             <ProtectedRoute path="/collection/tracks" component={Songs} />
             <ProtectedRoute path="/collection/albums" component={Albums} />
             <ProtectedRoute path="/collection/artists" component={Artists} />
-            <Redirect to="/404/"/>
+
           </Switch>
         </div>
     </div>

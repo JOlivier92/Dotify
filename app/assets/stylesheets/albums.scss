@@ -1,0 +1,102 @@
+.albums-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .album-item {
+    width: 200px;
+    height: 300px;
+    margin: 0 8px;
+
+
+    .album-information-container {
+
+      .album-image {
+        width: 200px;
+        height: 200px;
+        background-image: image_url("sample_album_art");
+      }
+
+      .album-details-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .album-name {
+          font-size: 12px;
+          line-height: 20px;
+          letter-spacing: .015em;
+          font-weight: 500;
+          font-family: 'M PLUS Rounded 1c', sans-serif;
+          color: #fff;
+          text-transform: none;
+          max-height: 560px;
+          }
+
+          .album-creator {
+            margin-top: 3px;
+            color: hsla(0,0%,100%,.6);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0,0,0,0);
+          }
+        }
+      }
+    }
+}
+
+
+
+.playlists-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .playlist-item {
+    width: 200px;
+    height: 300px;
+    margin: 0 8px;
+
+
+    .playlist-information-container {
+
+      .playlist-image {
+        width: 200px;
+        height: 200px;
+        background-image: image_url("sample_album_art");
+      }
+
+      .playlist-image:hover {
+        background-color:rgba(0, 0, 0, 0.3);
+        transition: 0.4s;
+      }
+
+      .playlist-details-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .playlist-name {
+
+          .playlist-link {
+            font-size: 12px;
+            line-height: 20px;
+            letter-spacing: .015em;
+            font-weight: 500;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            color: #fff;
+            text-transform: none;
+            max-height: 560px;
+            text-decoration: none;
+          }
+        }
+
+          .playlist-creator {
+            margin-top: 3px;
+            color: hsla(0,0%,100%,.6);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0,0,0,0);
+          }
+        }
+      }
+    }
+}

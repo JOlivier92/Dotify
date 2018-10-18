@@ -5,10 +5,11 @@ import { createPlaylist } from '../../actions/playlist_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import CreatePlaylist from './create_playlist';
 
-const mapStateToProps = ({entities: { playlists },  errors }) => {
+const mapStateToProps = ({entities: { playlists, users },  errors }) => {
   return {
     playlists: Object.keys(playlists).map(id => playlists[id]),
     errors: errors.session,
+    currentUser: users[session.id]
   };
 };
 

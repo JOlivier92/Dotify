@@ -5,6 +5,7 @@ import { FaBeer, FaSearch, FaHome } from 'react-icons/fa';
 class Sidebar extends React.Component {
   render () {
     const {logout} = this.props;
+    debugger;
     return (
       <div className="navbar-options">
         <div className="navbar-header">
@@ -30,7 +31,8 @@ class Sidebar extends React.Component {
         </ul>
         <div className="recently-played"></div>
         <div className="navbar-logout">
-          <button onClick={logout}>Log out and return to Splash</button>
+          <h4 className="navbar-username">{this.props.currentUser.username}</h4>
+          <button onClick={logout}>Log Out</button>
         </div>
       </div>
     );

@@ -20,23 +20,34 @@ export class Playlists extends React.Component {
         truncated.push(playlists[i]);
         i++;
       };
+    } else {
+      truncated = playlists;
     };
+    debugger;
+    if (truncated.length === 0) {
+      return null
+    } else {
     return (
       <ul className="playlists-list">
         {truncated.map( (playlist) => (
             <li className="playlist-item">
-              <div className="playlist-image">
-                image here
-              </div>
-              <div className="playlist-details-container">
-                <span className="playlist-name">{playlist.name} </span>
-                <span className="playlist-creator">{playlist.creator.username}</span>
-              </div>
+              <div className="playlist-information-container">
+                <div className="playlist-image">
+                </div>
+                <div className="playlist-details-container">
+                  <span className="playlist-name">
+
+                    <Link to= {`${`/playlist/${playlist.id}`}`} className="playlist-link">{playlist.name}</Link>
+                  </span>
+                  <span className="playlist-creator">{playlist.creator.username}</span>
+                </div>
+            </div>
             </li>
           )
         )}
       </ul>
     );
+  };
   };
 };
 
@@ -60,6 +71,8 @@ export class Artists extends React.Component {
         truncated.push(artists[i]);
         i++;
       };
+    } else {
+      truncated = artists
     };
     return (
       <ul className="artists-list">
@@ -88,29 +101,34 @@ export class Albums extends React.Component {
 
   componentDidMount() {
     this.props.fetchAlbums();
+    debugger;
   }
 
   render () {
     let albums = this.props.albums
     let truncated = [];
     let i = 0;
+    debugger;
     if (albums.length > 24) {
       while (truncated.length < 24) {
         // truncated.push(playlists[Math.floor(Math.random() * playlists.length)]);
         truncated.push(albums[i]);
         i++;
       };
+    } else {
+      truncated = albums
     };
     return (
       <ul className="albums-list">
         {truncated.map( (album) => (
             <li className="album-item">
-              <div className="album-image">
-                image here
-              </div>
-              <div className="album-details-container">
-                <span className="album-name">{album.title}</span>
-                <span className="album-creator">{album.artist.name}</span>
+              <div className="album-information-container">
+                <div className="album-image">
+                </div>
+                <div className="album-details-container">
+                  <span className="album-name">{album.title}</span>
+                  <span className="album-creator">{album.artist.name}</span>
+                </div>
               </div>
             </li>
           )
@@ -155,7 +173,6 @@ export class Songs extends React.Component {
                   <span className="detail-contents">{song.artist_name}</span>
                   <span class="line-separator">•</span>
                   <span className="detail-contents">{song.album_title}</span>
-                  <span className="detail-contents">{song.songUrl}</span>
                 </div>
               </div>
               <div className="more-dropdown">
@@ -190,7 +207,7 @@ export class PlaylistShow extends React.Component {
   }
 
   setDivs() {
-
+    let playlistId = Number(this.props.match.params.playlistId)
     return (
       <div className="art-side-container">
         <div className="album-art">
@@ -200,15 +217,21 @@ export class PlaylistShow extends React.Component {
         </div>
         <div className='content-under-album-art'>
           <h1>{Object.values(this.props.playlist)[0]["name"]}</h1>
-          <h2 className="playlist-username">Username here</h2>
+          <h2 className="playlist-username">{this.state.playlist[playlistId].creator.username}</h2>
         </div>
         <div className="list-of-songs-container">
+          <ul>
+            <li>
+
+            </li>
+          </ul>
         </div>
       </div>
     )
   }
 
   render () {
+    debugger;
     let header ;
     let album ;
     let playlist_id ;;

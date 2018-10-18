@@ -20,8 +20,9 @@
   }
   .results {
     max-height: 80%;
+    overflow: auto;
     overflow-y: scroll;
-        
+
     .contents-header-list {
       display: flex;
       flex-direction: row;

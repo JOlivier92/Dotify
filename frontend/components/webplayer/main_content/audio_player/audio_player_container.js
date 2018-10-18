@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);
+export default connect(null, mapDispatchToProps)(AudioPlayer);
