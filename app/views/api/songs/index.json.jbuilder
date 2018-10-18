@@ -5,7 +5,7 @@
 # track2.save!
 # Song.last.mp3.attach
 
-# 
+#
 # last_artist = Song.last.a
 @songs.each do |song|
   json.set! song.id do
