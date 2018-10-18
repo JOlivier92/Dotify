@@ -1,0 +1,39 @@
+.footer-container {
+  .music-controller-container {
+    .player-wrapper {
+      max-width: 100%;
+      max-height: 100%;
+      overflow: hidden;
+      .react-player {
+
+      }
+    }
+
+  }
+
+
+  .now-listening-container {
+
+  }
+}
+
+.footer-button {
+  background: transparent;
+  border: none;
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+}
+
+.toggle-button {
+  background-image: image_url(play-button);
+}
+
+.shuffle-button {
+  background-image: image_url(shuffle-icon);
+}
+
+.radio-button {
+  background-image: image_url(radio-icon);
+}

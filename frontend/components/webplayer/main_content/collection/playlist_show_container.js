@@ -5,7 +5,6 @@ import { logout } from '../../../../actions/session_actions';
 import { fetchPlaylist } from '../../../../actions/playlist_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
   return ({
     playlist: state.entities.playlists
   });

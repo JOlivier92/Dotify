@@ -11,7 +11,6 @@ import PlaylistShow from './playlist_show_container';
 import ArtistShow from './artist_show_container';
 
 class Collection extends React.Component {
-
   render () {
     return (
       <div className="browse-component" >
@@ -54,9 +53,6 @@ class Collection extends React.Component {
             <ProtectedRoute path="/collection/tracks" component={Songs} />
             <ProtectedRoute path="/collection/albums" component={Albums} />
             <ProtectedRoute path="/collection/artists" component={Artists} />
-            <ProtectedRoute path="/playlist/:playlistId" component={PlaylistShow} />
-            <ProtectedRoute path="/album/:albumId" component={PlaylistShow} />
-            <ProtectedRoute path="/artist/:artistId" component={ArtistShow} />
             <Redirect to="/404/"/>
           </Switch>
         </div>

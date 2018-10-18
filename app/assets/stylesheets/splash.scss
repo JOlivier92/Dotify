@@ -86,6 +86,7 @@
       }
 
       .hamburger {
+        display: none;
         @media (max-width: 994px) {
           background: white;
           height: 40px;

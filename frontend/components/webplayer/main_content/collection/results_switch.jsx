@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export class Playlists extends React.Component {
   constructor (props) {
@@ -155,6 +155,7 @@ export class Songs extends React.Component {
                   <span className="detail-contents">{song.artist_name}</span>
                   <span class="line-separator">•</span>
                   <span className="detail-contents">{song.album_title}</span>
+                  <span className="detail-contents">{song.songUrl}</span>
                 </div>
               </div>
               <div className="more-dropdown">
@@ -180,7 +181,6 @@ export class PlaylistShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchCurrentPlaylist(Number(this.props.match.params.playlistId))
-
   }
 
   componentDidUpdate(prevProps,prevState) {
@@ -190,34 +190,34 @@ export class PlaylistShow extends React.Component {
   }
 
   setDivs() {
+
     return (
-      <h1>{this.props.match.params.playlistId}</h1>
+      <div className="art-side-container">
+        <div className="album-art">
+          <Link to="/" className="header-logo-link">
+            <span></span>
+          </Link>
+        </div>
+        <div className='content-under-album-art'>
+          <h1>{Object.values(this.props.playlist)[0]["name"]}</h1>
+          <h2 className="playlist-username">Username here</h2>
+        </div>
+        <div className="list-of-songs-container">
+        </div>
+      </div>
     )
   }
 
   render () {
     let header ;
     let album ;
+    let playlist_id ;;
     if (Object.keys(this.state.playlist).length === 1) {
       header = this.setDivs();
     }
-    debugger;
     return (
       <div className="playlist-album-show">
-        <div className="art-side-container">
-          <div className="album-art">
-            {header}
-          </div>
-          <div className='content-under-album-art'>
-
-          </div>
-        </div>
-        <div className="list-of-songs-container">
-          <ul>
-
-          </ul>
-        </div>
-        <h4>niceeee playlist or album</h4>
+        {header}
       </div>
     )
   }

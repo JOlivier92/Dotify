@@ -1,11 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { ArtistShow } from './results_switch';
-import { logout } from '../../../../actions/session_actions';
+import { fetchArtists } from '../../../../actions/artist_actions';
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    currentUser: state.entities.users[state.session.id],
+    artists: Object.keys(state.entities.artists).map(id => state.entities.artists[id])
+  };
+};
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
+  fetchArtists: () => dispatch(fetchArtists())
 });
 
 
-export default connect(null, mapDispatchToProps)(ArtistShow)
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistShow)

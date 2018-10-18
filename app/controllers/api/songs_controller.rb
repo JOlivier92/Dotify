@@ -1,7 +1,7 @@
 class Api::SongsController < ApplicationController
 
   def index
-    @songs = Song.all.includes(:album).includes(album: :artist)
+    @songs = Song.all.includes(:album).includes(album: :artist).limit(20).offset(1)
   end
 
   def show

@@ -30,8 +30,13 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    delete user["confirmEmail"]
+    if (this.state.confirmEmail !== this.state.email) {
+      if (this.props.formType === 'signup'){
+        this.render();
+      }
+    }
     if (this.state.autoLogBool) {
+      delete user["confirmEmail"]
       delete user["autoLogBool"]
       this.props.processAutoLogin((user))
     } else {
@@ -73,15 +78,18 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     if (this.props.errors.length > 0) {
-    return (
-      <ul>
-        {this.props.errors.map((error,idx) => (
-          <li key={`error-${idx}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+      if (this.state.email !== this.state.confirmEmail) {
+        this.props.errors.push("Emails do not match.")
+      }
+      return (
+        <ul className="errors">
+          {this.props.errors.map((error,idx) => (
+            <li key={`error-${idx}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      );
     } else {
       return null;
     }

@@ -29,11 +29,10 @@ class CreatePlaylist extends React.Component {
     if (playlist.name === "") {
       return ;
     }
-    this.props.createPlaylist(playlist).then(this.props.closeModal).then(this.goToPlaylistShow());
+    this.props.createPlaylist(playlist).then(() => this.props.closeModal()).then(() => this.goToPlaylistShow());
   }
 
   goToPlaylistShow() {
-    debugger;
     let id = this.props.playlists.slice(-1)[0].id;
     this.props.history.push(`/playlist/${id}`);
   }

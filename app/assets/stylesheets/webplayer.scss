@@ -6,6 +6,9 @@
   position: absolute;
   background-image: linear-gradient(rgb(18, 18, 18), rgb(8, 8, 8) 85%);
 
+  @media (max-width: 768px) {
+    min-width: 768px;
+  }
   .all-content {
     background-image: linear-gradient(rgb(64, 51, 102), rgb(6, 5, 10) 85%);
     height: 98%;
@@ -20,6 +23,7 @@
 
       @media (max-width: 720px) {
         width: 80px;
+        position: fixed;
       }
 
       .navbar-header {
@@ -123,6 +127,9 @@
     .content-container {
       flex-grow: 100;
       overflow: hidden;
+      @media (max-width: 768px) {
+        padding-left: 50px;
+      }
       .results-container {
         max-height: 100%;
         overflow-y: auto;
@@ -136,7 +143,7 @@
     background-color: #282828;
     height: 115px;
     width: inherit;
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     display: flex;

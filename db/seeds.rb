@@ -64,28 +64,55 @@ CSV.foreach('./db/songSeeds.csv') do |song|
   artist_id = Artist.find_by(name: song[1]).id
 
   unless unique_albums.include?(song[2])
+    # album_to_save = Album.new(title: song[2], artist_id: artist_id)
     Album.create(title: song[2], artist_id: artist_id)
     unique_albums.push(song[2])
   end
+
+  ################################################################
+  # create hyperlinks for each album
+  # hyperlink = "https://s3.amazonaws.com/dotify-dev/".split("")
+  ################################################################
+  # grab mp3 from aws then save song to DB with attached mp3
+  # file = EzDownload.open(mp3_target)
+  # album_to_save.art.attach(io: art_target, filename: target_file_ext)
+  # album_to_save.save!
+  # console.log("album successfully seeded with AWS")
+  ################################################################
   album_id = Album.find_by(title: song[2]).id
+
+
   # coverts 2:43 into 2*60 + 43
   song_length = (song[3][0].to_i*60 + song[3][2..3].to_i)
-  Song.create(
-    title: song[0],
-    length: song_length,
-    plays: (rand (1..1000000)),
-    artist_id: artist_id,
-    album_id: album_id
-  )
 
-  syntax error here on purpose
-  
-  track2 = Track.new(title: 'Talk To me', artist_id: artist1.id)
-  file_to_download = "https://s3.amazonaws.com/dotify-dev/#{}"
-  file = EzDownload.open('https://s3.amazonaws.com/dotify-dev/')
-  track2.audio.attach(io: file, filename: '02_Talk_to_Me.mp3')
-  track2.save!
-  Song.last.mp3.attach
+  song_to_save = Song.new(
+                 title: song[0],
+                 length: song_length,
+                 plays: (rand (1..1000000)),
+                 artist_id: artist_id,
+                 album_id: album_id
+                )
+
+  ################################################################
+  # create hyperlinks for each song
+  hyperlink = "https://s3-us-west-1.amazonaws.com/dotify-dev/fma_small/".split("")
+  target_file_ext = song[6].to_s.split("")
+  while target_file_ext.length < 6
+    target_file_ext.unshift("0")
+  end
+  mp3_target = hyperlink.concat(target_file_ext).join("")+".mp3"
+  target_file_ext = target_file_ext.join("")+".mp3"
+  ################################################################
+  # grab mp3 from aws then save song to DB with attached mp3
+  puts(mp3_target)
+  file = EzDownload.open(mp3_target)
+  puts(file)
+  song_to_save.mp3.attach(io: file, filename: target_file_ext)
+  song_to_save.save!
+  puts(song_to_save.mp3.attached?)
+  puts ("song successfully seeded with AWS")
+  ################################################################
+
   last_artist = Song.last.artist
   new_plays = last_artist.plays + Song.last.plays
   Artist.update(last_artist.id, plays: new_plays)
@@ -103,7 +130,7 @@ end
 
 
 ############################################################
-# followees_followers seeds --- biases a few popular users #
+# followees_followers seeds                                #
 ############################################################
 # grab indices of information for user follows / saves
 first_user_id = User.first.id
@@ -139,7 +166,7 @@ for i in (first_user_id..last_user_id) do
     number_of_songs = (rand 20 + 7)
 
     Playlist.create(
-      name: Faker::Lorem.sentence(1, false, 2),
+      name: Faker::Lorem.sentence(1, false, 4),
       creator_id: i
     )
 
