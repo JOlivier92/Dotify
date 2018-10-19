@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { PlaylistShow } from './results_switch';
 import { logout } from '../../../../actions/session_actions';
 import { fetchPlaylist } from '../../../../actions/playlist_actions';
+import { createAudioPlaylist } from '../../../../actions/audio_player_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return ({
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-  fetchCurrentPlaylist: id => dispatch(fetchPlaylist(id))
+    createAudioPlaylist: ([selectedSong, songsList]) => dispatch(createAudioPlaylist),
+    fetchCurrentPlaylist: id => dispatch(fetchPlaylist(id))
 }};
 
 

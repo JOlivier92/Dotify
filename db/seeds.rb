@@ -25,7 +25,7 @@ Faker::UniqueGenerator.clear
 ######################################################################
 User.create(username: 'DotifyGuest', email: 'DotifyGuest@dotify.io', password: 'examplePassword4')
 ######################################################################
-for i in (0..100) do
+for i in (0..40) do
   if i % 3 == 0
     username = Faker::GameOfThrones.unique.character
   elsif i % 3 == 1
@@ -56,7 +56,20 @@ end
 ################################################################
 unique_albums = []
 unique_artists = []
+
+# sample artworks for albums with missing art to pick randomly from 1 of 9
+# stock photos
+sampleArtworks = ["sample_artwork1.jpg", "sample_artwork2.jpeg",
+                  "sample_artwork3.jpg", "sample_artwork4.jpeg",
+                  "sample_artwork5.jpg", "sample_artwork6.jpg",
+                  "sample_artwork7.jpg", "sample_artwork8.jpg",
+                  "sample_artwork9.jpg"]
 CSV.foreach('./db/songSeeds.csv') do |song|
+  if song[5].nil?
+    p "skipping #{song[0]} due to lack of album art"
+    next
+  end
+
   unless unique_artists.include?(song[1])
     Artist.create(name: song[1])
     unique_artists.push(song[1])
@@ -65,19 +78,26 @@ CSV.foreach('./db/songSeeds.csv') do |song|
 
   unless unique_albums.include?(song[2])
     # album_to_save = Album.new(title: song[2], artist_id: artist_id)
-    Album.create(title: song[2], artist_id: artist_id)
+    album_to_save = Album.new(title: song[2], artist_id: artist_id)
     unique_albums.push(song[2])
-  end
 
-  ################################################################
-  # create hyperlinks for each album
-  # hyperlink = "https://s3.amazonaws.com/dotify-dev/".split("")
-  ################################################################
-  # grab mp3 from aws then save song to DB with attached mp3
-  # file = EzDownload.open(mp3_target)
-  # album_to_save.art.attach(io: art_target, filename: target_file_ext)
-  # album_to_save.save!
-  # console.log("album successfully seeded with AWS")
+
+    ################################################################
+    # attaching img to each album and saving to database
+    ################################################################
+    print(song)
+    album_art_string_to_find = song[5][48..-1]
+    hyperlink = "https://s3-us-west-1.amazonaws.com/dotify-dev/album_art/"
+    if File.readlines("./db/albumArtNames.txt").grep(/#{album_art_string_to_find}/).size == 1
+      image_target = hyperlink + album_art_string_to_find
+    else
+      image_target = hyperlink + sampleArtworks.sample
+    end
+    file = EzDownload.open(image_target)
+    album_to_save.art.attach(io: file, filename: album_art_string_to_find)
+    album_to_save.save!
+    puts("album #{album_to_save} seeded with AWS")
+  end
   ################################################################
   album_id = Album.find_by(title: song[2]).id
 
@@ -104,12 +124,10 @@ CSV.foreach('./db/songSeeds.csv') do |song|
   target_file_ext = target_file_ext.join("")+".mp3"
   ################################################################
   # grab mp3 from aws then save song to DB with attached mp3
-  puts(mp3_target)
   file = EzDownload.open(mp3_target)
   puts(file)
   song_to_save.mp3.attach(io: file, filename: target_file_ext)
   song_to_save.save!
-  puts(song_to_save.mp3.attached?)
   puts ("song successfully seeded with AWS")
   ################################################################
 

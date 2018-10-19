@@ -1,0 +1,23 @@
+.music-controller-container {
+  display: flex;
+  justify-content: center;
+
+  .music-player {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    color: white;
+    width: 500px;
+    justify-content: space-around;
+
+    .footer-button {
+      margin-top: 25px;
+    }
+  }
+}
+
+
+.video-player {
+  height: 0;
+  width: 0;
+}

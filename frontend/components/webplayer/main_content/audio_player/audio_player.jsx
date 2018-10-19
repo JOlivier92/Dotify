@@ -62,13 +62,13 @@ class AudioPlayer extends React.Component{
   playToggle() {
 
     if (this.state.playing === true) {
-      document.getElementById("playbutton")
-              .classList.add('not-playing');
+      // document.getElementById("playbutton")
+      //         .classList.add('not-playing');
 
       this.setState({playing: false})
     } else {
-      document.getElementById("playbutton")
-              .classList.add('currently-playing');
+      // document.getElementById("playbutton")
+      //         .classList.add('currently-playing');
 
       this.setState({playing: true})
     }
@@ -101,14 +101,15 @@ class AudioPlayer extends React.Component{
   render(){
 
     return (
-      <div className="music player">
-        <button onClick={this.playToggle}
-                id="playbutton"
-                className="toggle-button footer-button">
-        </button>
+      <div className="music-player">
+
         <button onClick={this.radioPlay}
                 id="radiobutton"
                 className="radio-button footer-button">
+        </button>
+        <button onClick={this.playToggle}
+                id="playbutton"
+                className="toggle-button footer-button">
         </button>
         <button onClick={this.shufflePlay}
                 id="shufflebutton"

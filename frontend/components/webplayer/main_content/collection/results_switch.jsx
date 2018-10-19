@@ -36,7 +36,6 @@ export class Playlists extends React.Component {
                 </div>
                 <div className="playlist-details-container">
                   <span className="playlist-name">
-
                     <Link to= {`${`/playlist/${playlist.id}`}`} className="playlist-link">{playlist.name}</Link>
                   </span>
                   <span className="playlist-creator">{playlist.creator.username}</span>
@@ -58,6 +57,7 @@ export class Artists extends React.Component {
   }
 
   componentDidMount() {
+    debugger;
     this.props.fetchArtists();
   }
 
@@ -122,8 +122,7 @@ export class Albums extends React.Component {
         {truncated.map( (album) => (
             <li className="album-item">
               <div className="album-information-container">
-                <div className="album-image">
-                </div>
+                <img className="album-image" src={album.art_url}></img>
                 <div className="album-details-container">
                   <span className="detail-contents">
                     <Link to= {`${`/album/${album.id}`}`} className="album-link">{album.title}</Link>
@@ -185,7 +184,6 @@ export class Songs extends React.Component {
                 </div>
               </div>
               <div className="more-dropdown">
-
               </div>
               <div className="track-length">
                 0:30
@@ -363,7 +361,6 @@ export class AlbumShow extends React.Component {
   }
 
   componentDidMount() {
-    debugger;
     this.props.fetchCurrentAlbum(Number(this.props.match.params.albumId))
   }
 
@@ -375,7 +372,8 @@ export class AlbumShow extends React.Component {
   }
 
   setDivs() {
-    let albumId = Number(this.props.match.url.slice(7))
+    let albumId ;
+    albumId = Number(this.props.match.url.slice(7))
     let songsList ;
     let contentUnderTitle ;
     debugger;
@@ -406,7 +404,6 @@ export class AlbumShow extends React.Component {
                             </div>
                           </div>
                           <div className="more-dropdown">
-
                           </div>
                           <div className="track-length">
                             0:30
@@ -447,10 +444,11 @@ export class AlbumShow extends React.Component {
   render () {
     let header ;
     let album ;
-    let album_id ;
     debugger;
     if (Object.keys(this.props.albums).length === 1) {
       header = this.setDivs();
+    } else if (Object.keys(this.props.albums).length > 1) {
+      header = null
     }
     debugger;
     return (

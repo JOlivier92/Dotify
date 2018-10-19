@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     albums: state.entities.albums
   });
-};
+}
 
 const mapDispatchToProps = dispatch => ({
   fetchCurrentAlbum: id => dispatch(fetchAlbum(id))

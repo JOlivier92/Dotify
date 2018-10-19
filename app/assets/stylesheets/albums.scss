@@ -20,16 +20,9 @@
 
 
     .album-information-container {
-      .album-image:hover {
-        content: ' ';
-        height: 100%;
-        width: 100%;
-        background-color: rgba(0,0,0,.5);
-      }
+
       .album-image {
         width: 100%;
-        padding-top: 100%;
-        background-image: image_url("sample_album_art");
         background-size: 100%;
         background-repeat: no-repeat;
         min-width: 150px;

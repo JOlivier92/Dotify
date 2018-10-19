@@ -17,7 +17,7 @@
 
     .navbar-options {
       width: 220px;
-      height: inherit;
+      height: 87%;
       background-color: rgba(0,0,0,.8);
       z-index: 10;
 
@@ -122,10 +122,15 @@
         justify-content: flex-end;
         height: 44%;
         .navbar-username {
+          align-self: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
           color: white;
           margin-bottom: 5px;
         }
         button {
+          align-self: center;
+          width: 140px;
           background-color: #1db954;
           height: 20px;
           font-family: inherit;
@@ -143,6 +148,7 @@
     .content-container {
       flex-grow: 100;
       overflow: hidden;
+      height: 87%;
       @media (max-width: 768px) {
         padding-left: 50px;
       }
