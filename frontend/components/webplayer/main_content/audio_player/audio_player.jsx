@@ -21,21 +21,28 @@ class AudioPlayer extends React.Component{
   }
 
   componentDidMount() {
+    debugger;
     // this.props.fetchSongs();
   }
 
+  componentWillReceiveProps(nextProps) {
+    debugger;
+  }
+
   componentDidUpdate(prevProps,prevState) {
+    debugger;
     if (prevProps !== this.props) {
-      let newUrl = this.props.songs[0].songUrl
+      let newUrl = this.props.currentQueue[0][2]
       this.setState({
         url: newUrl,
-        songQueue: this.props.songs.slice(1),
+        songQueue: this.props.currentQueue.slice(1),
         playing: true
       })
     }
     // updated whenever action is sent
     console.log('video player updated')
     console.log(this.state.playing)
+    debugger;
 
   }
 
@@ -75,6 +82,7 @@ class AudioPlayer extends React.Component{
   }
 
   nextInQueue() {
+    debugger;
     let currentQueue = this.state.songQueue
     let newRecentlyPlayedState = this.state.recentlyPlayed
     newRecentlyPlayedState.push(this.state.url)
@@ -86,15 +94,21 @@ class AudioPlayer extends React.Component{
     } else {
       let nextURLState = currentQueue.shift();
       this.setState ({
-        url: nextURLState.songUrl,
+        url: nextURLState[2],
         songQueue: currentQueue,
         recentlyPlayed: newRecentlyPlayedState
       });
     }
+    debugger;
   }
 
 
   onProgress (info) {
+    console.log(info);
+    if (info.playedSeconds >= info.loadedSeconds) {
+      this.nextInQueue()
+    }
+    // then(() => this.props.updateRecentlyPlayed(this.state.recentlyPlayed));
     // use this for playing bar
   }
 
@@ -122,7 +136,7 @@ class AudioPlayer extends React.Component{
               width = '0%'
               url = {this.state.url}
               playing = {this.state.playing}
-              onEnded = {this.nextInQueue}
+              onEnded = {() => this.nextInQueue}
               onProgress = {(info) => this.onProgress(info)}
               />
           </div>

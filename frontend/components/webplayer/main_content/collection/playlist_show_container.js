@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { PlaylistShow } from './results_switch';
 import { logout } from '../../../../actions/session_actions';
 import { fetchPlaylist } from '../../../../actions/playlist_actions';
-import { createAudioPlaylist } from '../../../../actions/audio_player_actions';
+import { createAudioPlaylist, setCurrentSong } from '../../../../actions/audio_player_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return ({
@@ -12,12 +12,12 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
+  debugger;
   return {
-    createAudioPlaylist: ([selectedSong, songsList]) => dispatch(createAudioPlaylist),
-    fetchCurrentPlaylist: id => dispatch(fetchPlaylist(id))
+    createAudioPlaylist: playlistId => dispatch(createAudioPlaylist(playlistId)),
+    fetchCurrentPlaylist: id => dispatch(fetchPlaylist(id)),
+    setCurrentSong: songId => dispatch(setCurrentSong(songId))
 }};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaylistShow)
-
-// Object.keys(state.entities.playlists).map(id => state.entities.playlists[id])[0]

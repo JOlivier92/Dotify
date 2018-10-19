@@ -4,5 +4,5 @@ import audioPlayer from './audio_player_reducer'
 
 export default combineReducers({
   modal,
-  musicPlayer
+  audioPlayer
 });

@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import Sidebar from './sidebar';
 import { logout } from '../../actions/session_actions';
 
+
 const mapStateToProps = (state, ownProps) => {
+  debugger;
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    recentlyPlayed: state.ui.recentlyPlayed
   };
 };
 

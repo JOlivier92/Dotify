@@ -17,7 +17,7 @@ class Api::PlaylistsController < ApplicationController
   def show
     @playlist = Playlist.find(params[:id])
     @songsArr = []
-    @playlist.songs.each {|song| @songsArr.push([song.artist.name,song.album.title])}
+    @playlist.songs.each {|song| @songsArr.push([song.artist.name,song.album.title,url_for(song.mp3),url_for(song.album.art)])}
   end
 
   # creates an index of playlist given input params

@@ -27,6 +27,7 @@ export class Playlists extends React.Component {
     if (truncated.length === 0) {
       return null
     } else {
+      debugger;
     return (
       <ul className="playlists-list">
         {truncated.map( (playlist) => (
@@ -200,8 +201,8 @@ export class PlaylistShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {playlist: {}, songs:{}};
-    this.setDivs = this.setDivs.bind(this)
-    this.goBacktoBrowse = this.goBacktoBrowse.bind(this)
+    this.setDivs = this.setDivs.bind(this);
+    this.goBacktoBrowse = this.goBacktoBrowse.bind(this);
   }
 
   goBacktoBrowse() {
@@ -258,12 +259,12 @@ export class PlaylistShow extends React.Component {
                   <ul className="random-song-list">
                     <li>
                       {songsObj.map((song,i) => (
-                        <li className="song-item">
+                        <li className="song-item" >
                           <div className="cute-icon">
                             ♪
                           </div>
                           <div className="track-details-container">
-                            <span className="track-title">{song.title} </span>
+                            <span className="track-title" onClick={() => this.props.createAudioPlaylist(playlistId)}>{song.title} </span>
                             <div className="other-track-details">
                               <span className="detail-contents">
                                 <Link to= {`${`/artist/${song.artist_id}`}`} className="artist-link">{this.props.playlist[playlistId].songInfoList[i][0]}</Link>
