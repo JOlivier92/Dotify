@@ -5,7 +5,7 @@ const albumsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ALBUM:
-      return merge({}, state, {[action.album.id]: action.album});
+      return merge({}, state, action.album);
     case RECEIVE_ALBUMS:
       return action.albums;
     default:
@@ -14,3 +14,6 @@ const albumsReducer = (state = {}, action) => {
 };
 
 export default albumsReducer;
+
+
+// return merge({}, state, {[Number(Object.keys(action.album)[0])]: action.album});

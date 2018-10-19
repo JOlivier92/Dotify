@@ -9,7 +9,7 @@ const mapStateToProps = ({entities: { playlists, users },  errors }) => {
   return {
     playlists: Object.keys(playlists).map(id => playlists[id]),
     errors: errors.session,
-    currentUser: users[session.id]
+
   };
 };
 

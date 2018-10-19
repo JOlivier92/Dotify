@@ -21,8 +21,8 @@ export const receiveArtist = artist => ({
   artist
 });
 
-export const fetchArtist = () => dispatch => (
-  APIUtil.fetchArtist()
+export const fetchArtist = (id) => dispatch => (
+  APIUtil.fetchArtist(id)
     .then(artist => dispatch(receiveArtists(artist)))
 );
 //

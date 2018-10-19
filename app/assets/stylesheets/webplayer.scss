@@ -26,6 +26,11 @@
         position: fixed;
       }
 
+      ul {
+        padding-bottom: 10px;
+        border-bottom: 1px solid gray;
+      }
+
       .navbar-header {
         width: 100%;
         display: flex;
@@ -54,7 +59,9 @@
       }
       ul {
         padding-left: 24px;
-
+        .active {
+          color: green;
+        }
         .navbar-group {
           display: flex;
           flex-direction: row;
@@ -66,9 +73,8 @@
           @media (max-width: 720px) {
             padding-left: 0;
           }
-
-          :focus {
-            border: 5px solid green;
+          .active {
+            color: green;
           }
 
           .icon {
@@ -86,14 +92,12 @@
             color: gray;
             margin: 0;
 
-            :hover {
-              font-size: 50px;
-              color: white;
-            }
+
             @media (max-width: 720px) {
               display: none;
             }
           }
+
           hr {
             height: 23px;
             border: 1px solid rgba(255, 255, 255, 0.6);
@@ -113,14 +117,26 @@
 
       }
       .navbar-logout {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 44%;
+        .navbar-username {
+          color: white;
+          margin-bottom: 5px;
+        }
         button {
-          margin-top: 169px;
           background-color: #1db954;
           height: 20px;
           font-family: inherit;
           font-weight: 800;
           border-radius: 15px;
           font-size: 15px;
+          border: 0;
+        }
+        button:hover {
+          height: 25px;
+          transition: 0.3s;
         }
       }
     }
@@ -170,25 +186,6 @@
 }
 
 
-.navbar-group:hover {
-  a {
-    color: green;
-    padding: 1px;
-  }
-}
-.navbar-group:click {
-  color: green;
-}
-.navbar-group:active {
-  color: green;
-  border: 3px solid red;
-}
-
-.navbar-text:hover {
-  color: white;
-}
-
-
 
 
 // background gradients grabbed from spotify; not all are used
@@ -225,4 +222,8 @@
 
 .collection_made_for_you {
   background-image: linear-gradient(rgb(90, 63, 71), rgb(9, 6, 7) 85%) !important;
+}
+
+.active {
+  color: green;
 }

@@ -5,6 +5,9 @@
     flex-direction: column;
     height: 96%;
 
+    .results-container {
+      overflow-x: hidden;
+    }
     .contents-header-list {
       display: flex;
       flex-direction: row;
@@ -13,7 +16,6 @@
       margin: 0;
 
       .c-header-item {
-
         .c-header-item-link {
           font-size: 12px;
           font-weight: 500;

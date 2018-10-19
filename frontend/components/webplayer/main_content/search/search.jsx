@@ -46,20 +46,20 @@ class Search extends React.Component {
           <li className="c-header-item">
             <NavLink to="/search/recent"
               className="c-header-item-link"
-              activeClassName="active" >Artists
+              activeClassName="active2" >Artists
             </NavLink>
 
           </li>
           <li className="c-header-item">
             <NavLink to="/search/recent"
               className="c-header-item-link"
-              activeClassName="active" >Songs
+              activeClassName="active2" >Songs
             </NavLink>
           </li>
           <li className="c-header-item">
             <NavLink to="/search/recent"
               className="c-header-item-link"
-              activeClassName="active" >Albums
+              activeClassName="active2" >Albums
             </NavLink>
           </li>
         </ul>

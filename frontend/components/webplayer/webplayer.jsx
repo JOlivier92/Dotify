@@ -13,6 +13,7 @@ import SearchContainer from './main_content/search/search_container';
 import CollectionContainer from './main_content/collection/collection_container';
 import ArtistShowContainer from './main_content/collection/artist_show_container';
 import PlaylistShowContainer from './main_content/collection/playlist_show_container';
+import AlbumShowContainer from './main_content/collection/album_show_container';
 // footer
 import FooterContainer from './footer_container';
 import AudioPlayerContainer from './main_content/audio_player/audio_player_container';
@@ -39,7 +40,7 @@ class Webplayer extends React.Component {
 
 
             <ProtectedRoute path="/playlist/:playlistId" component={PlaylistShowContainer} />
-            <ProtectedRoute path="/album/:albumId" component={PlaylistShowContainer} />
+            <ProtectedRoute path="/album/:albumId" component={AlbumShowContainer} />
             <ProtectedRoute path="/artist/:artistId" component={ArtistShowContainer} />
             <Redirect to="/404/"/>
           </Switch>

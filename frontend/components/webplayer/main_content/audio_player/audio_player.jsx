@@ -21,11 +21,7 @@ class AudioPlayer extends React.Component{
   }
 
   componentDidMount() {
-    this.props.fetchSongs();
-    debugger;
-    // seems to only mount once
-    console.log('video player mounted')
-    debugger;
+    // this.props.fetchSongs();
   }
 
   componentDidUpdate(prevProps,prevState) {
@@ -39,7 +35,6 @@ class AudioPlayer extends React.Component{
     }
     // updated whenever action is sent
     console.log('video player updated')
-    debugger;
     console.log(this.state.playing)
 
   }

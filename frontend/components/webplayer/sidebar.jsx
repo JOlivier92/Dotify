@@ -5,28 +5,30 @@ import { FaBeer, FaSearch, FaHome } from 'react-icons/fa';
 class Sidebar extends React.Component {
   render () {
     const {logout} = this.props;
-    debugger;
     return (
       <div className="navbar-options">
         <div className="navbar-header">
-          <Link to="/browse/featured" className="home-link">
+          <Link to="/browse/featured" className="home-link" >
             <span></span>
           </Link>
         </div>
         <ul>
           <li className="navbar-group">
               <FaSearch className="icon" />
-              <NavLink to="/search/recent" className="navbar-text" activeClassName="active" >Search</NavLink>
+              <NavLink to="/search/recent"
+                       className="navbar-text"
+                       activeClassName="active2" >Search
+              </NavLink>
           </li>
           <li className="navbar-group">
             <FaHome className="icon" />
-            <Link to="/browse/featured" className="navbar-text">Home</Link>
+            <Link to="/browse/featured" className="navbar-text" activeClassName="active2">Home</Link>
           </li>
           <li className="navbar-group vertlines">
             <hr width="1" size=""/>
             <hr width="1" size=""/>
             <hr width="1" size="" className="rotated-line"/>
-            <Link to="/collection/playlists" className="navbar-text" >Your Library</Link>
+            <Link to="/collection/playlists" className="navbar-text" activeClassName="active2" >Your Library</Link>
           </li>
         </ul>
         <div className="recently-played"></div>

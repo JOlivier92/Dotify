@@ -79,7 +79,6 @@ export class Artists extends React.Component {
         {truncated.map( (artist) => (
             <li className="artist-item">
               <div className="artist-image">
-                image here
               </div>
               <div className="artist-details-container">
                 <span className="artist-name">{artist.name}</span>
@@ -126,8 +125,12 @@ export class Albums extends React.Component {
                 <div className="album-image">
                 </div>
                 <div className="album-details-container">
-                  <span className="album-name">{album.title}</span>
-                  <span className="album-creator">{album.artist.name}</span>
+                  <span className="detail-contents">
+                    <Link to= {`${`/album/${album.id}`}`} className="album-link">{album.title}</Link>
+                  </span>
+                  <span className="detail-contents">
+                    <Link to= {`${`/artist/${album.artist.id}`}`} className="artist-link">{album.artist.name}</Link>
+                  </span>
                 </div>
               </div>
             </li>
@@ -147,6 +150,7 @@ export class Songs extends React.Component {
 
   componentDidMount() {
     this.props.fetchSongs();
+    debugger;
   }
 
   render () {
@@ -160,6 +164,7 @@ export class Songs extends React.Component {
         i++
       };
     };
+    debugger;
     return (
       <ul className="random-song-list">
         {truncated.map( (song,i) => (
@@ -170,9 +175,13 @@ export class Songs extends React.Component {
               <div className="track-details-container">
                 <span className="track-title">{song.title} </span>
                 <div className="other-track-details">
-                  <span className="detail-contents">{song.artist_name}</span>
+                  <span className="detail-contents">
+                    <Link to= {`${`/artist/${song.artist.id}`}`} className="artist-link">{song.artist.name}</Link>
+                  </span>
                   <span class="line-separator">•</span>
-                  <span className="detail-contents">{song.album_title}</span>
+                  <span className="detail-contents">
+                    <Link to= {`${`/album/${song.album.id}`}`} className="album-link">{song.album.title}</Link>
+                  </span>
                 </div>
               </div>
               <div className="more-dropdown">
@@ -194,9 +203,15 @@ export class PlaylistShow extends React.Component {
     super(props)
     this.state = {playlist: {}, songs:{}};
     this.setDivs = this.setDivs.bind(this)
+    this.goBacktoBrowse = this.goBacktoBrowse.bind(this)
+  }
+
+  goBacktoBrowse() {
+    this.props.history.push(`/browse/featured`);
   }
 
   componentDidMount() {
+    debugger;
     this.props.fetchCurrentPlaylist(Number(this.props.match.params.playlistId))
   }
 
@@ -207,37 +222,98 @@ export class PlaylistShow extends React.Component {
   }
 
   setDivs() {
-    let playlistId = Number(this.props.match.params.playlistId)
-    return (
-      <div className="art-side-container">
-        <div className="album-art">
-          <Link to="/" className="header-logo-link">
-            <span></span>
-          </Link>
-        </div>
-        <div className='content-under-album-art'>
-          <h1>{Object.values(this.props.playlist)[0]["name"]}</h1>
-          <h2 className="playlist-username">{this.state.playlist[playlistId].creator.username}</h2>
-        </div>
-        <div className="list-of-songs-container">
-          <ul>
-            <li>
+    let playlistId = Number(this.props.match.url.slice(10))
+    let songsList ;
+    let contentUnderTitle ;
+    debugger;
+    if (typeof this.props.playlist[playlistId] === 'undefined') {
+      this.props.fetchCurrentPlaylist(playlistId)
 
-            </li>
-          </ul>
+    } else if (this.props.playlist[playlistId].songList.length === 0) {
+      songsList = <div className="empty-song-list-container">
+                    <svg width="80" height="79" viewBox="0 0 80 79" xmlns="http://www.w3.org/2000/svg">
+                      <title>Album</title>
+                      <path d="M76.8 3.138v72.126H3.2V3.138h73.6zM80
+                            0H0v78.398h80V0zM40 20.8c-9.72 0-17.6 7.88-17.6
+                            17.6C22.4 48.12 30.28 56 40 56c9.72 0 17.6-7.88
+                            17.6-17.6 0-9.72-7.88-17.6-17.6-17.6zm0 3.2c7.94
+                            0 14.4 6.46 14.4 14.4S47.94 52.8 40
+                            52.8s-14.4-6.46-14.4-14.4S32.06 24 40 24z"
+                            fill="currentColor"
+                            fill-rule="evenodd">
+                        </path>
+                      </svg>
+                  <h1 className="empty-container">It's a bit empty here...</h1>
+                  <h4 className="return-container">Find more of the music you love among our New Releases</h4>
+                  <button onClick={this.goBacktoBrowse} className="back-to-browse btn">Browse</button>
+                </div>
+       contentUnderTitle = <div className='content-under-album-art'>
+                            <h1 className="playlist-name">{Object.values(this.props.playlist)[0]["name"]}</h1>
+                            <h4 className="playlist-username">{this.state.playlist[playlistId].creator.username}</h4>
+                          </div>
+    } else {
+      let songsObj ;
+      debugger;
+
+      songsObj = this.props.playlist[playlistId].songList;
+      songsList = <div className="results-container">
+                  <ul className="random-song-list">
+                    <li>
+                      {songsObj.map((song,i) => (
+                        <li className="song-item">
+                          <div className="cute-icon">
+                            ♪
+                          </div>
+                          <div className="track-details-container">
+                            <span className="track-title">{song.title} </span>
+                            <div className="other-track-details">
+                              <span className="detail-contents">
+                                <Link to= {`${`/artist/${song.artist_id}`}`} className="artist-link">{this.props.playlist[playlistId].songInfoList[i][0]}</Link>
+                              </span>
+                              <span class="line-separator">•</span>
+                              <span className="detail-contents">
+                                <Link to= {`${`/album/${song.album_id}`}`} className="album-link">{this.props.playlist[playlistId].songInfoList[i][1]}</Link>
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </li>
+                  </ul>
+                </div>
+      contentUnderTitle = <div className='content-under-album-art'>
+                           <h1 className="playlist-name">{Object.values(this.props.playlist)[0]["name"]}</h1>
+                           <h4 className="playlist-username">{this.state.playlist[playlistId].creator.username}</h4>
+                         </div>
+    }
+    return (
+      <div className="playlist-show-container">
+        <div className="art-side-container">
+          <div className="album-art">
+            <Link to="/" className="header-logo-link">
+              <span></span>
+            </Link>
+          </div>
+          <div className='content-under-album-art'>
+            <h1 className="playlist-name">{Object.values(this.props.playlist)[0]["name"]}</h1>
+            <h4 className="playlist-username">{this.state.playlist[playlistId].creator.username}</h4>
+          </div>
         </div>
-      </div>
+        <div className="playlist-side-container">
+          {songsList}
+        </div>
+    </div>
     )
   }
 
   render () {
-    debugger;
     let header ;
     let album ;
-    let playlist_id ;;
+    let playlist_id ;
     if (Object.keys(this.state.playlist).length === 1) {
       header = this.setDivs();
     }
+    debugger;
     return (
       <div className="playlist-album-show">
         {header}
@@ -251,10 +327,135 @@ export class ArtistShow extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    debugger;
+    this.props.fetchCurrentArtist(Number(this.props.match.params.artistId))
+  }
+
+  componentDidUpdate(prevProps,prevState) {
+    let currentArtistId ;
+    currentArtistId = Number(this.props.match.params.artistId)
+    if (Number(prevProps.match.params.artistId) !== currentArtistId) {
+      this.props.fetchCurrentArtist(currentArtistId)
+    }
+  }
+
   render () {
+    debugger;
     return (
       <div>
         <h4>niceeee artist</h4>
+      </div>
+    )
+  }
+}
+
+export class AlbumShow extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {album: {}, songs:{}};
+    this.setDivs = this.setDivs.bind(this)
+    this.goBacktoBrowse = this.goBacktoBrowse.bind(this)
+  }
+
+  goBacktoBrowse() {
+    this.props.history.push(`/browse/featured`);
+  }
+
+  componentDidMount() {
+    debugger;
+    this.props.fetchCurrentAlbum(Number(this.props.match.params.albumId))
+  }
+
+  componentDidUpdate(prevProps,prevState) {
+    debugger;
+    if (this.props === prevProps) {
+      this.setState({album: this.props.albums})
+    }
+  }
+
+  setDivs() {
+    let albumId = Number(this.props.match.url.slice(7))
+    let songsList ;
+    let contentUnderTitle ;
+    debugger;
+    if (typeof this.props.albums[albumId] === 'undefined') {
+      this.props.fetchCurrentAlbum(albumId)
+
+    } else {
+      let songsObj ;
+      debugger;
+
+      songsObj = this.props.albums[albumId].songList;
+      songsList = <div className="results-container">
+                  <ul className="random-song-list">
+                    <li>
+                      {songsObj.map((song,i) => (
+                        <li className="song-item">
+                          <div className="cute-icon">
+                            ♪
+                          </div>
+                          <div className="track-details-container">
+                            <span className="track-title">{song.title} </span>
+                            <div className="other-track-details">
+                              <span className="detail-contents">
+                              </span>
+                              <span class="line-separator">•</span>
+                              <span className="detail-contents">
+                              </span>
+                            </div>
+                          </div>
+                          <div className="more-dropdown">
+
+                          </div>
+                          <div className="track-length">
+                            0:30
+                          </div>
+                        </li>
+                      ))}
+                    </li>
+                  </ul>
+                </div>
+      debugger;
+      contentUnderTitle = <div className='content-under-album-art'>
+                           <h1 className="album-name">{this.props.albums[albumId].title}</h1>
+                           <h4 className="album-username">{this.props.albums[albumId].artist.name}</h4>
+                         </div>
+    }
+    return (
+      <div className="album-show-container">
+        <div className="art-side-container">
+          <div className="album-art">
+            <Link to="/" className="header-logo-link">
+              <span></span>
+            </Link>
+          </div>
+          <div className='content-under-album-art'>
+            <h1 className="album-name">{Object.values(this.props.albums)[0]["name"]}</h1>
+            <h4 className="album-username">
+              <Link to= {`${`/artist/${this.props.albums[albumId].id}`}`} className="playlist-link">{this.props.albums[albumId].artist.name}</Link>
+            </h4>
+          </div>
+        </div>
+        <div className="album-side-container">
+          {songsList}
+        </div>
+    </div>
+    )
+  }
+
+  render () {
+    let header ;
+    let album ;
+    let album_id ;
+    debugger;
+    if (Object.keys(this.props.albums).length === 1) {
+      header = this.setDivs();
+    }
+    debugger;
+    return (
+      <div className="album-album-show">
+        {header}
       </div>
     )
   }

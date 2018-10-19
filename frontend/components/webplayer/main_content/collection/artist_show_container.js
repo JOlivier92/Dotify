@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { ArtistShow } from './results_switch';
-import { fetchArtists } from '../../../../actions/artist_actions';
+import { fetchArtist } from '../../../../actions/artist_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -9,9 +9,11 @@ const mapStateToProps = (state, ownProps) => {
     artists: Object.keys(state.entities.artists).map(id => state.entities.artists[id])
   };
 };
-const mapDispatchToProps = dispatch => ({
-  fetchArtists: () => dispatch(fetchArtists())
-});
+const mapDispatchToProps = dispatch => {
+  return {
+  fetchCurrentArtist: id => dispatch(fetchArtist(id))
+  }
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistShow)

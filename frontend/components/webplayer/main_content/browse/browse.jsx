@@ -1,5 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Switch } from 'react-router-dom';
+import { ProtectedRoute } from '../../../../utils/route_util';
+import Playlists from '../collection/playlists_container';
+import PlaylistShow from '../collection/playlist_show_container';
 
 class Browse extends React.Component {
   constructor (props) {
@@ -33,9 +36,14 @@ class Browse extends React.Component {
           <h1 className="welcome-message">Made for {this.props.currentUser.username}</h1>
         </div>
         <div className="results-container">
-          Results go here
+          <div className="results-container">
+            <Switch>
+              <ProtectedRoute path="/browse/featured" component={Playlists} />
+
+            </Switch>
         </div>
     </div>
+  </div>
     );
   };
 };

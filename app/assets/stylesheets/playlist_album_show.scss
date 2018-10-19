@@ -1,0 +1,128 @@
+.content-container {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  line-height: 1;
+  letter-spacing: 1px;
+
+  .playlist-album-show {
+
+
+    .playlist-show-container {
+      display: flex;
+      flex-direction: row;
+      padding: 32px;
+      height: 800px;
+      @media (max-width: 1211px) {
+        flex-direction: column;
+      }
+
+      .art-side-container {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media (max-width: 1211px) {
+          width: 30%;
+          display: flex;
+          flex-direction: row;
+          .content-under-album-art {
+            padding-left: 30px;
+
+            .playlist-name {
+
+
+            }
+          }
+        }
+        .album-art {
+          background-image: image_url('blank-album-art');
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 100%;
+          max-width: 280px;
+          padding-top: 100%;
+          min-width: 180px;
+          padding-bottom: 0;
+        }
+        .content-under-album-art {
+          letter-spacing: -.005em;
+          color: #fff;
+          text-transform: none;
+          text-align: center;
+
+          .playlist-name {
+            font-size: 28px;
+            line-height: 36px;
+
+          }
+          .playlist-creator {
+            color: hsla(0,0%,100%,.6);
+            height: auto;
+            margin-bottom: .3em;
+            text-decoration: none;
+          }
+        }
+
+      }
+      .playlist-side-container {
+        width: 75%;
+        padding-left: 100px;
+
+        svg {
+          color: #D3D3D3
+        }
+
+        .empty-song-list-container {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+
+          .empty-container {
+            color: #fff;
+            font-size: 46px;
+          }
+          .return-container {
+            color: gray;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            font-size: 13px;
+          }
+        }
+
+        .list-of-songs-container {
+
+        }
+      }
+    }
+  }
+}
+
+.back-to-browse {
+  font-size: 12px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  line-height: 1;
+  border-radius: 500px;
+  margin-top: 28px;
+  padding: 15px 40px 16px;
+  letter-spacing: 1px;
+  min-width: 160px;
+  font-weight: 300;
+  text-transform: uppercase;
+  white-space: normal;
+  background: #fff;
+  color: black;
+  outline: none;
+}
+
+.back-to-browse:hover {
+  height: 50px;
+  width: 170px;
+  transition: 0.4s;
+}
+
+.playlist-username {
+  font-weight: 400;
+  font-size: 13px;
+  color: #d3d3d3;
+}

@@ -1,0 +1,37 @@
+.artists-list {
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+
+  .artist-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 16.66%;
+    padding: 4%;
+
+    .artist-image {
+      background-image: image_url('girl.png');
+      margin: 8px;
+      width: 150px;
+      min-width: 100px;
+      background-size: 100%;
+      padding: 8px;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      height: 150px;
+      background-color: #d3d3d3
+    }
+
+    .artist-details-container {
+      .artist-name {
+        color: white;
+      }
+    }
+  }
+}

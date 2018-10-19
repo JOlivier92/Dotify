@@ -16,7 +16,8 @@ class Api::PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
-    @playlist.songs
+    @songsArr = []
+    @playlist.songs.each {|song| @songsArr.push([song.artist.name,song.album.title])}
   end
 
   # creates an index of playlist given input params
