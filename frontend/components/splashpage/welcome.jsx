@@ -38,14 +38,14 @@ class Welcome extends React.Component {
                 <Link to="/signup" className="login-signup-link grayed-link">
                   Sign up
                 </Link>
-                <a target="_blank" className="login-signup-link no-hover">
+                <a target="_blank" className="login-signup-link no-hover bar">
                   |
                 </a>
                 <a target="_blank" className="login-signup-link" href="https://github.com/JOlivier92/Dotify">
-                  Github
+                  <i class="fab fa-github" />
                 </a>
-                <a target="_blank" className="login-signup-link" href="https://www.linkedin.com/in/joseph-olivier/">
-                  Linked In
+                <a target="_blank" className="login-signup-link linkedin-svg" href="https://www.linkedin.com/in/joseph-olivier/">
+                  <i class="fab fa-linkedin"></i>
                 </a>
               </nav>
             </div>

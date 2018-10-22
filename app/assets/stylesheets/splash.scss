@@ -129,6 +129,16 @@
           width: 450px;
         }
 
+        .fab {
+          font-size: 30px;
+        }
+        .github-svg {
+          margin-top: 20px;
+          background-image: image_url('github-square-brands.svg');
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+
       }
     }
     a {
@@ -150,6 +160,7 @@
     a:not(.no-hover):hover {
       outline: 0;
       color: #1ED760;
+      transition: 0.5s;
     }
 
     }
@@ -220,7 +231,7 @@
   margin: 0;
   padding: 0;
   background-color: black;
-  height: 540px;
+  height: 440px;
 
   .content-container {
     color: white;
@@ -299,7 +310,7 @@
     width: auto;
     font-size: 12px;
     color: #919496;
-    margin-top: 10%;
+    margin-top: 3%;
 
     .USA-flag-area {
 
@@ -307,7 +318,7 @@
         display: flex;
         flex-direction: row;
         .USA-text {
-
+          font-weight: 400;
         }
         .flag-icon {
           margin: 12px 0 0 10px;
@@ -321,5 +332,11 @@
     }
   }
 }
+
+.bar {
+  padding-left: 10px;
+}
+
+
 
 @-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
