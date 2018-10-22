@@ -15,42 +15,112 @@ class Welcome extends React.Component {
   }
 
   sessionLinks() {
-    return (
-      <div className="splash-page">
-          <header className="welcome-box">
-            <div className="container">
-              <div className="navbar-main-elements">
-                <div className="navbar-logo">
-                  <div className="header-logo-link-container">
-                    <Link to="/" className="header-logo-link">
-                      <span></span>
-                    </Link>
-                  </div>
+    return <div className="splash-page">
+        <header className="welcome-box">
+          <div className="container">
+            <div className="navbar-main-elements">
+              <div className="navbar-logo">
+                <div className="header-logo-link-container">
+                  <Link to="/" className="header-logo-link">
+                    <span />
+                  </Link>
                 </div>
-                <div className="hamburger" onClick={() => this.toggleLinks()}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <nav className={`login-signup-links ${this.state.isLinksActive ? "active" : ""}`}>
-                  <Link to="/login" className="login-signup-link grayed-link">Log In</Link>
-                  <Link to="/signup" className="login-signup-link grayed-link">Sign up</Link>
-                  <a target="_blank" className="login-signup-link no-hover">|</a>
-                  <a target="_blank" className="login-signup-link" href="https://github.com/JOlivier92/Dotify">Github</a>
-                  <a target="_blank" className="login-signup-link" href="https://www.linkedin.com/in/joseph-olivier/">Linked In</a>
-                </nav>
               </div>
+              <div className="hamburger" onClick={() => this.toggleLinks()}>
+                <span />
+                <span />
+                <span />
+              </div>
+              <nav className={`login-signup-links ${this.state.isLinksActive ? "active" : ""}`}>
+                <Link to="/login" className="login-signup-link grayed-link">
+                  Log In
+                </Link>
+                <Link to="/signup" className="login-signup-link grayed-link">
+                  Sign up
+                </Link>
+                <a target="_blank" className="login-signup-link no-hover">
+                  |
+                </a>
+                <a target="_blank" className="login-signup-link" href="https://github.com/JOlivier92/Dotify">
+                  Github
+                </a>
+                <a target="_blank" className="login-signup-link" href="https://www.linkedin.com/in/joseph-olivier/">
+                  Linked In
+                </a>
+              </nav>
             </div>
-            <div className="splash-body">
-              <h1>Music for everyone.</h1>
-              <h4>Thousands of songs. No credit card needed.</h4>
-              <Link to="/login" >SIGN IN AS GUEST</Link>
-            </div>
-          </header>
+          </div>
+          <div className="splash-body">
+            <h1>Music for everyone.</h1>
+            <h4>Thousands of songs. No credit card needed.</h4>
+            <Link to="/login">SIGN IN AS GUEST</Link>
+          </div>
+        </header>
         <footer className="splash-footer">
+          <div className="content-container">
+            <nav className="row">
+              <div className="logo" />
+              <div className="developer">
+                <h3 className="list-header">Developer</h3>
+                <ul className="footer-list">
+                  <li className="footer-list-item">
+                    <a target="_blank" className="login-signup-link" href="https://github.com/JOlivier92/Dotify">
+                      Dotify Github
+                    </a>
+                  </li>
+                  <li className="footer-list-item">
+                    <a target="_blank" className="login-signup-link" href="https://www.linkedin.com/in/joseph-olivier/">
+                      LinkedIn
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="useful-links">
+                <h3 className="list-header">Useful Links</h3>
+                <ul className="footer-list">
+                  <li className="footer-list-item">
+                    <Link to="/signup" className="login-signup-link grayed-link">
+                      Sign up
+                    </Link>
+                  </li>
+                  <li className="footer-list-item">
+                    <Link to="/login" className="login-signup-link grayed-link">
+                      Log In
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="other-projects">
+                <h3 className="list-header header-right">
+                  Other Github Projects
+                </h3>
+                <ul className="footer-list">
+                  <li className="footer-list-item">
+                    <a target="_blank" className="login-signup-link" href="https://github.com/JOlivier92/Crushd">
+                      Crushd
+                    </a>
+                  </li>
+                  <li className="footer-list-item">
+                    <a target="_blank" className="login-signup-link" href="https://github.com/JOlivier92/ATFConverter">
+                      ATF Converter
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <div className="copyright-info">
+            <div className="USA-flag-area">
+              <div className="flag-flex-area">
+                <h4 className="USA-text">USA</h4>
+                <div className="flag-icon" />
+              </div>
+
+              <div>© 2018 Dotify</div>
+            </div>
+          </div>
         </footer>
-      </div>
-    );
+      </div>;
   }
 
   render() {

@@ -12,12 +12,13 @@ class Api::PlaylistsController < ApplicationController
 
   def index
     @playlists = Playlist.all.includes(:songs).includes(:creator)
+
   end
 
   def show
     @playlist = Playlist.find(params[:id])
     @songsArr = []
-    @playlist.songs.each {|song| @songsArr.push([song.artist.name,song.album.title,url_for(song.mp3),url_for(song.album.art)])}
+    @playlist.songs.each {|song| @songsArr.push([song.artist.name,song.album.title,url_for(song.mp3)])}
   end
 
   # creates an index of playlist given input params
