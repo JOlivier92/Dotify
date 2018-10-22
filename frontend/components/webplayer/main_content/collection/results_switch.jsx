@@ -1,16 +1,38 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { ScaleLoader } from 'react-spinners';
 
 export class Playlists extends React.Component {
   constructor (props) {
     super(props);
+    this.state = {
+      loading: true
+    }
   }
 
   componentDidMount() {
-    this.props.fetchPlaylists();
+    this.props.fetchPlaylists()
+      .then(() => setTimeout(() => this.setState({loading: false}), 750));
   }
 
   render () {
+    if (this.state.loading) {
+      return (
+        <div className='sweet-loading'>
+          <ScaleLoader
+            className="bars"
+            sizeUnit={"px"}
+            height={200}
+            width={5}
+            size={130}
+            radius={999}
+            color={'#4E7E0F'}
+            loading={this.state.loading}
+          />
+        </div>
+      )
+    }
+
     let playlists = this.props.playlists
     let truncated = [];
     let i = 0;
@@ -55,14 +77,22 @@ export class Playlists extends React.Component {
 export class Artists extends React.Component {
   constructor (props) {
     super(props);
+    this.state = {
+      loading: true
+    }
   }
 
   componentDidMount() {
-    debugger;
-    this.props.fetchArtists();
+    this.props.fetchArtists()
+      .then(() => setTimeout(() => this.setState({ loading: false }), 750));
   }
 
   render () {
+    if (this.state.loading) {
+      return <div className="sweet-loading">
+          <ScaleLoader className="bars" sizeUnit={"px"} height={200} width={5} size={130} radius={999} color={"#4E7E0F"} loading={this.state.loading} />
+        </div>;
+    }
     let artists = this.props.artists
     let truncated = [];
     let i = 0;
@@ -97,14 +127,20 @@ export class Artists extends React.Component {
 export class Albums extends React.Component {
   constructor (props) {
     super(props);
+    this.state = { loading: true };
   }
 
   componentDidMount() {
-    this.props.fetchAlbums();
+    this.props.fetchAlbums().then(() => setTimeout(() => this.setState({ loading: false }), 750));;
     debugger;
   }
 
   render () {
+    if (this.state.loading) {
+      return <div className="sweet-loading">
+          <ScaleLoader className="bars" sizeUnit={"px"} height={200} width={5} size={130} radius={999} color={"#4E7E0F"} loading={this.state.loading} />
+        </div>;
+    }
     let albums = this.props.albums
     let truncated = [];
     let i = 0;
@@ -146,14 +182,23 @@ export class Albums extends React.Component {
 export class Songs extends React.Component {
   constructor (props) {
     super(props);
+    this.state = {
+      loading: true
+    };
   }
 
   componentDidMount() {
-    this.props.fetchSongs();
+    this.props.fetchSongs().then(() => setTimeout(() => this.setState({ loading: false }), 750));;
     debugger;
   }
 
   render () {
+    if (this.state.loading) {
+      return <div className="sweet-loading">
+          <ScaleLoader className="bars" sizeUnit={"px"} height={200} width={5} size={130} radius={999} color={"#4E7E0F"} loading={this.state.loading} />
+        </div>;
+    }
+
     let songs = this.props.songs;
     let truncated = [];
     let i = 0;

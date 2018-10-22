@@ -131,6 +131,11 @@
 
         .fab {
           font-size: 30px;
+
+          @media (max-width: 994px) {
+            font-size: 20px;
+            margin-top: -20px;
+          }
         }
         .github-svg {
           margin-top: 20px;

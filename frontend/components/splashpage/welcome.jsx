@@ -88,6 +88,11 @@ class Welcome extends React.Component {
                       Log In
                     </Link>
                   </li>
+                  <li className="footer-list-item">
+                    <Link to="/anyrandomurlextension" className="login-signup-link grayed-link">
+                      404 page
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div className="other-projects">
