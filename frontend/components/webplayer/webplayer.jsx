@@ -49,7 +49,6 @@ class Webplayer extends React.Component {
         <div className="footer-container">
           <div className="music-controller-container">
             <AudioPlayerContainer />
-
           </div>
           <div className="now-listening-container">
 

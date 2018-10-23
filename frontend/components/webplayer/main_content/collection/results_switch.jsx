@@ -50,25 +50,28 @@ export class Playlists extends React.Component {
       return null
     } else {
       debugger;
-    return (
-      <ul className="playlists-list">
-        {truncated.map( (playlist) => (
-            <li className="playlist-item">
-              <div className="playlist-information-container">
-                <div className="playlist-image">
+    return <ul className="playlists-list">
+        {truncated.map(playlist => <li className="playlist-item">
+            <div className="playlist-information-container">
+              <div className="playlist-image">
+                <div className="hover-div" />
+                <div className="icon-container">
+                  <i class="fal fa-play-circle"></i>
                 </div>
-                <div className="playlist-details-container">
-                  <span className="playlist-name">
-                    <Link to= {`${`/playlist/${playlist.id}`}`} className="playlist-link">{playlist.name}</Link>
-                  </span>
-                  <span className="playlist-creator">{playlist.creator.username}</span>
-                </div>
+              </div>
+              <div className="playlist-details-container">
+                <span className="playlist-name">
+                  <Link to={`${`/playlist/${playlist.id}`}`} className="playlist-link">
+                    {playlist.name}
+                  </Link>
+                </span>
+                <span className="playlist-creator">
+                  {playlist.creator.username}
+                </span>
+              </div>
             </div>
-            </li>
-          )
-        )}
-      </ul>
-    );
+          </li>)}
+      </ul>;
   };
   };
 };

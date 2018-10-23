@@ -8,10 +8,26 @@
     flex-direction: row;
     color: white;
     width: 500px;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     .footer-button {
-      margin-top: 25px;
+    margin-top: 25px;
+    line-height: 40px;
+    vertical-align: center;
+    color: hsla(0,0%,100%,.6);
+    background: transparent;
+    border: 0;
+    font-size: 20px;
+    padding-bottom: 12px;
+
+      &:hover {
+        color: #fff;
+      }
+
+    }
+    .play-button {
+      font-size: 35px;
+      margin-left: -16px;
     }
   }
 }

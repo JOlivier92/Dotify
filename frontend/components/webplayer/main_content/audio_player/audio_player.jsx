@@ -114,35 +114,29 @@ class AudioPlayer extends React.Component{
 
   render(){
 
-    return (
-      <div className="music-player">
-
-        <button onClick={this.radioPlay}
-                id="radiobutton"
-                className="radio-button footer-button">
+    return <div className="music-player">
+        <button onClick={this.shufflePlay} id="shufflebutton" className="footer-button">
+          <i class="fal fa-repeat"></i>
         </button>
-        <button onClick={this.playToggle}
-                id="playbutton"
-                className="toggle-button footer-button">
+        <button className="footer-button">
+          <i class="fal fa-step-backward" />
         </button>
-        <button onClick={this.shufflePlay}
-                id="shufflebutton"
-                className="shuffle-button footer-button">
+        <button onClick={this.playToggle} id="playbutton" className="footer-button play-button">
+          <i class="fal fa-play-circle"></i>
         </button>
-
-          <div className="video-player">
-            <ReactPlayer
-              height = '100%'
-              width = '0%'
-              url = {this.state.url}
-              playing = {this.state.playing}
-              onEnded = {() => this.nextInQueue}
-              onProgress = {(info) => this.onProgress(info)}
-              />
-          </div>
-
-      </div>
-      );
+        <button className="footer-button">
+          <i class="fal fa-step-forward"></i>
+        </button>
+        <button className="footer-button">
+          <i class="fal fa-random"></i>
+        </button>
+        <button onClick={this.radioPlay} id="radiobutton" className="radio-button footer-button">
+          <i class="fal fa-broadcast-tower"></i>
+        </button>
+        <div className="video-player">
+          <ReactPlayer height="100%" width="0%" url={this.state.url} playing={this.state.playing} onEnded={() => this.nextInQueue} onProgress={info => this.onProgress(info)} />
+        </div>
+      </div>;
     }
   }
   export default AudioPlayer;

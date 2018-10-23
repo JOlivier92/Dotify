@@ -22,6 +22,7 @@
     .album-information-container {
 
       .album-image {
+        position: relative;
         width: 100%;
         background-size: 100%;
         background-repeat: no-repeat;
@@ -97,39 +98,57 @@
     padding: 8px;
 
 
-    @media (max-width: 1050px) {
-      min-width: 200px;
-    }
-
-    @media (max-width: 720px) {
-      min-width: 250px;
-    }
-
-
     .playlist-information-container {
 
       .playlist-image {
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: space-around;
         width: 100%;
-        height: 200px;
+        padding-bottom: 100%;
         background-image: image_url("sample_album_art");
         background-size: 100%;
         background-repeat: no-repeat;
         min-width: 150px;
-
-        @media (max-width: 1050px) {
-          min-width: 200px;
-          min-height: 150px;
+        
+        .hover-div {
+            transition: 0.4s;
+            width: 100%;
+            padding-bottom: 100%;
+            position: absolute;
+            opacity: 0;
+            background: black;
+            top: 0;
         }
-        @media (max-width: 720px) {
-          min-width: 250px;
-          min-height: 200px;
-        }
-      }
+        .icon-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          .fa-play-circle {
+            color: white;
+            font-size: 75px;
+            width: 0;
+            height: 0;
+            display: none;
+         
+          }
+          .fa-play-circle::before {
+            position: absolute;
+            top: -37px;
+            left: -37px;
 
-      .playlist-image:hover {
-        background-color:rgba(0, 0, 0, 0.3);
-        color: #fff;
-        transition: .5s;
+          }
+        }
+
+        &:hover {
+          .hover-div {
+            opacity: 0.4;
+          }
+          .fa-play-circle {
+            display: block;
+          }
+        }
       }
 
       .playlist-details-container {
