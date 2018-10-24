@@ -28,34 +28,35 @@ class Webplayer extends React.Component {
   render() {
    let curr_location = this.props.location.pathname.slice(1).replace(new RegExp("/", "g"),"_");
    const {logout} = this.props;
-    return (
-      <div className="webplayer-page">
+    return <div className="webplayer-page">
         <div className={"all-content " + curr_location}>
           <SidebarContainer />
-        <div className="content-container">
-          <Switch>
-            <ProtectedRoute path="/search" component={SearchContainer} />
-            <ProtectedRoute path="/collection" component={CollectionContainer} />
-            <ProtectedRoute path="/browse" component={BrowseContainer} />
+          <div className="content-container">
+            <Switch>
+              <ProtectedRoute path="/search" component={SearchContainer} />
+              <ProtectedRoute path="/collection" component={CollectionContainer} />
+              <ProtectedRoute path="/browse" component={BrowseContainer} />
 
-
-            <ProtectedRoute path="/playlist/:playlistId" component={PlaylistShowContainer} />
-            <ProtectedRoute path="/album/:albumId" component={AlbumShowContainer} />
-            <ProtectedRoute path="/artist/:artistId" component={ArtistShowContainer} />
-            <Redirect to="/404/"/>
-          </Switch>
+              <ProtectedRoute path="/playlist/:playlistId" component={PlaylistShowContainer} />
+              <ProtectedRoute path="/album/:albumId" component={AlbumShowContainer} />
+              <ProtectedRoute path="/artist/:artistId" component={ArtistShowContainer} />
+              <Redirect to="/404/" />
+            </Switch>
+          </div>
         </div>
-      </div>
         <div className="footer-container">
           <div className="music-controller-container">
             <AudioPlayerContainer />
           </div>
           <div className="now-listening-container">
-
+            <a target="_blank" className="github-alt-logo" 
+                href="https://github.com/JOlivier92/Dotify">
+              <i class="fab fa-github-alt" />
+            </a>
+            Thank you for checking out my Spotify Clone!
           </div>
         </div>
-    </div>
-    );
+      </div>;
   }
 }
 

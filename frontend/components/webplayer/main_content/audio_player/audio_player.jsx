@@ -12,9 +12,13 @@ class AudioPlayer extends React.Component{
                   'https://www.youtube.com/watch?v=d46Azg3Pm4c',
                   'https://www.youtube.com/watch?v=d46Azg3Pm4c',
                   'https://www.youtube.com/watch?v=d46Azg3Pm4c'],
-      recentlyPlayed: []
+      recentlyPlayed: [],
+      shuffle: false,
+      repeat: false,
+      radio: false,
     };
     this.radioPlay = this.radioPlay.bind(this);
+    this.repeatToggle = this.repeatToggle.bind(this);
     this.shufflePlay = this.shufflePlay.bind(this);
     this.nextInQueue = this.nextInQueue.bind(this);
     this.onProgress = this.onProgress.bind(this);
@@ -36,7 +40,9 @@ class AudioPlayer extends React.Component{
       this.setState({
         url: newUrl,
         songQueue: this.props.currentQueue.slice(1),
-        playing: true
+        playing: true,
+        radio: false,
+        shuffle: false
       })
     }
     // updated whenever action is sent
@@ -54,7 +60,8 @@ class AudioPlayer extends React.Component{
         [currentList[i], currentList[j]] = [currentList[j], currentList[i]];
     }
     this.setState({
-      songQueue: currentList
+      songQueue: currentList,
+      shuffle: true
     });
     console.log(this.state.songQueue);
   }
@@ -62,22 +69,25 @@ class AudioPlayer extends React.Component{
   radioPlay() {
     this.setState({
       url: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
-      playing: true
+      playing: true,
+      radio: true
     });
   }
 
   playToggle() {
 
     if (this.state.playing === true) {
-      // document.getElementById("playbutton")
-      //         .classList.add('not-playing');
-
       this.setState({playing: false})
     } else {
-      // document.getElementById("playbutton")
-      //         .classList.add('currently-playing');
-
       this.setState({playing: true})
+    }
+  }
+
+  repeatToggle() {
+    if (this.state.repeat === true) {
+      this.setState({repeat: false})
+    } else {
+      this.setState({repeat: true})
     }
   }
 
@@ -113,25 +123,53 @@ class AudioPlayer extends React.Component{
   }
 
   render(){
+    let playbutton ;
+    let shufflebutton ;
+    let repeatbutton ;
+    let radiobutton
+
+    if (this.state.shuffle) {
+      shufflebutton = <i class="fal fa-random active" />;
+    } else {
+      shufflebutton = <i class="fal fa-random" />;
+    }
+
+    if (this.state.radio) {
+      radiobutton = <i class="fal fa-broadcast-tower active" />;
+    } else {
+      radiobutton = <i class="fal fa-broadcast-tower" />;
+    }
+
+    if (this.state.repeat) {
+      repeatbutton = <i class="fal fa-repeat active" />;
+    } else {
+      repeatbutton = <i class="fal fa-repeat" />;
+    }
+
+    if (this.state.playing) {
+      playbutton = <i class="fal fa-play-circle"></i>
+    } else {
+      playbutton = <i class="fal fa-pause-circle"></i>
+    }
 
     return <div className="music-player">
         <button onClick={this.shufflePlay} id="shufflebutton" className="footer-button">
-          <i class="fal fa-repeat"></i>
+          {shufflebutton}
         </button>
         <button className="footer-button">
           <i class="fal fa-step-backward" />
         </button>
         <button onClick={this.playToggle} id="playbutton" className="footer-button play-button">
-          <i class="fal fa-play-circle"></i>
+          {playbutton}
         </button>
         <button className="footer-button">
           <i class="fal fa-step-forward"></i>
         </button>
-        <button className="footer-button">
-          <i class="fal fa-random"></i>
+        <button onClick={this.repeatToggle} id="repeatbutton" className="footer-button">
+          {repeatbutton}
         </button>
         <button onClick={this.radioPlay} id="radiobutton" className="radio-button footer-button">
-          <i class="fal fa-broadcast-tower"></i>
+          {radiobutton}
         </button>
         <div className="video-player">
           <ReactPlayer height="100%" width="0%" url={this.state.url} playing={this.state.playing} onEnded={() => this.nextInQueue} onProgress={info => this.onProgress(info)} />

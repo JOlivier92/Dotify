@@ -16,7 +16,9 @@
     flex-direction: row;
 
     .navbar-options {
-      width: 220px;
+      padding-left: 24px;
+      padding-right: 24px;
+      width: 172px;
       height: 87%;
       background-color: rgba(0,0,0,.8);
       z-index: 10;
@@ -26,9 +28,13 @@
         position: fixed;
       }
 
-      ul {
+      .side-bar-list {
         padding-bottom: 10px;
         border-bottom: 1px solid gray;
+
+        .magnifying-glass {
+          padding-bottom: 25px;
+        }
       }
 
       .navbar-header {
@@ -70,11 +76,24 @@
           font-weight: 800;
           font-size: 14px;
           color: rgba(255, 255, 255, 0.6);
+          transition: 0.4s;
           @media (max-width: 720px) {
             padding-left: 0;
           }
           .active {
             color: green;
+          }
+
+          &:hover {
+            color: white;
+            .navbar-text {
+              color: white;
+              
+            }
+            .line {
+              transition: 0.4s;
+              border: 1px solid white;
+            }
           }
 
           .icon {
@@ -83,7 +102,13 @@
             width: 31px;
             padding-bottom: 20px;
 
-
+          }
+          .fa-search {
+            font-size: 26px;
+          }
+          .fa-home {
+            font-size: 32px;
+            padding-bottom: 25px;
           }
           .navbar-text {
             text-decoration: none;
@@ -91,6 +116,8 @@
             padding-top: 6px;
             color: gray;
             margin: 0;
+            transition: 0.4s;
+
 
 
             @media (max-width: 720px) {
@@ -98,7 +125,7 @@
             }
           }
 
-          hr {
+          .line {
             height: 23px;
             border: 1px solid rgba(255, 255, 255, 0.6);
             width: 0px;
@@ -138,6 +165,7 @@
           border-radius: 15px;
           font-size: 15px;
           border: 0;
+          margin-bottom: 25px;
         }
         button:hover {
           height: 25px;
@@ -175,7 +203,7 @@
     }
 
     .now-listening-container {
-      font-size: 12px;
+      font-size: 15px;
       line-height: 16px;
       letter-spacing: .015em;
       background-color: #1db954;
@@ -187,6 +215,10 @@
       position: relative;
       border-bottom-right-radius: 6px;
       border-bottom-left-radius: 6px;
+      .github-alt-logo {
+        padding-right: 5px;
+        color: black;
+      }
     }
   }
 }
@@ -232,4 +264,12 @@
 
 .active {
   color: green;
+}
+
+.vertlines {
+  &:hover {
+    .line {
+      color: white;
+    }
+  }
 }

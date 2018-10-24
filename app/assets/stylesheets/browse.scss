@@ -26,6 +26,14 @@
           font-weight: 500;
           letter-spacing: 0.13em;
         }
+
+        .active {
+          padding-left: 0;
+          padding-right: 0;
+          position: center;
+          border-bottom: 1px solid;
+        }
+
       }
     }
 
