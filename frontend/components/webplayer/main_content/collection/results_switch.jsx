@@ -221,7 +221,7 @@ export class Songs extends React.Component {
                 ♪
               </div>
               <div className="track-details-container">
-                <span className="track-title">{song.title} </span>
+                <span className="track-title" onClick={() => this.props.setCurrentSong(song.id)}>{song.title} </span>
                 <div className="other-track-details">
                   <span className="detail-contents">
                     <Link to= {`${`/artist/${song.artist.id}`}`} className="artist-link">{song.artist.name}</Link>

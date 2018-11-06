@@ -21,13 +21,13 @@ class Sidebar extends React.Component {
         <ul className="side-bar-list">
           <li className="navbar-group magnifying-glass">
             <i class="fal fa-search" />
-            <NavLink to="/search/recent" className="navbar-text" activeClassName="active2">
+            <NavLink to="/search/recent" className="navbar-text" activeClassName="active">
               Search
             </NavLink>
           </li>
           <li className="navbar-group">
             <i class="fal fa-home" />
-            <Link to="/browse/featured" className="navbar-text" activeClassName="active2">
+            <Link to="/browse/featured" className="navbar-text" activeClassName="active">
               Home
             </Link>
           </li>
@@ -35,7 +35,7 @@ class Sidebar extends React.Component {
             <hr width="1" size="" className= "line"/>
             <hr width="1" size="" className= "line"/>
             <hr width="1" size="" className="line rotated-line" />
-            <Link to="/collection/playlists" className="navbar-text" activeClassName="active2">
+            <Link to="/collection/playlists" className="navbar-text" activeClassName="active">
               Your Library
             </Link>
           </li>

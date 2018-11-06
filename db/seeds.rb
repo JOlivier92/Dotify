@@ -71,13 +71,32 @@ CSV.foreach('./db/songSeeds.csv') do |song|
   end
 
   unless unique_artists.include?(song[1])
-    Artist.create(name: song[1])
+    new_artist = Artist.new(
+      name: song[1]
+    )
+    
+    artist_hyperlink = "https://s3-us-west-1.amazonaws.com/dotify-dev/artist_images/"
+    artist_count = Artist.all.length
+    rand_decider = rand (1..2)
+    num_to_add = (artist_count % 96 + 1).to_s
+    if rand_decider % 2 == 0
+      artist_file_ext = "W" + num_to_add + ".jpg"
+    else
+      artist_file_ext = "M" + num_to_add + ".jpg"
+    end
+
+    artist_image_target = artist_hyperlink + artist_file_ext
+    file = EzDownload.open(artist_image_target)
+
+    new_artist.img.attach(io: file, filename: artist_image_target)
+    new_artist.save!
+
     unique_artists.push(song[1])
   end
+  
   artist_id = Artist.find_by(name: song[1]).id
 
   unless unique_albums.include?(song[2])
-    # album_to_save = Album.new(title: song[2], artist_id: artist_id)
     album_to_save = Album.new(title: song[2], artist_id: artist_id)
     unique_albums.push(song[2])
 

@@ -36,7 +36,6 @@ class Webplayer extends React.Component {
               <ProtectedRoute path="/search" component={SearchContainer} />
               <ProtectedRoute path="/collection" component={CollectionContainer} />
               <ProtectedRoute path="/browse" component={BrowseContainer} />
-
               <ProtectedRoute path="/playlist/:playlistId" component={PlaylistShowContainer} />
               <ProtectedRoute path="/album/:albumId" component={AlbumShowContainer} />
               <ProtectedRoute path="/artist/:artistId" component={ArtistShowContainer} />

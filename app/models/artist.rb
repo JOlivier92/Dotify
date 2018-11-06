@@ -13,6 +13,8 @@
 class Artist < ApplicationRecord
   validates :name, presence: true
 
+
+  has_one_attached :img
   has_many :songs
   has_many :albums
 end

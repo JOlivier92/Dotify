@@ -106,7 +106,8 @@ class AudioPlayer extends React.Component{
       this.setState ({
         url: nextURLState[2],
         songQueue: currentQueue,
-        recentlyPlayed: newRecentlyPlayedState
+        recentlyPlayed: newRecentlyPlayedState,
+        playing: true
       });
     }
     debugger;
@@ -115,11 +116,6 @@ class AudioPlayer extends React.Component{
 
   onProgress (info) {
     console.log(info);
-    if (info.playedSeconds >= info.loadedSeconds) {
-      this.nextInQueue()
-    }
-    // then(() => this.props.updateRecentlyPlayed(this.state.recentlyPlayed));
-    // use this for playing bar
   }
 
   render(){
@@ -172,7 +168,7 @@ class AudioPlayer extends React.Component{
           {radiobutton}
         </button>
         <div className="video-player">
-          <ReactPlayer height="100%" width="0%" url={this.state.url} playing={this.state.playing} onEnded={() => this.nextInQueue} onProgress={info => this.onProgress(info)} />
+          <ReactPlayer height="100%" width="0%" url={this.state.url} playing={this.state.playing} onEnded={this.nextInQueue} onProgress={info => this.onProgress(info)} />
         </div>
       </div>;
     }

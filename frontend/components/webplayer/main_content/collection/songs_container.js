@@ -2,6 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Songs } from './results_switch';
 import { fetchSongs } from '../../../../actions/song_actions';
+import {
+  setCurrentSong
+} from "../../../../actions/audio_player_actions";
+
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -10,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 const mapDispatchToProps = dispatch => ({
-  fetchSongs: () => dispatch(fetchSongs())
+  fetchSongs: () => dispatch(fetchSongs()),
+  setCurrentSong: songId => dispatch(setCurrentSong(songId))
 });
 
 
