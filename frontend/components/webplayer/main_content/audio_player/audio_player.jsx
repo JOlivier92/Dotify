@@ -11,7 +11,8 @@ class AudioPlayer extends React.Component{
       songQueue: ['https://www.youtube.com/watch?v=ysz5S6PUM-U',
                   'https://www.youtube.com/watch?v=d46Azg3Pm4c',
                   'https://www.youtube.com/watch?v=d46Azg3Pm4c',
-                  'https://www.youtube.com/watch?v=d46Azg3Pm4c'],
+                  'https://www.youtube.com/watch?v=d46Azg3Pm4c'
+                ],
       recentlyPlayed: [],
       shuffle: false,
       repeat: false,
