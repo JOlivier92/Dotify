@@ -144,9 +144,9 @@ class AudioPlayer extends React.Component{
     }
 
     if (this.state.playing) {
-      playbutton = <i class="fal fa-play-circle"></i>
+      playbutton = <i class="fal fa-pause-circle active" />;
     } else {
-      playbutton = <i class="fal fa-pause-circle"></i>
+      playbutton = <i class="fal fa-play-circle" />;
     }
 
     return <div className="music-player">

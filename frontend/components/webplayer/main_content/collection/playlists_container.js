@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Playlists } from './results_switch';
 import { fetchPlaylists } from '../../../../actions/playlist_actions';
+import { createAudioPlaylist } from "../../../../actions/audio_player_actions";
+
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -11,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = dispatch => ({
   fetchPlaylists: () => dispatch(fetchPlaylists()),
+  createAudioPlaylist: (id) => dispatch(createAudioPlaylist(id))
 });
 
 
