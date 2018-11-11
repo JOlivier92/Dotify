@@ -10,6 +10,11 @@ export class Playlists extends React.Component {
     }
   }
 
+  setPlaylist() {
+    debugger;
+    console.log("hi");
+  }
+
   componentDidMount() {
     this.props.fetchPlaylists()
       .then(() => setTimeout(() => this.setState({loading: false}), 750));
@@ -51,12 +56,12 @@ export class Playlists extends React.Component {
     } else {
       debugger;
     return <ul className="playlists-list">
-        {truncated.map(playlist => <li className="playlist-item">
-            <div className="playlist-information-container">
+      {truncated.map(playlist => <li className="playlist-item" onClick={() => this.props.createAudioPlaylist(playlist.id)}>
+        <div className="playlist-information-container">
               <div className="playlist-image">
-                <div className="hover-div" />
+              <div className="hover-div"/>
                 <div className="icon-container">
-                  <i class="fal fa-play-circle"></i>
+                  <i class="fal fa-play-circle" />
                 </div>
               </div>
               <div className="playlist-details-container">
@@ -65,7 +70,7 @@ export class Playlists extends React.Component {
                     {playlist.name}
                   </Link>
                 </span>
-                <span className="playlist-creator">
+                <span className="playlist-creator" onClick={this.setPlaylist}>
                   {playlist.creator.username}
                 </span>
               </div>

@@ -11,10 +11,12 @@ const mapStateToProps = (state, ownProps) => {
     playlists: Object.keys(state.entities.playlists).map(id => state.entities.playlists[id]),
   };
 };
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => {
+  console.log("I'm here");
+  return {
   fetchPlaylists: () => dispatch(fetchPlaylists()),
   createAudioPlaylist: (id) => dispatch(createAudioPlaylist(id))
-});
+}};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Playlists)
