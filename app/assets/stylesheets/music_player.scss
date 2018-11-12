@@ -4,35 +4,55 @@
 
   .music-player {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    color: white;
-    width: 500px;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-around;
 
-    .footer-button {
-    margin-top: 25px;
-    line-height: 40px;
-    vertical-align: center;
-    color: hsla(0,0%,100%,.6);
-    background: transparent;
-    border: 0;
-    font-size: 20px;
-    padding-bottom: 12px;
+    .button-class {
+      display: flex;
+      width: 500px;
+      justify-content: space-evenly;
 
-      &:hover {
-        color: #fff;
-      }
+      .footer-button {
+        line-height: 40px;
+        color: hsla(0,0%,100%,.6);
+        background: transparent;
+        font-size: 20px;
+
+        &:hover {
+          color: #fff;
+        }
 
     }
-    .play-button {
-      font-size: 35px;
-      margin-left: -16px;
+      .play-button {
+        font-size: 35px;
+        margin-left: -16px;
+      }
+    }
+
+    .progress-div {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      color: hsla(0,0%,100%,.6);
+      font-size: 11px;
+      font-weight: 200px;
+      align-items: center;
+
+      #current-time {
+        margin-right: 10px;
+        
+      }
+      #progress-bar {
+        width: 92%;
+        background-color: green;
+        height: 4px;
+      }
+      #total-time {
+        margin-left: 10px;
+      }
     }
   }
 }
-
-
 .video-player {
   height: 0;
   width: 0;

@@ -17,6 +17,8 @@ class AudioPlayer extends React.Component{
       shuffle: false,
       repeat: false,
       radio: false,
+      current: 0,
+      progress: 0
     };
     this.radioPlay = this.radioPlay.bind(this);
     this.repeatToggle = this.repeatToggle.bind(this);
@@ -47,10 +49,6 @@ class AudioPlayer extends React.Component{
       })
     }
     // updated whenever action is sent
-    console.log('video player updated')
-    console.log(this.state.playing)
-    debugger;
-
   }
 
   shufflePlay() {
@@ -75,6 +73,13 @@ class AudioPlayer extends React.Component{
     });
   }
 
+  updateProgress() {
+    let duration = this.refs.player.duration;
+    let currentTime = this.refs.player.currentTime;
+    let progress = (currentTime * 100) / duration;
+
+    this.setState({ progress: progress });
+  }
   playToggle() {
 
     if (this.state.playing === true) {
@@ -116,7 +121,68 @@ class AudioPlayer extends React.Component{
 
 
   onProgress (info) {
-    console.log(info);
+    let currTime ;
+    let currTimeSeconds ;
+    let currTimeMinutes ;
+    let currTimeHours ;
+    let currTimeString ;
+
+    let totalTime ;
+    let totalTimeSeconds ;
+    let totalTimeMinutes ;
+    let totalTimeHours ;
+    let totalTimeString ; 
+
+    document.getElementById("progress-bar").setAttribute("value", info.played);
+    
+    // set current time
+    currTime = Math.ceil(info.playedSeconds);
+    currTimeSeconds = currTime % 60;
+    currTimeMinutes = Math.floor(currTime / 60);
+    if (currTimeMinutes > 60) {
+      currTimeHours = Math.floor(currTime / 3600);
+      currTimeMinutes %= 60;
+    } else {
+      currTimeHours = 0;
+    }
+
+    if (currTimeMinutes < 10 && currTimeMinutes > 0) {
+      currTimeMinutes = `0${currTimeMinutes}`;
+    }
+    if (currTimeSeconds < 10) {
+      currTimeSeconds = `0${currTimeSeconds}`;
+    }
+    if (currTimeHours) {
+      currTimeString = `${currTimeHours}:${currTimeMinutes}:${currTimeSeconds}`;
+    } else {
+      currTimeString = `${currTimeMinutes}:${currTimeSeconds}`;
+    }
+
+    // set total time
+    totalTime = Math.ceil(info.playedSeconds / info.played);
+    totalTimeSeconds = totalTime % 60;
+    totalTimeMinutes = Math.floor(totalTime / 60);
+    if (totalTimeMinutes > 60) {
+      totalTimeHours = Math.floor(totalTime / 3600);
+      totalTimeMinutes %= 60;
+    } else {
+      totalTimeHours = 0;
+    }
+
+    if (totalTimeMinutes < 10 && totalTimeMinutes > 0) {
+      totalTimeMinutes = `0${totalTimeMinutes}`;
+    }
+    if (totalTimeSeconds < 10) {
+      totalTimeSeconds = `0${totalTimeSeconds}`;
+    }
+    if (totalTimeHours) {
+      totalTimeString = `${totalTimeHours}:${totalTimeMinutes}:${totalTimeSeconds}`;
+    } else {
+      totalTimeString = `${totalTimeMinutes}:${totalTimeSeconds}`;
+    }
+
+    document.getElementById("current-time").innerHTML = currTimeString
+    document.getElementById("total-time").innerHTML = totalTimeString
   }
 
   render(){
@@ -148,30 +214,36 @@ class AudioPlayer extends React.Component{
     } else {
       playbutton = <i class="fal fa-play-circle" />;
     }
-
     return <div className="music-player">
-        <button onClick={this.shufflePlay} id="shufflebutton" className="footer-button">
-          {shufflebutton}
-        </button>
-        <button className="footer-button">
-          <i class="fal fa-step-backward" />
-        </button>
-        <button onClick={this.playToggle} id="playbutton" className="footer-button play-button">
-          {playbutton}
-        </button>
-        <button className="footer-button">
-          <i class="fal fa-step-forward"></i>
-        </button>
-        <button onClick={this.repeatToggle} id="repeatbutton" className="footer-button">
-          {repeatbutton}
-        </button>
-        <button onClick={this.radioPlay} id="radiobutton" className="radio-button footer-button">
-          {radiobutton}
-        </button>
-        <div className="video-player">
-          <ReactPlayer height="100%" width="0%" url={this.state.url} playing={this.state.playing} onEnded={this.nextInQueue} onProgress={info => this.onProgress(info)} />
+        <div className="button-class">
+          <button onClick={this.shufflePlay} id="shufflebutton" className="footer-button">
+            {shufflebutton}
+          </button>
+          <button className="footer-button">
+            <i class="fal fa-step-backward" />
+          </button>
+          <button onClick={this.playToggle} id="playbutton" className="footer-button play-button">
+            {playbutton}
+          </button>
+          <button className="footer-button">
+            <i class="fal fa-step-forward" />
+          </button>
+          <button onClick={this.repeatToggle} id="repeatbutton" className="footer-button">
+            {repeatbutton}
+          </button>
+          <button onClick={this.radioPlay} id="radiobutton" className="radio-button footer-button">
+            {radiobutton}
+          </button>
+          <div className="video-player">
+            <ReactPlayer height="100%" width="0%" url={this.state.url} playing={this.state.playing} onEnded={this.nextInQueue} onProgress={info => this.onProgress(info)} />
+          </div>
         </div>
-      </div>;
+        <div className="progress-div">
+          <div id = "current-time" className="current-time"></div>
+          <progress id="progress-bar" max="1" value = ""/>
+          <div id = "total-time" className="total-time"></div>
+        </div>
+      </div>
     }
   }
   export default AudioPlayer;

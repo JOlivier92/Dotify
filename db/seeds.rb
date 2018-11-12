@@ -215,5 +215,13 @@ for i in (first_user_id..last_user_id) do
         song_id: song_to_add
       )
     end
+
+    hyperlink = "https://s3-us-west-1.amazonaws.com/dotify-dev/album_art/"
+    image_target = hyperlink + sampleArtworks.sample
+    file = EzDownload.open(image_target)
+    Playlist.last.art.attach(io: file, filename: album_art_string_to_find)
+    Playlist.last.save!
+    puts("playlist picture saved");
+
   end
 end
