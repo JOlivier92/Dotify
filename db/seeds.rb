@@ -59,11 +59,15 @@ unique_artists = []
 
 # sample artworks for albums with missing art to pick randomly from 1 of 9
 # stock photos
-sampleArtworks = ["sample_artwork1.jpg", "sample_artwork2.jpeg",
-                  "sample_artwork3.jpg", "sample_artwork4.jpeg",
+sampleArtworks = ["sample_artwork1.jpg", "sample_artwork2.jpg",
+                  "sample_artwork3.jpg", "sample_artwork4.jpg",
                   "sample_artwork5.jpg", "sample_artwork6.jpg",
                   "sample_artwork7.jpg", "sample_artwork8.jpg",
-                  "sample_artwork9.jpg"]
+                  "sample_artwork9.jpg", "sample_artwork10.jpg",
+                  "sample_artwork11.jpg", "sample_artwork12.jpg",
+                  "sample_artwork13.jpg", "sample_artwork14.jpg",
+                  "sample_artwork15.jpg", "sample_artwork16.jpg",
+                  "sample_artwork17.jpg", "sample_artwork18.jpg",]
 CSV.foreach('./db/songSeeds.csv') do |song|
   if song[5].nil?
     p "skipping #{song[0]} due to lack of album art"
@@ -104,7 +108,6 @@ CSV.foreach('./db/songSeeds.csv') do |song|
     ################################################################
     # attaching img to each album and saving to database
     ################################################################
-    print(song)
     album_art_string_to_find = song[5][48..-1]
     hyperlink = "https://s3-us-west-1.amazonaws.com/dotify-dev/album_art/"
     if File.readlines("./db/albumArtNames.txt").grep(/#{album_art_string_to_find}/).size == 1
@@ -217,11 +220,13 @@ for i in (first_user_id..last_user_id) do
     end
 
     hyperlink = "https://s3-us-west-1.amazonaws.com/dotify-dev/album_art/"
-    image_target = hyperlink + sampleArtworks.sample
+    artwork = sampleArtworks.sample
+    image_target = hyperlink + artwork
     file = EzDownload.open(image_target)
-    Playlist.last.art.attach(io: file, filename: album_art_string_to_find)
+    Playlist.last.art.attach(io: file, filename: artwork)
     Playlist.last.save!
     puts("playlist picture saved");
+
 
   end
 end

@@ -58,7 +58,8 @@ export class Playlists extends React.Component {
     return <ul className="playlists-list">
       {truncated.map(playlist => <li className="playlist-item">
         <div className="playlist-information-container">
-          <div className="playlist-image" onClick={() => this.props.createAudioPlaylist(playlist.id)}>
+          <div className="playlist-image-wrapper" onClick={() => this.props.createAudioPlaylist(playlist.id)}>
+              <img className="playlist-image" src={playlist.art_url}></img>
               <div className="hover-div"/>
                 <div className="icon-container">
                   <i class="fal fa-play-circle" />
@@ -167,7 +168,9 @@ export class Albums extends React.Component {
         {truncated.map( (album) => (
             <li className="album-item">
               <div className="album-information-container">
-                <img className="album-image" src={album.art_url}></img>
+                <div style={{position: "relative", height: 0, paddingBottom: "100%", width: "100%", overflow: "hidden"}}>
+                  <img className="album-image" src={album.art_url}></img>
+                </div>
                 <div className="album-details-container">
                   <span className="detail-contents">
                     <Link to= {`${`/album/${album.id}`}`} className="album-link">{album.title}</Link>
