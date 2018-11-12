@@ -56,9 +56,9 @@ export class Playlists extends React.Component {
     } else {
       debugger;
     return <ul className="playlists-list">
-      {truncated.map(playlist => <li className="playlist-item" onClick={() => this.props.createAudioPlaylist(playlist.id)}>
+      {truncated.map(playlist => <li className="playlist-item">
         <div className="playlist-information-container">
-              <div className="playlist-image">
+          <div className="playlist-image" onClick={() => this.props.createAudioPlaylist(playlist.id)}>
               <div className="hover-div"/>
                 <div className="icon-container">
                   <i class="fal fa-play-circle" />
@@ -415,29 +415,21 @@ export class AlbumShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCurrentAlbum(Number(this.props.match.params.albumId))
-  }
-
-  componentDidUpdate(prevProps,prevState) {
     debugger;
-    if (this.props === prevProps) {
-      this.setState({album: this.props.albums})
-    }
+    this.props.fetchCurrentAlbum(Number(this.props.match.url.slice(7)))
+      .then(() => this.setState({
+        album: this.props.albums[Number(this.props.match.url.slice(7))]
+      }));
+
   }
 
   setDivs() {
+    debugger;
     let albumId ;
     albumId = Number(this.props.match.url.slice(7))
     let songsList ;
     let contentUnderTitle ;
-    debugger;
-    if (typeof this.props.albums[albumId] === 'undefined') {
-      this.props.fetchCurrentAlbum(albumId)
-
-    } else {
       let songsObj ;
-      debugger;
-
       songsObj = this.props.albums[albumId].songList;
       songsList = <div className="results-container">
                   <ul className="random-song-list">
@@ -467,12 +459,10 @@ export class AlbumShow extends React.Component {
                     </li>
                   </ul>
                 </div>
-      debugger;
       contentUnderTitle = <div className='content-under-album-art'>
                            <h1 className="album-name">{this.props.albums[albumId].title}</h1>
                            <h4 className="album-username">{this.props.albums[albumId].artist.name}</h4>
                          </div>
-    }
     return (
       <div className="album-show-container">
         <div className="art-side-container">
@@ -499,11 +489,9 @@ export class AlbumShow extends React.Component {
     let header ;
     let album ;
     debugger;
-    if (Object.keys(this.props.albums).length === 1) {
+    if (this.state.album.id) {
       header = this.setDivs();
-    } else if (Object.keys(this.props.albums).length > 1) {
-      header = null
-    }
+    } 
     debugger;
     return (
       <div className="album-album-show">

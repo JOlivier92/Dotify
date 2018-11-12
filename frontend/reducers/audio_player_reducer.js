@@ -18,7 +18,8 @@ const audioPlayerReducer = (state = _nullState, action) => {
     case UPDATE_RECENTLY_PLAYED:
       return merge({},state,{recentlyPlayed: action.payload})
     case SET_CURRENT_SONG:
-      return merge({}, {currentSong: action.payload})
+      debugger;
+      return merge(state, {currentSong: action.payload})
     default:
       return state;
   }
