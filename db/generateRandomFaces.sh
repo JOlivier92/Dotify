@@ -4,10 +4,10 @@
 
 # URLs were scraped by performing the following:
 #
-# let arr = [];
-# let menPrefix = "https://randomuser.me/api/portraits/men/";
-# let womenPrefix = "https://randomuser.me/api/portraits/women/"
-# let suffix = ".jpg";
+# arr = [];
+# menPrefix = "https://randomuser.me/api/portraits/men/";
+# womenPrefix = "https://randomuser.me/api/portraits/women/"
+# suffix = ".jpg";
 # require 'csv'
 # 100.times do |i|
 #     arr.push(menPrefix+i.to_s+suffix)
