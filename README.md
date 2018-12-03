@@ -100,7 +100,7 @@ done
 
 ## Future Directions
 
-New functionality will be added in the future, including but not limited to:
+New functionality will be added in the future, including but not limited to --
 - A popularity meter that is based on how often a song is listened to
 - The ability to filter songs by genre
 - Randomized playlist based off of the popularity of songs
