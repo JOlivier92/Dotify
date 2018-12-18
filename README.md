@@ -5,7 +5,7 @@
 [Visit Dotify Now](https://dotifyio.herokuapp.com)
 
 Dotify is a faithful clone of the [Spotify](https://open.spotify.com/browse/featured) Web App with 1000s of songs and over 800 artists and albums obtained from a [machine learning dataset](https://arxiv.org/abs/1612.01840) using music from [The Free Music Archive](https://freemusicarchive.org).
-
+ 
 ----
 
 ## Technologies
